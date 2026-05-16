@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://innoocyber.free.nf/"
+      }
+      description: "This API allows users to securely log in, sign up, and manage their authentication credentials for the INNO_CYBER platform. It supports operations like password recovery and referral code registration to enhance user experience."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://innoocyber.free.nf"
+        }
+      ]
+      title: "INNO_CYBER Authentication"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

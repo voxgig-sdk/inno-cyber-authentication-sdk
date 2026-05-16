@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "authentication": {
+      "AUTHENTICATION00": {
+        "email": "s6e",
+        "message": "s6f",
+        "name": "s70",
+        "new_password": "s71",
+        "password": "s72",
+        "referral_code": "s73",
+        "referrer": {},
+        "success": false,
+        "token": "s76",
+        "user": {},
+        "valid": true,
+        "id": "AUTHENTICATION00"
+      },
+      "AUTHENTICATION01": {
+        "email": "sdc",
+        "message": "sdd",
+        "name": "sde",
+        "new_password": "sdf",
+        "password": "se0",
+        "referral_code": "se1",
+        "referrer": {},
+        "success": false,
+        "token": "se4",
+        "user": {},
+        "valid": true,
+        "id": "AUTHENTICATION01"
+      },
+      "AUTHENTICATION02": {
+        "email": "s14a",
+        "message": "s14b",
+        "name": "s14c",
+        "new_password": "s14d",
+        "password": "s14e",
+        "referral_code": "s14f",
+        "referrer": {},
+        "success": false,
+        "token": "s152",
+        "user": {},
+        "valid": true,
+        "id": "AUTHENTICATION02"
+      }
+    }
+  },
+  "new": {
+    "authentication": {
+      "authentication_ref01": {
+        "email": "s1b8",
+        "message": "s1b9",
+        "name": "s1ba",
+        "new_password": "s1bb",
+        "password": "s1bc",
+        "referral_code": "s1bd",
+        "referrer": {},
+        "success": false,
+        "token": "s1c0",
+        "user": {},
+        "valid": true
+      }
+    }
+  }
+}

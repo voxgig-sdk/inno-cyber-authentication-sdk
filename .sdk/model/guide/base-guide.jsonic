@@ -1,0 +1,26 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 1
+  metrics: count: path: 5
+  metrics: count: method: 5
+
+  entity: authentication: {
+    path: "/api/auth/login": {
+      op: create: method: *POST
+    }
+    path: "/api/auth/password/recover": {
+      op: create: method: *POST
+    }
+    path: "/api/auth/password/reset": {
+      op: create: method: *POST
+    }
+    path: "/api/auth/referral/validate": {
+      op: create: method: *POST
+    }
+    path: "/api/auth/signup": {
+      op: create: method: *POST
+    }
+  }
+
+}
