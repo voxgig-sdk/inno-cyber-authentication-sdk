@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/inno-cyber-authentication-sdk/core"
+import "github.com/voxgig-sdk/inno-cyber-authentication-sdk/go/core"
 
 func makeRequestUtil(ctx *core.Context) (*core.Response, error) {
 	if ctx.Out["request"] != nil {

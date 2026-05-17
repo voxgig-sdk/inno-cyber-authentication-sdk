@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/inno-cyber-authentication-sdk"
+	sdk "github.com/voxgig-sdk/inno-cyber-authentication-sdk/go"
 )
 
 func TestExists(t *testing.T) {

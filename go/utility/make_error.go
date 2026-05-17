@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/inno-cyber-authentication-sdk/core"
+import "github.com/voxgig-sdk/inno-cyber-authentication-sdk/go/core"
 
 func makeErrorUtil(ctx *core.Context, err error) (any, error) {
 	if ctx == nil {

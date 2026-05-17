@@ -1,10 +1,10 @@
 package voxgiginnocyberauthenticationsdk
 
 import (
-	"github.com/voxgig-sdk/inno-cyber-authentication-sdk/core"
-	"github.com/voxgig-sdk/inno-cyber-authentication-sdk/entity"
-	"github.com/voxgig-sdk/inno-cyber-authentication-sdk/feature"
-	_ "github.com/voxgig-sdk/inno-cyber-authentication-sdk/utility"
+	"github.com/voxgig-sdk/inno-cyber-authentication-sdk/go/core"
+	"github.com/voxgig-sdk/inno-cyber-authentication-sdk/go/entity"
+	"github.com/voxgig-sdk/inno-cyber-authentication-sdk/go/feature"
+	_ "github.com/voxgig-sdk/inno-cyber-authentication-sdk/go/utility"
 )
 
 // Type aliases preserve external API.
