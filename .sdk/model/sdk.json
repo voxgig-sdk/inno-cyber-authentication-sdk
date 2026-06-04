@@ -16,7 +16,14 @@
           }
         ],
         "title": "INNO_CYBER Authentication",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Handle login, signup, and authentication flows for INNO_CYBER applications",
+        "homepage": "https://innoocyber.free.nf",
+        "about_md": "INNO_CYBER Authentication is the login, signup, and session-handling surface for the INNO_CYBER service hosted at [innoocyber.free.nf](https://innoocyber.free.nf). It exposes the user-facing auth flows that other parts of the INNO_CYBER application rely on.\n\nWhat you can do via the SDK:\n\n- Register new user accounts (signup)\n- Authenticate existing users (login)\n- Manage the resulting authenticated sessions\n\nThe service is hosted on a free shared host (`free.nf`), so availability, TLS certificate validity, and rate behaviour can vary. Treat it as a small/experimental endpoint rather than a production identity provider.",
+        "entity_desc": {
+          "authentication": "User authentication resource covering signup, login, and related session operations for INNO_CYBER."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -24,7 +31,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "authentication": {

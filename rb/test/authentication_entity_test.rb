@@ -77,7 +77,6 @@ def authentication_basic_setup(extra)
     "INNOCYBERAUTHENTICATION_TEST_AUTHENTICATION_ENTID" => idmap,
     "INNOCYBERAUTHENTICATION_TEST_LIVE" => "FALSE",
     "INNOCYBERAUTHENTICATION_TEST_EXPLAIN" => "FALSE",
-    "INNOCYBERAUTHENTICATION_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -89,7 +88,6 @@ def authentication_basic_setup(extra)
   if env["INNOCYBERAUTHENTICATION_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["INNOCYBERAUTHENTICATION_APIKEY"],
       },
       extra || {},
     ])
