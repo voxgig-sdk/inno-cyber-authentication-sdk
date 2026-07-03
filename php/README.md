@@ -10,7 +10,7 @@ The PHP SDK for the InnoCyberAuthentication API — an entity-oriented client us
 
 ## Install
 ```bash
-composer require voxgig/inno-cyber-authentication-sdk
+composer require voxgig-sdk/inno-cyber-authentication
 ```
 
 

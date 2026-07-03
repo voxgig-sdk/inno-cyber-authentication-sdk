@@ -10,7 +10,7 @@ The Python SDK for the InnoCyberAuthentication API — an entity-oriented client
 
 ## Install
 ```bash
-pip install inno-cyber-authentication-sdk
+pip install voxgig-sdk-inno-cyber-authentication
 ```
 
 Or install from source:

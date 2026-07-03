@@ -10,7 +10,7 @@ The TypeScript SDK for the InnoCyberAuthentication API — a type-safe, entity-o
 
 ## Install
 ```bash
-npm install inno-cyber-authentication
+npm install @voxgig-sdk/inno-cyber-authentication
 ```
 ## Tutorial: your first API call
 

@@ -10,7 +10,7 @@ The Lua SDK for the InnoCyberAuthentication API — an entity-oriented client us
 
 ## Install
 ```bash
-luarocks install inno-cyber-authentication-sdk
+luarocks install voxgig-sdk-inno-cyber-authentication
 ```
 
 If the module is not yet published, add the source directory to

@@ -8,12 +8,14 @@ source = {
   dir = "inno-cyber-authentication-sdk/lua"
 }
 description = {
-  summary = "InnoCyberAuthentication SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the INNO_CYBER Authentication public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/inno-cyber-authentication-sdk",
+  issues_url = "https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "inno-cyber-authentication" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

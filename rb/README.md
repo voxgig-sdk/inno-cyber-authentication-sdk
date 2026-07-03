@@ -10,13 +10,13 @@ The Ruby SDK for the InnoCyberAuthentication API — an entity-oriented client u
 
 ## Install
 ```bash
-gem install inno-cyber-authentication-sdk
+gem install voxgig-sdk-inno-cyber-authentication
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "inno-cyber-authentication-sdk"
+gem "voxgig-sdk-inno-cyber-authentication"
 ```
 
 Then run:
