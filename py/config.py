@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://innoocyber.free.nf",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -26,41 +29,42 @@ def make_config():
       "authentication": {
         "fields": [
           {
+            "active": True,
             "name": "email",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "message",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "name",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "new_password",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
           {
+            "active": True,
             "name": "password",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 4,
           },
           {
+            "active": True,
             "name": "referral_code",
             "op": {
               "create": {
@@ -70,24 +74,24 @@ def make_config():
             },
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 5,
           },
           {
+            "active": True,
             "name": "referrer",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 6,
           },
           {
+            "active": True,
             "name": "success",
             "req": False,
             "type": "`$BOOLEAN`",
-            "active": True,
             "index$": 7,
           },
           {
+            "active": True,
             "name": "token",
             "op": {
               "create": {
@@ -97,30 +101,32 @@ def make_config():
             },
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 8,
           },
           {
+            "active": True,
             "name": "user",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 9,
           },
           {
+            "active": True,
             "name": "valid",
             "req": False,
             "type": "`$BOOLEAN`",
-            "active": True,
             "index$": 10,
           },
         ],
         "name": "authentication",
         "op": {
           "create": {
+            "input": "data",
             "name": "create",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "POST",
                 "orig": "/api/auth/login",
                 "parts": [
@@ -128,16 +134,16 @@ def make_config():
                   "auth",
                   "login",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 0,
               },
               {
+                "active": True,
+                "args": {},
                 "method": "POST",
                 "orig": "/api/auth/password/recover",
                 "parts": [
@@ -146,16 +152,16 @@ def make_config():
                   "password",
                   "recover",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 1,
               },
               {
+                "active": True,
+                "args": {},
                 "method": "POST",
                 "orig": "/api/auth/password/reset",
                 "parts": [
@@ -164,16 +170,16 @@ def make_config():
                   "password",
                   "reset",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 2,
               },
               {
+                "active": True,
+                "args": {},
                 "method": "POST",
                 "orig": "/api/auth/referral/validate",
                 "parts": [
@@ -182,16 +188,16 @@ def make_config():
                   "referral",
                   "validate",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 3,
               },
               {
+                "active": True,
+                "args": {},
                 "method": "POST",
                 "orig": "/api/auth/signup",
                 "parts": [
@@ -199,17 +205,14 @@ def make_config():
                   "auth",
                   "signup",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 4,
               },
             ],
-            "input": "data",
             "key$": "create",
           },
         },

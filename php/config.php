@@ -20,6 +20,9 @@ class InnoCyberAuthenticationConfig
             ],
             "options" => [
                 "base" => "https://innoocyber.free.nf",
+                "auth" => [
+                    "prefix" => "Bearer",
+                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -31,41 +34,42 @@ class InnoCyberAuthenticationConfig
         'authentication' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'email',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'message',
               'req' => false,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'name',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'new_password',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 3,
             ],
             [
+              'active' => true,
               'name' => 'password',
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 4,
             ],
             [
+              'active' => true,
               'name' => 'referral_code',
               'op' => [
                 'create' => [
@@ -75,24 +79,24 @@ class InnoCyberAuthenticationConfig
               ],
               'req' => true,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 5,
             ],
             [
+              'active' => true,
               'name' => 'referrer',
               'req' => false,
               'type' => '`$OBJECT`',
-              'active' => true,
               'index$' => 6,
             ],
             [
+              'active' => true,
               'name' => 'success',
               'req' => false,
               'type' => '`$BOOLEAN`',
-              'active' => true,
               'index$' => 7,
             ],
             [
+              'active' => true,
               'name' => 'token',
               'op' => [
                 'create' => [
@@ -102,30 +106,32 @@ class InnoCyberAuthenticationConfig
               ],
               'req' => false,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 8,
             ],
             [
+              'active' => true,
               'name' => 'user',
               'req' => false,
               'type' => '`$OBJECT`',
-              'active' => true,
               'index$' => 9,
             ],
             [
+              'active' => true,
               'name' => 'valid',
               'req' => false,
               'type' => '`$BOOLEAN`',
-              'active' => true,
               'index$' => 10,
             ],
           ],
           'name' => 'authentication',
           'op' => [
             'create' => [
+              'input' => 'data',
               'name' => 'create',
               'points' => [
                 [
+                  'active' => true,
+                  'args' => [],
                   'method' => 'POST',
                   'orig' => '/api/auth/login',
                   'parts' => [
@@ -133,16 +139,16 @@ class InnoCyberAuthenticationConfig
                     'auth',
                     'login',
                   ],
+                  'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
-                  'args' => [],
-                  'select' => [],
                   'index$' => 0,
                 ],
                 [
+                  'active' => true,
+                  'args' => [],
                   'method' => 'POST',
                   'orig' => '/api/auth/password/recover',
                   'parts' => [
@@ -151,16 +157,16 @@ class InnoCyberAuthenticationConfig
                     'password',
                     'recover',
                   ],
+                  'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
-                  'args' => [],
-                  'select' => [],
                   'index$' => 1,
                 ],
                 [
+                  'active' => true,
+                  'args' => [],
                   'method' => 'POST',
                   'orig' => '/api/auth/password/reset',
                   'parts' => [
@@ -169,16 +175,16 @@ class InnoCyberAuthenticationConfig
                     'password',
                     'reset',
                   ],
+                  'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
-                  'args' => [],
-                  'select' => [],
                   'index$' => 2,
                 ],
                 [
+                  'active' => true,
+                  'args' => [],
                   'method' => 'POST',
                   'orig' => '/api/auth/referral/validate',
                   'parts' => [
@@ -187,16 +193,16 @@ class InnoCyberAuthenticationConfig
                     'referral',
                     'validate',
                   ],
+                  'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
-                  'args' => [],
-                  'select' => [],
                   'index$' => 3,
                 ],
                 [
+                  'active' => true,
+                  'args' => [],
                   'method' => 'POST',
                   'orig' => '/api/auth/signup',
                   'parts' => [
@@ -204,17 +210,14 @@ class InnoCyberAuthenticationConfig
                     'auth',
                     'signup',
                   ],
+                  'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
-                  'args' => [],
-                  'select' => [],
                   'index$' => 4,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'create',
             ],
           ],

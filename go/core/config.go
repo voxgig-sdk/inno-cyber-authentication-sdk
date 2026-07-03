@@ -14,6 +14,9 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://innoocyber.free.nf",
+			"auth": map[string]any{
+				"prefix": "Bearer",
+			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -25,41 +28,42 @@ func MakeConfig() map[string]any {
 			"authentication": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"active": true,
 						"name": "email",
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 0,
 					},
 					map[string]any{
+						"active": true,
 						"name": "message",
 						"req": false,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 1,
 					},
 					map[string]any{
+						"active": true,
 						"name": "name",
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 2,
 					},
 					map[string]any{
+						"active": true,
 						"name": "new_password",
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 3,
 					},
 					map[string]any{
+						"active": true,
 						"name": "password",
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 4,
 					},
 					map[string]any{
+						"active": true,
 						"name": "referral_code",
 						"op": map[string]any{
 							"create": map[string]any{
@@ -69,24 +73,24 @@ func MakeConfig() map[string]any {
 						},
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 5,
 					},
 					map[string]any{
+						"active": true,
 						"name": "referrer",
 						"req": false,
 						"type": "`$OBJECT`",
-						"active": true,
 						"index$": 6,
 					},
 					map[string]any{
+						"active": true,
 						"name": "success",
 						"req": false,
 						"type": "`$BOOLEAN`",
-						"active": true,
 						"index$": 7,
 					},
 					map[string]any{
+						"active": true,
 						"name": "token",
 						"op": map[string]any{
 							"create": map[string]any{
@@ -96,30 +100,32 @@ func MakeConfig() map[string]any {
 						},
 						"req": false,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 8,
 					},
 					map[string]any{
+						"active": true,
 						"name": "user",
 						"req": false,
 						"type": "`$OBJECT`",
-						"active": true,
 						"index$": 9,
 					},
 					map[string]any{
+						"active": true,
 						"name": "valid",
 						"req": false,
 						"type": "`$BOOLEAN`",
-						"active": true,
 						"index$": 10,
 					},
 				},
 				"name": "authentication",
 				"op": map[string]any{
 					"create": map[string]any{
+						"input": "data",
 						"name": "create",
 						"points": []any{
 							map[string]any{
+								"active": true,
+								"args": map[string]any{},
 								"method": "POST",
 								"orig": "/api/auth/login",
 								"parts": []any{
@@ -127,16 +133,16 @@ func MakeConfig() map[string]any {
 									"auth",
 									"login",
 								},
+								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
-								"args": map[string]any{},
-								"select": map[string]any{},
 								"index$": 0,
 							},
 							map[string]any{
+								"active": true,
+								"args": map[string]any{},
 								"method": "POST",
 								"orig": "/api/auth/password/recover",
 								"parts": []any{
@@ -145,16 +151,16 @@ func MakeConfig() map[string]any {
 									"password",
 									"recover",
 								},
+								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
-								"args": map[string]any{},
-								"select": map[string]any{},
 								"index$": 1,
 							},
 							map[string]any{
+								"active": true,
+								"args": map[string]any{},
 								"method": "POST",
 								"orig": "/api/auth/password/reset",
 								"parts": []any{
@@ -163,16 +169,16 @@ func MakeConfig() map[string]any {
 									"password",
 									"reset",
 								},
+								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
-								"args": map[string]any{},
-								"select": map[string]any{},
 								"index$": 2,
 							},
 							map[string]any{
+								"active": true,
+								"args": map[string]any{},
 								"method": "POST",
 								"orig": "/api/auth/referral/validate",
 								"parts": []any{
@@ -181,16 +187,16 @@ func MakeConfig() map[string]any {
 									"referral",
 									"validate",
 								},
+								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
-								"args": map[string]any{},
-								"select": map[string]any{},
 								"index$": 3,
 							},
 							map[string]any{
+								"active": true,
+								"args": map[string]any{},
 								"method": "POST",
 								"orig": "/api/auth/signup",
 								"parts": []any{
@@ -198,17 +204,14 @@ func MakeConfig() map[string]any {
 									"auth",
 									"signup",
 								},
+								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
-								"args": map[string]any{},
-								"select": map[string]any{},
 								"index$": 4,
 							},
 						},
-						"input": "data",
 						"key$": "create",
 					},
 				},

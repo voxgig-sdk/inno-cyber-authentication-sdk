@@ -1,20 +1,8 @@
 # InnoCyberAuthentication SDK
 
-Handle login, signup, and authentication flows for INNO_CYBER applications
+INNO_CYBER Authentication client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About INNO_CYBER Authentication
-
-INNO_CYBER Authentication is the login, signup, and session-handling surface for the INNO_CYBER service hosted at [innoocyber.free.nf](https://innoocyber.free.nf). It exposes the user-facing auth flows that other parts of the INNO_CYBER application rely on.
-
-What you can do via the SDK:
-
-- Register new user accounts (signup)
-- Authenticate existing users (login)
-- Manage the resulting authenticated sessions
-
-The service is hosted on a free shared host (`free.nf`), so availability, TLS certificate validity, and rate behaviour can vary. Treat it as a small/experimental endpoint rather than a production identity provider.
 
 ## Try it
 
@@ -48,27 +36,28 @@ gem install inno-cyber-authentication-sdk
 luarocks install inno-cyber-authentication-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { InnoCyberAuthenticationSDK } from 'inno-cyber-authentication'
 
-const client = new InnoCyberAuthenticationSDK({})
+const client = new InnoCyberAuthenticationSDK({
+  apikey: process.env.INNO-CYBER-AUTHENTICATION_APIKEY,
+})
 
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +87,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Authentication** | User authentication resource covering signup, login, and related session operations for INNO_CYBER. | `/api/auth/login` |
+| **Authentication** |  | `/api/auth/login` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,9 +97,12 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from innocyberauthentication_sdk import InnoCyberAuthenticationSDK
 
-client = InnoCyberAuthenticationSDK({})
+client = InnoCyberAuthenticationSDK({
+    "apikey": os.environ.get("INNO-CYBER-AUTHENTICATION_APIKEY"),
+})
 
 ```
 
@@ -120,7 +112,9 @@ client = InnoCyberAuthenticationSDK({})
 <?php
 require_once 'innocyberauthentication_sdk.php';
 
-$client = new InnoCyberAuthenticationSDK([]);
+$client = new InnoCyberAuthenticationSDK([
+    "apikey" => getenv("INNO-CYBER-AUTHENTICATION_APIKEY"),
+]);
 
 ```
 
@@ -129,7 +123,9 @@ $client = new InnoCyberAuthenticationSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/inno-cyber-authentication-sdk/go"
 
-client := sdk.NewInnoCyberAuthenticationSDK(map[string]any{})
+client := sdk.NewInnoCyberAuthenticationSDK(map[string]any{
+    "apikey": os.Getenv("INNO-CYBER-AUTHENTICATION_APIKEY"),
+})
 
 ```
 
@@ -138,7 +134,9 @@ client := sdk.NewInnoCyberAuthenticationSDK(map[string]any{})
 ```ruby
 require_relative "InnoCyberAuthentication_sdk"
 
-client = InnoCyberAuthenticationSDK.new({})
+client = InnoCyberAuthenticationSDK.new({
+  "apikey" => ENV["INNO-CYBER-AUTHENTICATION_APIKEY"],
+})
 
 ```
 
@@ -147,7 +145,9 @@ client = InnoCyberAuthenticationSDK.new({})
 ```lua
 local sdk = require("inno-cyber-authentication_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("INNO-CYBER-AUTHENTICATION_APIKEY"),
+})
 
 ```
 
@@ -167,25 +167,21 @@ const result = await client.Authentication().load({ id: 'test01' })
 ### Python
 
 ```python
-client = InnoCyberAuthenticationSDK.test(None, None)
-result, err = client.Authentication(None).load(
-    {"id": "test01"}, None
-)
+client = InnoCyberAuthenticationSDK.test()
+result, err = client.Authentication().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = InnoCyberAuthenticationSDK::test(null, null);
-[$result, $err] = $client->Authentication(null)->load(
-    ["id" => "test01"], null
-);
+$client = InnoCyberAuthenticationSDK::test();
+[$result, $err] = $client->Authentication()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Authentication(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -194,19 +190,15 @@ result, err := client.Authentication(nil).Load(
 ### Ruby
 
 ```ruby
-client = InnoCyberAuthenticationSDK.test(nil, nil)
-result, err = client.Authentication(nil).load(
-  { "id" => "test01" }, nil
-)
+client = InnoCyberAuthenticationSDK.test
+result, err = client.Authentication().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Authentication(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Authentication():load({ id = "test01" })
 ```
 
 ## How it works
@@ -310,10 +302,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the INNO_CYBER Authentication
-
-- Upstream: [https://innoocyber.free.nf](https://innoocyber.free.nf)
 
 ---
 

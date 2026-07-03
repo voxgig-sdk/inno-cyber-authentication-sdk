@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -126,13 +126,13 @@ local authentication = client:Authentication(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:Authentication(nil):create({
+local result, err = client:Authentication():create({
   email = --[[ `$STRING` ]],
   name = --[[ `$STRING` ]],
   new_password = --[[ `$STRING` ]],
   password = --[[ `$STRING` ]],
   referral_code = --[[ `$STRING` ]],
-}, nil)
+})
 ```
 
 ### Common Methods

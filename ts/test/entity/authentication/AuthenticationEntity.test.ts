@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'INNO_CYBER_AUTHENTICATION_TEST_AUTHENTICATION_ENTID': idmap,
     'INNO_CYBER_AUTHENTICATION_TEST_LIVE': 'FALSE',
     'INNO_CYBER_AUTHENTICATION_TEST_EXPLAIN': 'FALSE',
+    'INNO_CYBER_AUTHENTICATION_APIKEY': 'NONE',
   })
 
   idmap = env['INNO_CYBER_AUTHENTICATION_TEST_AUTHENTICATION_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new InnoCyberAuthenticationSDK(merge([
       {
+        apikey: env.INNO_CYBER_AUTHENTICATION_APIKEY,
       },
       extra
     ]))

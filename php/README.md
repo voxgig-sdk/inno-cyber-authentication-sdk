@@ -1,6 +1,11 @@
 # InnoCyberAuthentication PHP SDK
 
-The PHP SDK for the InnoCyberAuthentication API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the InnoCyberAuthentication API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,14 +25,16 @@ loading a specific record.
 <?php
 require_once 'innocyberauthentication_sdk.php';
 
-$client = new InnoCyberAuthenticationSDK([]);
+$client = new InnoCyberAuthenticationSDK([
+    "apikey" => getenv("INNO-CYBER-AUTHENTICATION_APIKEY"),
+]);
 ```
 
 ### 4. Create, update, and remove
 
 ```php
 // Create
-[$created, $_] = $client->Authentication(null)->create(["name" => "Example"], null);
+[$created, $_] = $client->Authentication()->create(["name" => "Example"]);
 
 ```
 
@@ -72,11 +79,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = InnoCyberAuthenticationSDK::test(null, null);
+$client = InnoCyberAuthenticationSDK::test();
 
-[$result, $err] = $client->InnoCyberAuthentication(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->InnoCyberAuthentication()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -111,6 +116,7 @@ Create a `.env.local` file at the project root:
 
 ```
 INNO-CYBER-AUTHENTICATION_TEST_LIVE=TRUE
+INNO-CYBER-AUTHENTICATION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -133,6 +139,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
