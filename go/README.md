@@ -10,14 +10,18 @@ The Golang SDK for the InnoCyberAuthentication API — an entity-oriented client
 
 ## Install
 ```bash
-go get github.com/voxgig-sdk/inno-cyber-authentication-sdk/go
+go get github.com/voxgig-sdk/inno-cyber-authentication-sdk/go@latest
 ```
 
-If the module is not yet published to a registry, use a `replace` directive
-in your `go.mod` to point to a local checkout:
+The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
+release tag — see [Releases](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) for the available versions.
+
+To vendor from a local checkout instead, clone this repo alongside your
+project and add a `replace` directive pointing at the checked-out
+`go/` directory:
 
 ```bash
-go mod edit -replace github.com/voxgig-sdk/inno-cyber-authentication-sdk/go=../path/to/github.com/voxgig-sdk/inno-cyber-authentication-sdk/go
+go mod edit -replace github.com/voxgig-sdk/inno-cyber-authentication-sdk/go=../inno-cyber-authentication-sdk/go
 ```
 
 
@@ -41,7 +45,7 @@ import (
 
 func main() {
     client := sdk.NewInnoCyberAuthenticationSDK(map[string]any{
-        "apikey": os.Getenv("INNO-CYBER-AUTHENTICATION_APIKEY"),
+        "apikey": os.Getenv("INNO_CYBER_AUTHENTICATION_APIKEY"),
     })
 ```
 
@@ -104,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Planet(nil).Load(
+result, err := client.Authentication(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
 // result contains mock response data
@@ -139,8 +143,8 @@ client := sdk.NewInnoCyberAuthenticationSDK(map[string]any{
 Create a `.env.local` file at the project root:
 
 ```
-INNO-CYBER-AUTHENTICATION_TEST_LIVE=TRUE
-INNO-CYBER-AUTHENTICATION_APIKEY=<your-key>
+INNO_CYBER_AUTHENTICATION_TEST_LIVE=TRUE
+INNO_CYBER_AUTHENTICATION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -353,11 +357,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-moon := client.Moon(nil)
-moon.Load(map[string]any{"planet_id": "earth", "id": "luna"}, nil)
+authentication := client.Authentication(nil)
+authentication.Load(map[string]any{"id": "example_id"}, nil)
 
-// moon.Data() now returns the loaded moon data
-// moon.Match() returns the last match criteria
+// authentication.Data() now returns the loaded authentication data
+// authentication.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

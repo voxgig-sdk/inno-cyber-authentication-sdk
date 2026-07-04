@@ -9,9 +9,12 @@ The TypeScript SDK for the InnoCyberAuthentication API — a type-safe, entity-o
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/inno-cyber-authentication
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,10 +23,10 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { InnoCyberAuthenticationSDK } from 'inno-cyber-authentication'
+import { InnoCyberAuthenticationSDK } from '@voxgig-sdk/inno-cyber-authentication'
 
 const client = new InnoCyberAuthenticationSDK({
-  apikey: process.env.INNO-CYBER-AUTHENTICATION_APIKEY,
+  apikey: process.env.INNO_CYBER_AUTHENTICATION_APIKEY,
 })
 ```
 
@@ -31,7 +34,7 @@ const client = new InnoCyberAuthenticationSDK({
 
 ```ts
 // Create
-const created = await client.Authentication().create({
+const created = await client.authentication.create({
   name: 'Example',
 })
 
@@ -79,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = InnoCyberAuthenticationSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.authentication.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -96,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.authentication
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -133,8 +136,8 @@ const client = new InnoCyberAuthenticationSDK({
 Create a `.env.local` file at the project root:
 
 ```
-INNO-CYBER-AUTHENTICATION_TEST_LIVE=TRUE
-INNO-CYBER-AUTHENTICATION_APIKEY=<your-key>
+INNO_CYBER_AUTHENTICATION_TEST_LIVE=TRUE
+INNO_CYBER_AUTHENTICATION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -276,7 +279,7 @@ API path: `/api/auth/login`
 
 ### Authentication
 
-Create an instance: `const authentication = client.Authentication()`
+Create an instance: `const authentication = client.authentication`
 
 #### Operations
 
@@ -303,7 +306,7 @@ Create an instance: `const authentication = client.Authentication()`
 #### Example: Create
 
 ```ts
-const authentication = await client.Authentication().create({
+const authentication = await client.authentication.create({
   email: /* `$STRING` */,
   name: /* `$STRING` */,
   new_password: /* `$STRING` */,
@@ -370,7 +373,7 @@ inno-cyber-authentication/
 Import the SDK from the package root:
 
 ```ts
-import { InnoCyberAuthenticationSDK } from 'inno-cyber-authentication'
+import { InnoCyberAuthenticationSDK } from '@voxgig-sdk/inno-cyber-authentication'
 ```
 
 ### Entity state
@@ -380,11 +383,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const authentication = client.authentication
+await authentication.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// authentication.data() now returns the loaded authentication data
+// authentication.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

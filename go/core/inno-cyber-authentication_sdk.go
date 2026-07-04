@@ -245,6 +245,9 @@ func (sdk *InnoCyberAuthenticationSDK) Direct(fetchargs map[string]any) (map[str
 }
 
 
+// Authentication returns a Authentication entity bound to this client.
+// Idiomatic usage: client.Authentication(nil).List(nil, nil) or
+// client.Authentication(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *InnoCyberAuthenticationSDK) Authentication(data map[string]any) InnoCyberAuthenticationEntity {
 	return NewAuthenticationEntityFunc(sdk, data)
 }

@@ -10,22 +10,22 @@ This is an unofficial SDK for the INNO_CYBER Authentication public API, generate
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/inno-cyber-authentication` | `npm install @voxgig-sdk/inno-cyber-authentication` |
-| Python | `voxgig-sdk-inno-cyber-authentication` | `pip install voxgig-sdk-inno-cyber-authentication` |
-| PHP | `voxgig-sdk/inno-cyber-authentication` | `composer require voxgig-sdk/inno-cyber-authentication` |
-| Golang | `github.com/voxgig-sdk/inno-cyber-authentication-sdk/go` | `go get github.com/voxgig-sdk/inno-cyber-authentication-sdk/go` |
-| Ruby | `voxgig-sdk-inno-cyber-authentication` | `gem install voxgig-sdk-inno-cyber-authentication` |
-| Lua | `voxgig-sdk-inno-cyber-authentication` | `luarocks install voxgig-sdk-inno-cyber-authentication` |
+| TypeScript | `@voxgig-sdk/inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
+| Python | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
+| PHP | `voxgig-sdk/inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/inno-cyber-authentication-sdk/go` | `go get github.com/voxgig-sdk/inno-cyber-authentication-sdk/go@latest` |
+| Ruby | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
+| Lua | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { InnoCyberAuthenticationSDK } from 'inno-cyber-authentication'
+import { InnoCyberAuthenticationSDK } from '@voxgig-sdk/inno-cyber-authentication'
 
 const client = new InnoCyberAuthenticationSDK({
-  apikey: process.env.INNO-CYBER-AUTHENTICATION_APIKEY,
+  apikey: process.env.INNO_CYBER_AUTHENTICATION_APIKEY,
 })
 
 ```
@@ -68,7 +68,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Authentication** |  | `/api/auth/login` |
+| **Authentication** | The Authentication entity (create). | `/api/auth/login` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -82,7 +82,7 @@ import os
 from innocyberauthentication_sdk import InnoCyberAuthenticationSDK
 
 client = InnoCyberAuthenticationSDK({
-    "apikey": os.environ.get("INNO-CYBER-AUTHENTICATION_APIKEY"),
+    "apikey": os.environ.get("INNO_CYBER_AUTHENTICATION_APIKEY"),
 })
 
 ```
@@ -94,7 +94,7 @@ client = InnoCyberAuthenticationSDK({
 require_once 'innocyberauthentication_sdk.php';
 
 $client = new InnoCyberAuthenticationSDK([
-    "apikey" => getenv("INNO-CYBER-AUTHENTICATION_APIKEY"),
+    "apikey" => getenv("INNO_CYBER_AUTHENTICATION_APIKEY"),
 ]);
 
 ```
@@ -105,7 +105,7 @@ $client = new InnoCyberAuthenticationSDK([
 import sdk "github.com/voxgig-sdk/inno-cyber-authentication-sdk/go"
 
 client := sdk.NewInnoCyberAuthenticationSDK(map[string]any{
-    "apikey": os.Getenv("INNO-CYBER-AUTHENTICATION_APIKEY"),
+    "apikey": os.Getenv("INNO_CYBER_AUTHENTICATION_APIKEY"),
 })
 
 ```
@@ -116,7 +116,7 @@ client := sdk.NewInnoCyberAuthenticationSDK(map[string]any{
 require_relative "InnoCyberAuthentication_sdk"
 
 client = InnoCyberAuthenticationSDK.new({
-  "apikey" => ENV["INNO-CYBER-AUTHENTICATION_APIKEY"],
+  "apikey" => ENV["INNO_CYBER_AUTHENTICATION_APIKEY"],
 })
 
 ```
@@ -127,7 +127,7 @@ client = InnoCyberAuthenticationSDK.new({
 local sdk = require("inno-cyber-authentication_sdk")
 
 local client = sdk.new({
-  apikey = os.getenv("INNO-CYBER-AUTHENTICATION_APIKEY"),
+  apikey = os.getenv("INNO_CYBER_AUTHENTICATION_APIKEY"),
 })
 
 ```
@@ -141,7 +141,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = InnoCyberAuthenticationSDK.test()
-const result = await client.Authentication().load({ id: 'test01' })
+const result = await client.authentication.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -149,14 +149,14 @@ const result = await client.Authentication().load({ id: 'test01' })
 
 ```python
 client = InnoCyberAuthenticationSDK.test()
-result, err = client.Authentication().load({"id": "test01"})
+result = client.authentication.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = InnoCyberAuthenticationSDK::test();
-[$result, $err] = $client->Authentication()->load(["id" => "test01"]);
+$result = $client->authentication()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -172,14 +172,14 @@ result, err := client.Authentication(nil).Load(
 
 ```ruby
 client = InnoCyberAuthenticationSDK.test
-result, err = client.Authentication().load({ "id" => "test01" })
+result = client.authentication.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Authentication():load({ id = "test01" })
+local result, err = client:authentication():load({ id = "test01" })
 ```
 
 ## How it works
@@ -232,7 +232,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -241,7 +241,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -259,7 +259,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },
