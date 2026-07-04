@@ -110,7 +110,7 @@ Alias for `InnoCyberAuthenticationSDK.test()`.
 ## AuthenticationEntity
 
 ```ts
-const authentication = client.authentication
+const authentication = client.Authentication()
 ```
 
 ### Fields
@@ -152,7 +152,7 @@ const authentication = client.authentication
 Create a new entity with the given data.
 
 ```ts
-const result = await client.authentication.create({
+const result = await client.Authentication().create({
   email: /* `$STRING` */,
   name: /* `$STRING` */,
   new_password: /* `$STRING` */,

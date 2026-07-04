@@ -220,25 +220,15 @@ class InnoCyberAuthenticationSDK:
         }
 
 
-    @property
-    def authentication(self):
-        """Idiomatic facade: client.authentication.list() / client.authentication.load({"id": ...})."""
-        from entity.authentication_entity import AuthenticationEntity
-        cached = getattr(self, "_authentication", None)
-        if cached is None:
-            cached = AuthenticationEntity(self, None)
-            self._authentication = cached
-        return cached
-
-    def Authentication(self, data=None):
-        # Deprecated: use client.authentication instead.
+    def Authentication(self, data=None) -> "AuthenticationEntity":
+        """Entity factory: client.Authentication().list({}) / client.Authentication().load({"id": ...})."""
         from entity.authentication_entity import AuthenticationEntity
         return AuthenticationEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "InnoCyberAuthenticationSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class InnoCyberAuthenticationSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.authentication_entity import AuthenticationEntity

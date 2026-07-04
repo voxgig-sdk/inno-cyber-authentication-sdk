@@ -87,7 +87,7 @@ same parameters as `direct()`. Raises on error.
 ## AuthenticationEntity
 
 ```ruby
-authentication = client.authentication
+authentication = client.Authentication
 ```
 
 ### Fields
@@ -129,7 +129,7 @@ authentication = client.authentication
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.authentication.create({
+result = client.Authentication.create({
   "email" => # `$STRING`,
   "name" => # `$STRING`,
   "new_password" => # `$STRING`,

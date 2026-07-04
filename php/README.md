@@ -34,8 +34,8 @@ $client = new InnoCyberAuthenticationSDK([
 ### 4. Create, update, and remove
 
 ```php
-// Create
-$created = $client->authentication()->create(["name" => "Example"]);
+// create() returns the bare created Authentication record.
+$created = $client->Authentication()->create(["name" => "Example"]);
 
 ```
 
@@ -80,13 +80,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = InnoCyberAuthenticationSDK::test();
+$client = InnoCyberAuthenticationSDK::test([
+    "entity" => ["authentication" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->authentication()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$authentication = $client->Authentication()->load(["id" => "test01"]);
+print_r($authentication);
 ```
 
 ### Use a custom fetch function
@@ -167,7 +171,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Authentication` | `($data): AuthenticationEntity` | Create a Authentication entity instance. |
+| `Authentication` | `($data): AuthenticationEntity` | Create an Authentication entity instance. |
 
 ### Entity interface
 
@@ -234,7 +238,7 @@ API path: `/api/auth/login`
 
 ### Authentication
 
-Create an instance: `const authentication = client.authentication`
+Create an instance: `$authentication = $client->Authentication();`
 
 #### Operations
 
@@ -260,14 +264,14 @@ Create an instance: `const authentication = client.authentication`
 
 #### Example: Create
 
-```ts
-const authentication = await client.authentication.create({
-  email: /* `$STRING` */,
-  name: /* `$STRING` */,
-  new_password: /* `$STRING` */,
-  password: /* `$STRING` */,
-  referral_code: /* `$STRING` */,
-})
+```php
+$authentication = $client->Authentication()->create([
+    "email" => null, // `$STRING`
+    "name" => null, // `$STRING`
+    "new_password" => null, // `$STRING`
+    "password" => null, // `$STRING`
+    "referral_code" => null, // `$STRING`
+]);
 ```
 
 
@@ -342,7 +346,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$authentication = $client->authentication();
+$authentication = $client->Authentication();
 $authentication->load(["id" => "example_id"]);
 
 // $authentication->dataGet() now returns the loaded authentication data
