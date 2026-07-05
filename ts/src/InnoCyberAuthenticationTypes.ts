@@ -19,5 +19,17 @@ export interface Authentication {
   valid?: boolean
 }
 
-export type AuthenticationCreateData = Partial<Authentication>
+export interface AuthenticationCreateData {
+  email: string
+  message?: string
+  name: string
+  new_password: string
+  password: string
+  referral_code: string
+  referrer?: Record<string, any>
+  success?: boolean
+  token?: string
+  user?: Record<string, any>
+  valid?: boolean
+}
 

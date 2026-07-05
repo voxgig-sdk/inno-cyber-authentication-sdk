@@ -33,13 +33,16 @@ class Authentication(AuthenticationRequired, total=False):
     valid: bool
 
 
-class AuthenticationCreateData(TypedDict, total=False):
+class AuthenticationCreateDataRequired(TypedDict):
     email: str
-    message: str
     name: str
     new_password: str
     password: str
     referral_code: str
+
+
+class AuthenticationCreateData(AuthenticationCreateDataRequired, total=False):
+    message: str
     referrer: dict
     success: bool
     token: str

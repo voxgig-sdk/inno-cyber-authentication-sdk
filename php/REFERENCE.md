@@ -8,7 +8,7 @@ Complete API reference for the InnoCyberAuthentication PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/inno-cyber-authentication_sdk.php';
+require_once __DIR__ . '/innocyberauthentication_sdk.php';
 
 $client = new InnoCyberAuthenticationSDK($options);
 ```
@@ -46,11 +46,11 @@ $client = InnoCyberAuthenticationSDK::test();
 
 Create a new `AuthenticationEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): InnoCyberAuthenticationUtility`
 
 Return a copy of the SDK utility object.
 
@@ -93,33 +93,33 @@ $authentication = $client->Authentication();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | Yes |  |
-| `message` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | Yes |  |
-| `new_password` | ``$STRING`` | Yes |  |
-| `password` | ``$STRING`` | Yes |  |
-| `referral_code` | ``$STRING`` | Yes |  |
-| `referrer` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `token` | ``$STRING`` | No |  |
-| `user` | ``$OBJECT`` | No |  |
-| `valid` | ``$BOOLEAN`` | No |  |
+| `email` | `string` | Yes |  |
+| `message` | `string` | No |  |
+| `name` | `string` | Yes |  |
+| `new_password` | `string` | Yes |  |
+| `password` | `string` | Yes |  |
+| `referral_code` | `string` | Yes |  |
+| `referrer` | `array` | No |  |
+| `success` | `bool` | No |  |
+| `token` | `string` | No |  |
+| `user` | `array` | No |  |
+| `valid` | `bool` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `email` | - | - | - | - | - |
-| `message` | - | - | - | - | - |
-| `name` | - | - | - | - | - |
-| `new_password` | - | - | - | - | - |
-| `password` | - | - | - | - | - |
-| `referral_code` | - | - | Yes | - | - |
-| `referrer` | - | - | - | - | - |
-| `success` | - | - | - | - | - |
-| `token` | - | - | Yes | - | - |
-| `user` | - | - | - | - | - |
-| `valid` | - | - | - | - | - |
+| Field | create |
+| --- | --- |
+| `email` | - |
+| `message` | - |
+| `name` | - |
+| `new_password` | - |
+| `password` | - |
+| `referral_code` | Yes |
+| `referrer` | - |
+| `success` | - |
+| `token` | Yes |
+| `user` | - |
+| `valid` | - |
 
 ### Operations
 
@@ -129,29 +129,29 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Authentication()->create([
-  "email" => /* `$STRING` */,
-  "name" => /* `$STRING` */,
-  "new_password" => /* `$STRING` */,
-  "password" => /* `$STRING` */,
-  "referral_code" => /* `$STRING` */,
+  "email" => null, // string
+  "name" => null, // string
+  "new_password" => null, // string
+  "password" => null, // string
+  "referral_code" => null, // string
 ]);
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -160,7 +160,7 @@ Set the entity match criteria.
 Create a new `AuthenticationEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

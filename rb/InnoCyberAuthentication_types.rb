@@ -57,25 +57,25 @@ Authentication = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Authentication#create (any subset of Authentication fields).
+# Request payload for Authentication#create.
 #
 # @!attribute [rw] email
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] message
 #   @return [String, nil]
 #
 # @!attribute [rw] name
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] new_password
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] password
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] referral_code
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] referrer
 #   @return [Hash, nil]

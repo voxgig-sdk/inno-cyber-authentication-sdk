@@ -8,7 +8,7 @@ Complete API reference for the InnoCyberAuthentication Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'inno-cyber-authentication_sdk'
+require_relative 'InnoCyberAuthentication_sdk'
 
 client = InnoCyberAuthenticationSDK.new(options)
 ```
@@ -94,33 +94,33 @@ authentication = client.Authentication
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | Yes |  |
-| `message` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | Yes |  |
-| `new_password` | ``$STRING`` | Yes |  |
-| `password` | ``$STRING`` | Yes |  |
-| `referral_code` | ``$STRING`` | Yes |  |
-| `referrer` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `token` | ``$STRING`` | No |  |
-| `user` | ``$OBJECT`` | No |  |
-| `valid` | ``$BOOLEAN`` | No |  |
+| `email` | `String` | Yes |  |
+| `message` | `String` | No |  |
+| `name` | `String` | Yes |  |
+| `new_password` | `String` | Yes |  |
+| `password` | `String` | Yes |  |
+| `referral_code` | `String` | Yes |  |
+| `referrer` | `Hash` | No |  |
+| `success` | `Boolean` | No |  |
+| `token` | `String` | No |  |
+| `user` | `Hash` | No |  |
+| `valid` | `Boolean` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `email` | - | - | - | - | - |
-| `message` | - | - | - | - | - |
-| `name` | - | - | - | - | - |
-| `new_password` | - | - | - | - | - |
-| `password` | - | - | - | - | - |
-| `referral_code` | - | - | Yes | - | - |
-| `referrer` | - | - | - | - | - |
-| `success` | - | - | - | - | - |
-| `token` | - | - | Yes | - | - |
-| `user` | - | - | - | - | - |
-| `valid` | - | - | - | - | - |
+| Field | create |
+| --- | --- |
+| `email` | - |
+| `message` | - |
+| `name` | - |
+| `new_password` | - |
+| `password` | - |
+| `referral_code` | Yes |
+| `referrer` | - |
+| `success` | - |
+| `token` | Yes |
+| `user` | - |
+| `valid` | - |
 
 ### Operations
 
@@ -130,11 +130,11 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Authentication.create({
-  "email" => # `$STRING`,
-  "name" => # `$STRING`,
-  "new_password" => # `$STRING`,
-  "password" => # `$STRING`,
-  "referral_code" => # `$STRING`,
+  "email" => "example", # String
+  "name" => "example", # String
+  "new_password" => "example", # String
+  "password" => "example", # String
+  "referral_code" => "example", # String
 })
 ```
 

@@ -16,9 +16,6 @@ go build -o inno-cyber-authentication-cli ./...
 
 ```sh
 # One-shot: arguments form a single AQL expression
-./inno-cyber-authentication-cli list authentication
-./inno-cyber-authentication-cli load 1 authentication
-./inno-cyber-authentication-cli load '{id:1}' authentication
 
 # REPL
 ./inno-cyber-authentication-cli
@@ -28,9 +25,7 @@ go build -o inno-cyber-authentication-cli ./...
 
 | Word     | Signatures                                   | Description                |
 |----------|----------------------------------------------|----------------------------|
-| `list`   | `[entity]` · `[query entity]`                | List records               |
-| `load`   | `[entity]` · `[query entity]`                | Load a single record       |
-| `update` | `[entity]` · `[query entity]`                | Update a record            |
+
 
 `query` is either a Map (`{id:1}`) or a Scalar (`1`, treated as `{id:1}`).
 `entity` is one of the SDK's entity names (auto-quoted as an atom).

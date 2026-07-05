@@ -20,6 +20,17 @@
 ---@field valid? boolean
 
 ---@class AuthenticationCreateData
+---@field email string
+---@field message? string
+---@field name string
+---@field new_password string
+---@field password string
+---@field referral_code string
+---@field referrer? table
+---@field success? boolean
+---@field token? string
+---@field user? table
+---@field valid? boolean
 
 local M = {}
 

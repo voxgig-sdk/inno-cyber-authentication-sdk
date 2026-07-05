@@ -28,15 +28,15 @@ class Authentication
     public ?bool $valid = null;
 }
 
-/** Match filter for Authentication#create (any subset of Authentication fields). */
+/** Request payload for Authentication#create. */
 class AuthenticationCreateData
 {
-    public ?string $email = null;
+    public string $email;
     public ?string $message = null;
-    public ?string $name = null;
-    public ?string $new_password = null;
-    public ?string $password = null;
-    public ?string $referral_code = null;
+    public string $name;
+    public string $new_password;
+    public string $password;
+    public string $referral_code;
     public ?array $referrer = null;
     public ?bool $success = null;
     public ?string $token = null;

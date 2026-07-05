@@ -98,33 +98,33 @@ authentication := client.Authentication(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | Yes |  |
-| `message` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | Yes |  |
-| `new_password` | ``$STRING`` | Yes |  |
-| `password` | ``$STRING`` | Yes |  |
-| `referral_code` | ``$STRING`` | Yes |  |
-| `referrer` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `token` | ``$STRING`` | No |  |
-| `user` | ``$OBJECT`` | No |  |
-| `valid` | ``$BOOLEAN`` | No |  |
+| `email` | `string` | Yes |  |
+| `message` | `string` | No |  |
+| `name` | `string` | Yes |  |
+| `new_password` | `string` | Yes |  |
+| `password` | `string` | Yes |  |
+| `referral_code` | `string` | Yes |  |
+| `referrer` | `map[string]any` | No |  |
+| `success` | `bool` | No |  |
+| `token` | `string` | No |  |
+| `user` | `map[string]any` | No |  |
+| `valid` | `bool` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `email` | - | - | - | - | - |
-| `message` | - | - | - | - | - |
-| `name` | - | - | - | - | - |
-| `new_password` | - | - | - | - | - |
-| `password` | - | - | - | - | - |
-| `referral_code` | - | - | Yes | - | - |
-| `referrer` | - | - | - | - | - |
-| `success` | - | - | - | - | - |
-| `token` | - | - | Yes | - | - |
-| `user` | - | - | - | - | - |
-| `valid` | - | - | - | - | - |
+| Field | create |
+| --- | --- |
+| `email` | - |
+| `message` | - |
+| `name` | - |
+| `new_password` | - |
+| `password` | - |
+| `referral_code` | Yes |
+| `referrer` | - |
+| `success` | - |
+| `token` | Yes |
+| `user` | - |
+| `valid` | - |
 
 ### Operations
 
@@ -134,11 +134,11 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Authentication(nil).Create(map[string]any{
-    "email": /* `$STRING` */,
-    "name": /* `$STRING` */,
-    "new_password": /* `$STRING` */,
-    "password": /* `$STRING` */,
-    "referral_code": /* `$STRING` */,
+    "email": /* string */,
+    "name": /* string */,
+    "new_password": /* string */,
+    "password": /* string */,
+    "referral_code": /* string */,
 }, nil)
 ```
 

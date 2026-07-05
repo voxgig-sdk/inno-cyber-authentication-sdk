@@ -8,7 +8,7 @@ Complete API reference for the InnoCyberAuthentication Python SDK.
 ### Constructor
 
 ```python
-from inno-cyber-authentication_sdk import InnoCyberAuthenticationSDK
+from innocyberauthentication_sdk import InnoCyberAuthenticationSDK
 
 client = InnoCyberAuthenticationSDK(options)
 ```
@@ -88,33 +88,33 @@ authentication = client.Authentication()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | Yes |  |
-| `message` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | Yes |  |
-| `new_password` | ``$STRING`` | Yes |  |
-| `password` | ``$STRING`` | Yes |  |
-| `referral_code` | ``$STRING`` | Yes |  |
-| `referrer` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `token` | ``$STRING`` | No |  |
-| `user` | ``$OBJECT`` | No |  |
-| `valid` | ``$BOOLEAN`` | No |  |
+| `email` | `str` | Yes |  |
+| `message` | `str` | No |  |
+| `name` | `str` | Yes |  |
+| `new_password` | `str` | Yes |  |
+| `password` | `str` | Yes |  |
+| `referral_code` | `str` | Yes |  |
+| `referrer` | `dict` | No |  |
+| `success` | `bool` | No |  |
+| `token` | `str` | No |  |
+| `user` | `dict` | No |  |
+| `valid` | `bool` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `email` | - | - | - | - | - |
-| `message` | - | - | - | - | - |
-| `name` | - | - | - | - | - |
-| `new_password` | - | - | - | - | - |
-| `password` | - | - | - | - | - |
-| `referral_code` | - | - | Yes | - | - |
-| `referrer` | - | - | - | - | - |
-| `success` | - | - | - | - | - |
-| `token` | - | - | Yes | - | - |
-| `user` | - | - | - | - | - |
-| `valid` | - | - | - | - | - |
+| Field | create |
+| --- | --- |
+| `email` | - |
+| `message` | - |
+| `name` | - |
+| `new_password` | - |
+| `password` | - |
+| `referral_code` | Yes |
+| `referrer` | - |
+| `success` | - |
+| `token` | Yes |
+| `user` | - |
+| `valid` | - |
 
 ### Operations
 
@@ -124,11 +124,11 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Authentication().create({
-    "email": ...,  # `$STRING`
-    "name": ...,  # `$STRING`
-    "new_password": ...,  # `$STRING`
-    "password": ...,  # `$STRING`
-    "referral_code": ...,  # `$STRING`
+    "email": "example",  # str
+    "name": "example",  # str
+    "new_password": "example",  # str
+    "password": "example",  # str
+    "referral_code": "example",  # str
 })
 ```
 
