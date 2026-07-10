@@ -8,15 +8,22 @@ main: {
         url: "https://innoocyber.free.nf/"
       }
       description: "This API allows users to securely log in, sign up, and manage their authentication credentials for the INNO_CYBER platform. It supports operations like password recovery and referral code registration to enhance user experience."
+      security: {
+        in: "header"
+        name: "Authorization"
+        prefix: "Bearer"
+        scheme: "bearerAuth"
+        type: "http"
+      }
       servers: [
         {
           description: "Production server"
           url: "https://innoocyber.free.nf"
         }
       ]
+      summary: "This API allows users to securely log in, sign up, and manage their authentication credentials for the INNO_CYBER platform."
       title: "INNO_CYBER Authentication"
       version: "1.0.0"
+      website: "https://innoocyber.free.nf"
     }
   }
-}
-

@@ -36,7 +36,7 @@ client = InnoCyberAuthenticationSDK.new({
 
 ```ruby
 # create returns the bare created Authentication record.
-created = client.Authentication.create({ "email" => "example", "name" => "example", "new_password" => "example", "password" => "example", "referral_code" => "example" })
+created = client.Authentication.create({ "email" => "example_email", "name" => "example_name", "new_password" => "example_new_password", "password" => "example_password", "referral_code" => "example_referral_code" })
 
 ```
 
@@ -285,11 +285,11 @@ Create an instance: `authentication = client.Authentication`
 
 ```ruby
 authentication = client.Authentication.create({
-  "email" => "example", # String
-  "name" => "example", # String
-  "new_password" => "example", # String
-  "password" => "example", # String
-  "referral_code" => "example", # String
+  "email" => "example_email", # String
+  "name" => "example_name", # String
+  "new_password" => "example_new_password", # String
+  "password" => "example_password", # String
+  "referral_code" => "example_referral_code", # String
 })
 ```
 

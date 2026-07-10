@@ -342,11 +342,11 @@ Create an instance: `const authentication = client.Authentication()`
 
 ```ts
 const authentication = await client.Authentication().create({
-  email: /* string */,
-  name: /* string */,
-  new_password: /* string */,
-  password: /* string */,
-  referral_code: /* string */,
+  email: 'example_email',
+  name: 'example_name',
+  new_password: 'example_new_password',
+  password: 'example_password',
+  referral_code: 'example_referral_code',
 })
 ```
 

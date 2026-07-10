@@ -43,7 +43,7 @@ client = InnoCyberAuthenticationSDK({
 
 ```python
 # Create — returns the bare created record (a dict)
-created = client.Authentication().create({"email": "example", "name": "example", "new_password": "example", "password": "example", "referral_code": "example"})
+created = client.Authentication().create({"email": "example_email", "name": "example_name", "new_password": "example_new_password", "password": "example_password", "referral_code": "example_referral_code"})
 
 ```
 
@@ -292,11 +292,11 @@ Create an instance: `authentication = client.Authentication()`
 
 ```python
 authentication = client.Authentication().create({
-    "email": "example",  # str
-    "name": "example",  # str
-    "new_password": "example",  # str
-    "password": "example",  # str
-    "referral_code": "example",  # str
+    "email": "example_email",  # str
+    "name": "example_name",  # str
+    "new_password": "example_new_password",  # str
+    "password": "example_password",  # str
+    "referral_code": "example_referral_code",  # str
 })
 ```
 

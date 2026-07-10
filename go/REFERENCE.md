@@ -92,6 +92,7 @@ same parameters as `Direct()`.
 
 ```go
 authentication := client.Authentication(nil)
+fmt.Println(authentication.GetName()) // "authentication"
 ```
 
 ### Fields
@@ -134,12 +135,16 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Authentication(nil).Create(map[string]any{
-    "email": /* string */,
-    "name": /* string */,
-    "new_password": /* string */,
-    "password": /* string */,
-    "referral_code": /* string */,
+    "email": "example_email",
+    "name": "example_name",
+    "new_password": "example_new_password",
+    "password": "example_password",
+    "referral_code": "example_referral_code",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

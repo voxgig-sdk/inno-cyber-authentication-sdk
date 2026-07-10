@@ -130,11 +130,11 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Authentication.create({
-  "email" => "example", # String
-  "name" => "example", # String
-  "new_password" => "example", # String
-  "password" => "example", # String
-  "referral_code" => "example", # String
+  "email" => "example_email", # String
+  "name" => "example_name", # String
+  "new_password" => "example_new_password", # String
+  "password" => "example_password", # String
+  "referral_code" => "example_referral_code", # String
 })
 ```
 

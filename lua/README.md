@@ -39,7 +39,7 @@ local client = sdk.new({
 
 ```lua
 -- Create
-local created, err = client:Authentication():create({ email = "example", name = "example", new_password = "example", password = "example", referral_code = "example" })
+local created, err = client:Authentication():create({ email = "example_email", name = "example_name", new_password = "example_new_password", password = "example_password", referral_code = "example_referral_code" })
 if err then error(err) end
 
 ```
@@ -281,11 +281,11 @@ Create an instance: `local authentication = client:Authentication(nil)`
 
 ```lua
 local authentication, err = client:Authentication():create({
-  email = nil, -- string
-  name = nil, -- string
-  new_password = nil, -- string
-  password = nil, -- string
-  referral_code = nil, -- string
+  email = "example_email", -- string
+  name = "example_name", -- string
+  new_password = "example_new_password", -- string
+  password = "example_password", -- string
+  referral_code = "example_referral_code", -- string
 })
 ```
 

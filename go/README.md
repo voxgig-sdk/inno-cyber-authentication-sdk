@@ -54,7 +54,7 @@ func main() {
     })
 
     // Create a authentication.
-    created, err := client.Authentication(nil).Create(map[string]any{"email": "example", "name": "example", "new_password": "example", "password": "example", "referral_code": "example"}, nil)
+    created, err := client.Authentication(nil).Create(map[string]any{"email": "example_email", "name": "example_name", "new_password": "example_new_password", "password": "example_password", "referral_code": "example_referral_code"}, nil)
     if err != nil {
         panic(err)
     }
@@ -314,12 +314,16 @@ Create an instance: `authentication := client.Authentication(nil)`
 
 ```go
 result, err := client.Authentication(nil).Create(map[string]any{
-    "email": /* string */,
-    "name": /* string */,
-    "new_password": /* string */,
-    "password": /* string */,
-    "referral_code": /* string */,
+    "email": "example_email",
+    "name": "example_name",
+    "new_password": "example_new_password",
+    "password": "example_password",
+    "referral_code": "example_referral_code",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 

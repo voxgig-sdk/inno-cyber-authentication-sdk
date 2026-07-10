@@ -124,11 +124,11 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Authentication().create({
-    "email": "example",  # str
-    "name": "example",  # str
-    "new_password": "example",  # str
-    "password": "example",  # str
-    "referral_code": "example",  # str
+    "email": "example_email",  # str
+    "name": "example_name",  # str
+    "new_password": "example_new_password",  # str
+    "password": "example_password",  # str
+    "referral_code": "example_referral_code",  # str
 })
 ```
 

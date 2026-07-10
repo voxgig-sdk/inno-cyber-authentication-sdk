@@ -37,7 +37,7 @@ $client = new InnoCyberAuthenticationSDK([
 
 ```php
 // create() returns the bare created Authentication record.
-$created = $client->Authentication()->create(["email" => "example", "name" => "example", "new_password" => "example", "password" => "example", "referral_code" => "example"]);
+$created = $client->Authentication()->create(["email" => "example_email", "name" => "example_name", "new_password" => "example_new_password", "password" => "example_password", "referral_code" => "example_referral_code"]);
 
 ```
 
