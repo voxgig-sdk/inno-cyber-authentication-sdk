@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- InnoCyberAuthentication SDK exists test
 
 local sdk = require("inno-cyber-authentication_sdk")
 
