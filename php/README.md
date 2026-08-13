@@ -36,8 +36,8 @@ $client = new InnoCyberAuthenticationSDK([
 ### 4. Create, update, and remove
 
 ```php
-// create() returns the bare created Authentication record.
-$created = $client->Authentication()->create(["email" => "example_email", "name" => "example_name", "new_password" => "example_new_password", "password" => "example_password", "referral_code" => "example_referral_code"]);
+// create() returns the ENTITY — call data_get() for the created Authentication record.
+$created = $client->Authentication()->create(["newPassword" => "example_newPassword", "password" => "example_password", "referralCode" => "example_referralCode", "token" => "example_token"]);
 
 ```
 
@@ -49,7 +49,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $authentication = $client->Authentication()->create(["email" => "example", "name" => "example", "new_password" => "example", "password" => "example", "referral_code" => "example"]);
+    $authentication = $client->Authentication()->create(["newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -121,8 +121,9 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = InnoCyberAuthenticationSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$authentication = $client->Authentication()->create(["email" => "example", "name" => "example", "new_password" => "example", "password" => "example", "referral_code" => "example"]);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$authentication = $client->Authentication()->create(["newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example"]);
 print_r($authentication);
 ```
 
@@ -222,7 +223,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -245,16 +246,14 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `email` |  |
+| `id` |  |
 | `message` |  |
 | `name` |  |
-| `new_password` |  |
+| `newPassword` |  |
 | `password` |  |
-| `referral_code` |  |
-| `referrer` |  |
+| `referralCode` |  |
 | `success` |  |
 | `token` |  |
-| `user` |  |
-| `valid` |  |
 
 Operations: Create.
 
@@ -280,26 +279,23 @@ Create an instance: `$authentication = $client->Authentication();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `string` |  |
+| `id` | `string` |  |
 | `message` | `string` |  |
 | `name` | `string` |  |
-| `new_password` | `string` |  |
+| `newPassword` | `string` |  |
 | `password` | `string` |  |
-| `referral_code` | `string` |  |
-| `referrer` | `array` |  |
+| `referralCode` | `string` |  |
 | `success` | `bool` |  |
 | `token` | `string` |  |
-| `user` | `array` |  |
-| `valid` | `bool` |  |
 
 #### Example: Create
 
 ```php
 $authentication = $client->Authentication()->create([
-    "email" => null, // string
-    "name" => null, // string
-    "new_password" => null, // string
+    "newPassword" => null, // string
     "password" => null, // string
-    "referral_code" => null, // string
+    "referralCode" => null, // string
+    "token" => null, // string
 ]);
 ```
 
@@ -381,7 +377,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $authentication = $client->Authentication();
-$authentication->create(["email" => "example", "name" => "example", "new_password" => "example", "password" => "example", "referral_code" => "example"]);
+$authentication->create(["newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example"]);
 
 // $authentication->data_get() now returns the authentication data from the last create
 // $authentication->match_get() returns the last match criteria

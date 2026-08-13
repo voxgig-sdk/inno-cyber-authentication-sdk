@@ -99,33 +99,29 @@ fmt.Println(authentication.GetName()) // "authentication"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `string` | Yes |  |
+| `email` | `string` | No |  |
+| `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `name` | `string` | Yes |  |
-| `new_password` | `string` | Yes |  |
+| `name` | `string` | No |  |
+| `newPassword` | `string` | Yes |  |
 | `password` | `string` | Yes |  |
-| `referral_code` | `string` | Yes |  |
-| `referrer` | `map[string]any` | No |  |
+| `referralCode` | `string` | Yes |  |
 | `success` | `bool` | No |  |
-| `token` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
-| `valid` | `bool` | No |  |
+| `token` | `string` | Yes |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `email` | - |
+| `email` | Yes |
+| `id` | - |
 | `message` | - |
-| `name` | - |
-| `new_password` | - |
+| `name` | Yes |
+| `newPassword` | - |
 | `password` | - |
-| `referral_code` | Yes |
-| `referrer` | - |
+| `referralCode` | Yes |
 | `success` | - |
-| `token` | Yes |
-| `user` | - |
-| `valid` | - |
+| `token` | - |
 
 ### Operations
 
@@ -135,11 +131,10 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Authentication(nil).Create(map[string]any{
-    "email": "example_email",
-    "name": "example_name",
-    "new_password": "example_new_password",
+    "newPassword": "example_newPassword",
     "password": "example_password",
-    "referral_code": "example_referral_code",
+    "referralCode": "example_referralCode",
+    "token": "example_token",
 }, nil)
 if err != nil {
     panic(err)

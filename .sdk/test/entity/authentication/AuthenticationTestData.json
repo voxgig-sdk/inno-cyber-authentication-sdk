@@ -2,63 +2,51 @@
   "existing": {
     "authentication": {
       "AUTHENTICATION00": {
-        "email": "s6e",
-        "message": "s6f",
-        "name": "s70",
-        "new_password": "s71",
-        "password": "s72",
-        "referral_code": "s73",
-        "referrer": {},
+        "email": "s5a",
+        "id": "AUTHENTICATION00",
+        "message": "s5c",
+        "name": "s5d",
+        "newPassword": "s5e",
+        "password": "s5f",
+        "referralCode": "s60",
         "success": false,
-        "token": "s76",
-        "user": {},
-        "valid": true,
-        "id": "AUTHENTICATION00"
+        "token": "s62"
       },
       "AUTHENTICATION01": {
-        "email": "sdc",
-        "message": "sdd",
-        "name": "sde",
-        "new_password": "sdf",
-        "password": "se0",
-        "referral_code": "se1",
-        "referrer": {},
+        "email": "sb4",
+        "id": "AUTHENTICATION01",
+        "message": "sb6",
+        "name": "sb7",
+        "newPassword": "sb8",
+        "password": "sb9",
+        "referralCode": "sba",
         "success": false,
-        "token": "se4",
-        "user": {},
-        "valid": true,
-        "id": "AUTHENTICATION01"
+        "token": "sbc"
       },
       "AUTHENTICATION02": {
-        "email": "s14a",
-        "message": "s14b",
-        "name": "s14c",
-        "new_password": "s14d",
-        "password": "s14e",
-        "referral_code": "s14f",
-        "referrer": {},
+        "email": "s10e",
+        "id": "AUTHENTICATION02",
+        "message": "s110",
+        "name": "s111",
+        "newPassword": "s112",
+        "password": "s113",
+        "referralCode": "s114",
         "success": false,
-        "token": "s152",
-        "user": {},
-        "valid": true,
-        "id": "AUTHENTICATION02"
+        "token": "s116"
       }
     }
   },
   "new": {
     "authentication": {
       "authentication_ref01": {
-        "email": "s1b8",
-        "message": "s1b9",
-        "name": "s1ba",
-        "new_password": "s1bb",
-        "password": "s1bc",
-        "referral_code": "s1bd",
-        "referrer": {},
+        "email": "s168",
+        "message": "s16a",
+        "name": "s16b",
+        "newPassword": "s16c",
+        "password": "s16d",
+        "referralCode": "s16e",
         "success": false,
-        "token": "s1c0",
-        "user": {},
-        "valid": true
+        "token": "s170"
       }
     }
   }

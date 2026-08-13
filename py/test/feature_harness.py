@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import InnoCyberAuthenticationControl
-from core.error import InnoCyberAuthenticationError
-from core.result import InnoCyberAuthenticationResult
-from core.spec import InnoCyberAuthenticationSpec
+from innocyberauthentication_sdk.config import make_config
+from innocyberauthentication_sdk.features import _make_feature
+from innocyberauthentication_sdk.core.control import InnoCyberAuthenticationControl
+from innocyberauthentication_sdk.core.error import InnoCyberAuthenticationError
+from innocyberauthentication_sdk.core.result import InnoCyberAuthenticationResult
+from innocyberauthentication_sdk.core.spec import InnoCyberAuthenticationSpec
 
 
 # True when this SDK was generated with the named feature.

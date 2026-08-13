@@ -1,4 +1,4 @@
 module github.com/voxgig-sdk/inno-cyber-authentication-sdk/go
 
-go 1.20
+go 1.21
 

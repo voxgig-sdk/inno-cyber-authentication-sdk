@@ -26,7 +26,7 @@ class AuthenticationEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set INNOCYBERAUTHENTICATION_TEST_AUTHENTICATION_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set INNO_CYBER_AUTHENTICATION_TEST_AUTHENTICATION_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -37,8 +37,9 @@ class AuthenticationEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.authentication"), "authentication_ref01"))
 
     authentication_ref01_data_result = authentication_ref01_ent.create(authentication_ref01_data, nil)
-    authentication_ref01_data = Helpers.to_map(authentication_ref01_data_result)
+    authentication_ref01_data = Helpers.to_map(authentication_ref01_data_result.respond_to?(:data_get) ? authentication_ref01_data_result.data_get : authentication_ref01_data_result)
     assert !authentication_ref01_data.nil?
+    assert !authentication_ref01_data["id"].nil?
 
   end
 end
@@ -69,39 +70,39 @@ def authentication_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["INNOCYBERAUTHENTICATION_TEST_AUTHENTICATION_ENTID"]
+  entid_env_raw = ENV["INNO_CYBER_AUTHENTICATION_TEST_AUTHENTICATION_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "INNOCYBERAUTHENTICATION_TEST_AUTHENTICATION_ENTID" => idmap,
-    "INNOCYBERAUTHENTICATION_TEST_LIVE" => "FALSE",
-    "INNOCYBERAUTHENTICATION_TEST_EXPLAIN" => "FALSE",
-    "INNOCYBERAUTHENTICATION_APIKEY" => "NONE",
+    "INNO_CYBER_AUTHENTICATION_TEST_AUTHENTICATION_ENTID" => idmap,
+    "INNO_CYBER_AUTHENTICATION_TEST_LIVE" => "FALSE",
+    "INNO_CYBER_AUTHENTICATION_TEST_EXPLAIN" => "FALSE",
+    "INNO_CYBER_AUTHENTICATION_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["INNOCYBERAUTHENTICATION_TEST_AUTHENTICATION_ENTID"])
+    env["INNO_CYBER_AUTHENTICATION_TEST_AUTHENTICATION_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["INNOCYBERAUTHENTICATION_TEST_LIVE"] == "TRUE"
+  if env["INNO_CYBER_AUTHENTICATION_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["INNOCYBERAUTHENTICATION_APIKEY"],
+        "apikey" => env["INNO_CYBER_AUTHENTICATION_APIKEY"],
       },
       extra || {},
     ])
     client = InnoCyberAuthenticationSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["INNOCYBERAUTHENTICATION_TEST_LIVE"] == "TRUE"
+  live = env["INNO_CYBER_AUTHENTICATION_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["INNOCYBERAUTHENTICATION_TEST_EXPLAIN"] == "TRUE",
+    explain: env["INNO_CYBER_AUTHENTICATION_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

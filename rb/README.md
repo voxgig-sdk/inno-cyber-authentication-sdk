@@ -35,8 +35,8 @@ client = InnoCyberAuthenticationSDK.new({
 ### 4. Create, update, and remove
 
 ```ruby
-# create returns the bare created Authentication record.
-created = client.Authentication.create({ "email" => "example_email", "name" => "example_name", "new_password" => "example_new_password", "password" => "example_password", "referral_code" => "example_referral_code" })
+# create returns the ENTITY — call data_get for the created Authentication record.
+created = client.Authentication.create({ "newPassword" => "example_newPassword", "password" => "example_password", "referralCode" => "example_referralCode", "token" => "example_token" })
 
 ```
 
@@ -47,7 +47,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  authentication = client.Authentication.create({ "email" => "example", "name" => "example", "new_password" => "example", "password" => "example", "referral_code" => "example" })
+  authentication = client.Authentication.create({ "newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example" })
 rescue => err
   warn "create failed: #{err}"
 end
@@ -115,8 +115,9 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = InnoCyberAuthenticationSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-authentication = client.Authentication.create({ "email" => "example", "name" => "example", "new_password" => "example", "password" => "example", "referral_code" => "example" })
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+authentication = client.Authentication.create({ "newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example" })
 puts authentication
 ```
 
@@ -235,16 +236,14 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `email` |  |
+| `id` |  |
 | `message` |  |
 | `name` |  |
-| `new_password` |  |
+| `newPassword` |  |
 | `password` |  |
-| `referral_code` |  |
-| `referrer` |  |
+| `referralCode` |  |
 | `success` |  |
 | `token` |  |
-| `user` |  |
-| `valid` |  |
 
 Operations: Create.
 
@@ -270,26 +269,23 @@ Create an instance: `authentication = client.Authentication`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `String` |  |
+| `id` | `String` |  |
 | `message` | `String` |  |
 | `name` | `String` |  |
-| `new_password` | `String` |  |
+| `newPassword` | `String` |  |
 | `password` | `String` |  |
-| `referral_code` | `String` |  |
-| `referrer` | `Hash` |  |
+| `referralCode` | `String` |  |
 | `success` | `Boolean` |  |
 | `token` | `String` |  |
-| `user` | `Hash` |  |
-| `valid` | `Boolean` |  |
 
 #### Example: Create
 
 ```ruby
 authentication = client.Authentication.create({
-  "email" => "example_email", # String
-  "name" => "example_name", # String
-  "new_password" => "example_new_password", # String
+  "newPassword" => "example_newPassword", # String
   "password" => "example_password", # String
-  "referral_code" => "example_referral_code", # String
+  "referralCode" => "example_referralCode", # String
+  "token" => "example_token", # String
 })
 ```
 
@@ -371,7 +367,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 authentication = client.Authentication
-authentication.create({ "email" => "example", "name" => "example", "new_password" => "example", "password" => "example", "referral_code" => "example" })
+authentication.create({ "newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example" })
 
 # authentication.data_get now returns the authentication data from the last create
 # authentication.match_get returns the last match criteria

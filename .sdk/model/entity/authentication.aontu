@@ -7,52 +7,6 @@ main: kit: entity: authentication: {
   fields: [
     {
       name: "email"
-      req: true
-      type: "`$STRING`"
-    }
-    {
-      name: "message"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "name"
-      req: true
-      type: "`$STRING`"
-    }
-    {
-      name: "new_password"
-      req: true
-      type: "`$STRING`"
-    }
-    {
-      name: "password"
-      req: true
-      type: "`$STRING`"
-    }
-    {
-      name: "referral_code"
-      op: {
-        create: {
-          req: false
-          type: "`$STRING`"
-        }
-      }
-      req: true
-      type: "`$STRING`"
-    }
-    {
-      name: "referrer"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "success"
-      req: false
-      type: "`$BOOLEAN`"
-    }
-    {
-      name: "token"
       op: {
         create: {
           req: true
@@ -63,16 +17,63 @@ main: kit: entity: authentication: {
       type: "`$STRING`"
     }
     {
-      name: "user"
+      name: "id"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
     }
     {
-      name: "valid"
+      name: "message"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "newPassword"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "password"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "referralCode"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "success"
       req: false
       type: "`$BOOLEAN`"
     }
+    {
+      name: "token"
+      req: true
+      type: "`$STRING`"
+    }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "authentication"
   op: {
@@ -89,7 +90,7 @@ main: kit: entity: authentication: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.user`"
           }
         }
         {
@@ -131,7 +132,7 @@ main: kit: entity: authentication: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.referrer`"
           }
         }
         {
@@ -144,7 +145,7 @@ main: kit: entity: authentication: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.user`"
           }
         }
       ]

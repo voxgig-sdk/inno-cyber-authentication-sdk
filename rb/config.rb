@@ -31,41 +31,60 @@ module InnoCyberAuthenticationConfig
             {
               "active" => true,
               "name" => "email",
-              "req" => true,
+              "op" => {
+                "create" => {
+                  "req" => true,
+                  "type" => "`$STRING`",
+                },
+              },
+              "req" => false,
               "type" => "`$STRING`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "message",
+              "name" => "id",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 1,
             },
             {
               "active" => true,
-              "name" => "name",
-              "req" => true,
+              "name" => "message",
+              "req" => false,
               "type" => "`$STRING`",
               "index$" => 2,
             },
             {
               "active" => true,
-              "name" => "new_password",
-              "req" => true,
+              "name" => "name",
+              "op" => {
+                "create" => {
+                  "req" => true,
+                  "type" => "`$STRING`",
+                },
+              },
+              "req" => false,
               "type" => "`$STRING`",
               "index$" => 3,
             },
             {
               "active" => true,
-              "name" => "password",
+              "name" => "newPassword",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 4,
             },
             {
               "active" => true,
-              "name" => "referral_code",
+              "name" => "password",
+              "req" => true,
+              "type" => "`$STRING`",
+              "index$" => 5,
+            },
+            {
+              "active" => true,
+              "name" => "referralCode",
               "op" => {
                 "create" => {
                   "req" => false,
@@ -74,13 +93,6 @@ module InnoCyberAuthenticationConfig
               },
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 5,
-            },
-            {
-              "active" => true,
-              "name" => "referrer",
-              "req" => false,
-              "type" => "`$OBJECT`",
               "index$" => 6,
             },
             {
@@ -93,29 +105,9 @@ module InnoCyberAuthenticationConfig
             {
               "active" => true,
               "name" => "token",
-              "op" => {
-                "create" => {
-                  "req" => true,
-                  "type" => "`$STRING`",
-                },
-              },
-              "req" => false,
+              "req" => true,
               "type" => "`$STRING`",
               "index$" => 8,
-            },
-            {
-              "active" => true,
-              "name" => "user",
-              "req" => false,
-              "type" => "`$OBJECT`",
-              "index$" => 9,
-            },
-            {
-              "active" => true,
-              "name" => "valid",
-              "req" => false,
-              "type" => "`$BOOLEAN`",
-              "index$" => 10,
             },
           ],
           "name" => "authentication",
@@ -127,6 +119,7 @@ module InnoCyberAuthenticationConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/auth/login",
                   "parts" => [
@@ -137,13 +130,14 @@ module InnoCyberAuthenticationConfig
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.user`",
                   },
                   "index$" => 0,
                 },
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/auth/password/recover",
                   "parts" => [
@@ -162,6 +156,7 @@ module InnoCyberAuthenticationConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/auth/password/reset",
                   "parts" => [
@@ -180,6 +175,7 @@ module InnoCyberAuthenticationConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/auth/referral/validate",
                   "parts" => [
@@ -191,13 +187,14 @@ module InnoCyberAuthenticationConfig
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.referrer`",
                   },
                   "index$" => 3,
                 },
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/auth/signup",
                   "parts" => [
@@ -208,7 +205,7 @@ module InnoCyberAuthenticationConfig
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.user`",
                   },
                   "index$" => 4,
                 },

@@ -54,7 +54,7 @@ func main() {
     })
 
     // Create a authentication.
-    created, err := client.Authentication(nil).Create(map[string]any{"email": "example_email", "name": "example_name", "new_password": "example_new_password", "password": "example_password", "referral_code": "example_referral_code"}, nil)
+    created, err := client.Authentication(nil).Create(map[string]any{"newPassword": "example_newPassword", "password": "example_password", "referralCode": "example_referralCode", "token": "example_token"}, nil)
     if err != nil {
         panic(err)
     }
@@ -69,7 +69,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-authentication, err := client.Authentication(nil).Create(map[string]any{"email": "example", "name": "example", "new_password": "example", "password": "example", "referral_code": "example"}, nil)
+authentication, err := client.Authentication(nil).Create(map[string]any{"newPassword": "example", "password": "example", "referralCode": "example", "token": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -139,7 +139,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 authentication, err := client.Authentication(nil).Create(
-    map[string]any{"email": "example", "name": "example", "new_password": "example", "password": "example", "referral_code": "example"}, nil,
+    map[string]any{"newPassword": "example", "password": "example", "referralCode": "example", "token": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -264,16 +264,14 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"email"` |  |
+| `"id"` |  |
 | `"message"` |  |
 | `"name"` |  |
-| `"new_password"` |  |
+| `"newPassword"` |  |
 | `"password"` |  |
-| `"referral_code"` |  |
-| `"referrer"` |  |
+| `"referralCode"` |  |
 | `"success"` |  |
 | `"token"` |  |
-| `"user"` |  |
-| `"valid"` |  |
 
 Operations: Create.
 
@@ -299,26 +297,23 @@ Create an instance: `authentication := client.Authentication(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `string` |  |
+| `id` | `string` |  |
 | `message` | `string` |  |
 | `name` | `string` |  |
-| `new_password` | `string` |  |
+| `newPassword` | `string` |  |
 | `password` | `string` |  |
-| `referral_code` | `string` |  |
-| `referrer` | `map[string]any` |  |
+| `referralCode` | `string` |  |
 | `success` | `bool` |  |
 | `token` | `string` |  |
-| `user` | `map[string]any` |  |
-| `valid` | `bool` |  |
 
 #### Example: Create
 
 ```go
 result, err := client.Authentication(nil).Create(map[string]any{
-    "email": "example_email",
-    "name": "example_name",
-    "new_password": "example_new_password",
+    "newPassword": "example_newPassword",
     "password": "example_password",
-    "referral_code": "example_referral_code",
+    "referralCode": "example_referralCode",
+    "token": "example_token",
 }, nil)
 if err != nil {
     panic(err)
@@ -401,7 +396,7 @@ stores the returned data and match criteria internally.
 
 ```go
 authentication := client.Authentication(nil)
-authentication.Create(map[string]any{"email": "example", "name": "example", "new_password": "example", "password": "example", "referral_code": "example"}, nil)
+authentication.Create(map[string]any{"newPassword": "example", "password": "example", "referralCode": "example", "token": "example"}, nil)
 
 // authentication.Data() now returns the authentication data from the last create
 // authentication.Match() returns the last match criteria

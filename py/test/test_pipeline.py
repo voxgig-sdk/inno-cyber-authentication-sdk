@@ -16,11 +16,11 @@
 import pytest
 
 from innocyberauthentication_sdk import InnoCyberAuthenticationSDK
-from core.error import InnoCyberAuthenticationError
-from core.result import InnoCyberAuthenticationResult
-from core.response import InnoCyberAuthenticationResponse
-from core.spec import InnoCyberAuthenticationSpec
-from feature.base_feature import InnoCyberAuthenticationBaseFeature
+from innocyberauthentication_sdk.core.error import InnoCyberAuthenticationError
+from innocyberauthentication_sdk.core.result import InnoCyberAuthenticationResult
+from innocyberauthentication_sdk.core.response import InnoCyberAuthenticationResponse
+from innocyberauthentication_sdk.core.spec import InnoCyberAuthenticationSpec
+from innocyberauthentication_sdk.feature.base_feature import InnoCyberAuthenticationBaseFeature
 
 
 def _client():

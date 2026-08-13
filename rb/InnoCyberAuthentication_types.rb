@@ -11,98 +11,82 @@
 # Authentication entity data model.
 #
 # @!attribute [rw] email
-#   @return [String]
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 #
 # @!attribute [rw] message
 #   @return [String, nil]
 #
 # @!attribute [rw] name
-#   @return [String]
+#   @return [String, nil]
 #
-# @!attribute [rw] new_password
+# @!attribute [rw] newPassword
 #   @return [String]
 #
 # @!attribute [rw] password
 #   @return [String]
 #
-# @!attribute [rw] referral_code
+# @!attribute [rw] referralCode
 #   @return [String]
-#
-# @!attribute [rw] referrer
-#   @return [Hash, nil]
 #
 # @!attribute [rw] success
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] token
-#   @return [String, nil]
-#
-# @!attribute [rw] user
-#   @return [Hash, nil]
-#
-# @!attribute [rw] valid
-#   @return [Boolean, nil]
+#   @return [String]
 Authentication = Struct.new(
   :email,
+  :id,
   :message,
   :name,
-  :new_password,
+  :newPassword,
   :password,
-  :referral_code,
-  :referrer,
+  :referralCode,
   :success,
   :token,
-  :user,
-  :valid,
   keyword_init: true
 )
 
 # Request payload for Authentication#create.
 #
 # @!attribute [rw] email
-#   @return [String]
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 #
 # @!attribute [rw] message
 #   @return [String, nil]
 #
 # @!attribute [rw] name
-#   @return [String]
+#   @return [String, nil]
 #
-# @!attribute [rw] new_password
+# @!attribute [rw] newPassword
 #   @return [String]
 #
 # @!attribute [rw] password
 #   @return [String]
 #
-# @!attribute [rw] referral_code
+# @!attribute [rw] referralCode
 #   @return [String]
-#
-# @!attribute [rw] referrer
-#   @return [Hash, nil]
 #
 # @!attribute [rw] success
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] token
-#   @return [String, nil]
-#
-# @!attribute [rw] user
-#   @return [Hash, nil]
-#
-# @!attribute [rw] valid
-#   @return [Boolean, nil]
+#   @return [String]
 AuthenticationCreateData = Struct.new(
   :email,
+  :id,
   :message,
   :name,
-  :new_password,
+  :newPassword,
   :password,
-  :referral_code,
-  :referrer,
+  :referralCode,
   :success,
   :token,
-  :user,
-  :valid,
   keyword_init: true
 )
 

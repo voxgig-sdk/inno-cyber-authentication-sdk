@@ -62,8 +62,8 @@ function makeCtrl(explain: boolean) {
 // Overrides configuration values with environment variables if available
 function envOverride(m: Record<string, any>) {
   if (
-    'TRUE' === process.env.INNOCYBERAUTHENTICATION_TEST_LIVE ||
-    'TRUE' === process.env.INNOCYBERAUTHENTICATION_TEST_OVERRIDE
+    'TRUE' === process.env.INNO_CYBER_AUTHENTICATION_TEST_LIVE ||
+    'TRUE' === process.env.INNO_CYBER_AUTHENTICATION_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -74,7 +74,7 @@ function envOverride(m: Record<string, any>) {
     })
   }
 
-  m.INNOCYBERAUTHENTICATION_TEST_EXPLAIN = process.env.INNOCYBERAUTHENTICATION_TEST_EXPLAIN || m.INNOCYBERAUTHENTICATION_TEST_EXPLAIN
+  m.INNO_CYBER_AUTHENTICATION_TEST_EXPLAIN = process.env.INNO_CYBER_AUTHENTICATION_TEST_EXPLAIN || m.INNO_CYBER_AUTHENTICATION_TEST_EXPLAIN
 
   return m
 }

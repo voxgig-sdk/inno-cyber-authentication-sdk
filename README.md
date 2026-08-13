@@ -24,11 +24,10 @@ support (`create`):
 ```ts
 const client = new InnoCyberAuthenticationSDK()
 const authentication = await client.Authentication().create({
-  email: 'example',
-  name: 'example',
-  new_password: 'example',
+  newPassword: 'example',
   password: 'example',
-  referral_code: 'example',
+  referralCode: 'example',
+  token: 'example',
 })
 ```
 
@@ -44,9 +43,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = InnoCyberAuthenticationSDK.test()
-const authentication = await client.Authentication().create({ email: 'example_email', name: 'example_name', new_password: 'example_new_password', password: 'example_password', referral_code: 'example_referral_code' })
-// authentication is a bare Authentication populated with mock data
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = InnoCyberAuthenticationSDK.test({
+  entity: {
+    authentication: {
+      test01: { id: 'test01', newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode' },
+    },
+  },
+})
+const authentication = await client.Authentication().create({ newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode', token: 'example_token' })
+// authentication is the Authentication entity, populated with mock data
+// — call authentication.data() for the record itself
 console.log(authentication)
 ```
 
@@ -54,7 +62,7 @@ console.log(authentication)
 
 ```python
 client = InnoCyberAuthenticationSDK.test()
-authentication = client.Authentication().create({"email": "example", "name": "example", "new_password": "example", "password": "example", "referral_code": "example"})
+authentication = client.Authentication().create({"newPassword": "example", "password": "example", "referralCode": "example", "token": "example"})
 print(authentication)
 ```
 
@@ -65,7 +73,7 @@ print(authentication)
 $client = InnoCyberAuthenticationSDK::test([
     "entity" => ["authentication" => ["test01" => []]],
 ]);
-$authentication = $client->Authentication()->create(["email" => "example", "name" => "example", "new_password" => "example", "password" => "example", "referral_code" => "example"]);
+$authentication = $client->Authentication()->create(["newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example"]);
 ```
 
 ### Golang
@@ -73,7 +81,7 @@ $authentication = $client->Authentication()->create(["email" => "example", "name
 ```go
 client := sdk.Test()
 result, err := client.Authentication(nil).Create(
-    map[string]any{"email": "example", "name": "example", "new_password": "example", "password": "example", "referral_code": "example"}, nil,
+    map[string]any{"newPassword": "example", "password": "example", "referralCode": "example", "token": "example"}, nil,
 )
 ```
 
@@ -84,14 +92,14 @@ result, err := client.Authentication(nil).Create(
 client = InnoCyberAuthenticationSDK.test({
   "entity" => { "authentication" => { "test01" => {} } },
 })
-authentication = client.Authentication.create({ "email" => "example", "name" => "example", "new_password" => "example", "password" => "example", "referral_code" => "example" })
+authentication = client.Authentication.create({ "newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Authentication():create({ email = "example", name = "example", new_password = "example", password = "example", referral_code = "example" })
+local result, err = client:Authentication():create({ newPassword = "example", password = "example", referralCode = "example", token = "example" })
 ```
 
 ## Packages
@@ -338,6 +346,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://innoocyber.free.nf/](https://innoocyber.free.nf/)
 

@@ -30,41 +30,60 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"active": true,
 						"name": "email",
-						"req": true,
+						"op": map[string]any{
+							"create": map[string]any{
+								"req": true,
+								"type": "`$STRING`",
+							},
+						},
+						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "message",
+						"name": "id",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "name",
-						"req": true,
+						"name": "message",
+						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "new_password",
-						"req": true,
+						"name": "name",
+						"op": map[string]any{
+							"create": map[string]any{
+								"req": true,
+								"type": "`$STRING`",
+							},
+						},
+						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
-						"name": "password",
+						"name": "newPassword",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 4,
 					},
 					map[string]any{
 						"active": true,
-						"name": "referral_code",
+						"name": "password",
+						"req": true,
+						"type": "`$STRING`",
+						"index$": 5,
+					},
+					map[string]any{
+						"active": true,
+						"name": "referralCode",
 						"op": map[string]any{
 							"create": map[string]any{
 								"req": false,
@@ -73,13 +92,6 @@ func MakeConfig() map[string]any {
 						},
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 5,
-					},
-					map[string]any{
-						"active": true,
-						"name": "referrer",
-						"req": false,
-						"type": "`$OBJECT`",
 						"index$": 6,
 					},
 					map[string]any{
@@ -92,29 +104,9 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"active": true,
 						"name": "token",
-						"op": map[string]any{
-							"create": map[string]any{
-								"req": true,
-								"type": "`$STRING`",
-							},
-						},
-						"req": false,
+						"req": true,
 						"type": "`$STRING`",
 						"index$": 8,
-					},
-					map[string]any{
-						"active": true,
-						"name": "user",
-						"req": false,
-						"type": "`$OBJECT`",
-						"index$": 9,
-					},
-					map[string]any{
-						"active": true,
-						"name": "valid",
-						"req": false,
-						"type": "`$BOOLEAN`",
-						"index$": 10,
 					},
 				},
 				"name": "authentication",
@@ -126,6 +118,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/login",
 								"parts": []any{
@@ -136,13 +129,14 @@ func MakeConfig() map[string]any {
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.user`",
 								},
 								"index$": 0,
 							},
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/password/recover",
 								"parts": []any{
@@ -161,6 +155,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/password/reset",
 								"parts": []any{
@@ -179,6 +174,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/referral/validate",
 								"parts": []any{
@@ -190,13 +186,14 @@ func MakeConfig() map[string]any {
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.referrer`",
 								},
 								"index$": 3,
 							},
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/signup",
 								"parts": []any{
@@ -207,12 +204,11 @@ func MakeConfig() map[string]any {
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.user`",
 								},
 								"index$": 4,
 							},
 						},
-						"key$": "create",
 					},
 				},
 				"relations": map[string]any{

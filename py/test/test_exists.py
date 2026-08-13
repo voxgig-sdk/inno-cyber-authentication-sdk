@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# InnoCyberAuthentication SDK exists test
 
 import pytest
 from innocyberauthentication_sdk import InnoCyberAuthenticationSDK

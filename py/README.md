@@ -42,8 +42,8 @@ client = InnoCyberAuthenticationSDK({
 ### 4. Create, update, and remove
 
 ```python
-# Create — returns the bare created record (a dict)
-created = client.Authentication().create({"email": "example_email", "name": "example_name", "new_password": "example_new_password", "password": "example_password", "referral_code": "example_referral_code"})
+# Create — returns the ENTITY (call data_get() for the record)
+created = client.Authentication().create({"newPassword": "example_newPassword", "password": "example_password", "referralCode": "example_referralCode", "token": "example_token"})
 
 ```
 
@@ -54,7 +54,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    authentication = client.Authentication().create({ "email": "example", "name": "example", "new_password": "example", "password": "example", "referral_code": "example" })
+    authentication = client.Authentication().create({ "newPassword": "example", "password": "example", "referralCode": "example", "token": "example" })
     print(authentication)
 except Exception as err:
     print(f"create failed: {err}")
@@ -121,8 +121,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = InnoCyberAuthenticationSDK.test()
 
-# Entity ops return the bare record and raise on error.
-authentication = client.Authentication().create({"email": "example", "name": "example", "new_password": "example", "password": "example", "referral_code": "example"})
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+authentication = client.Authentication().create({"newPassword": "example", "password": "example", "referralCode": "example", "token": "example"})
 # authentication contains the mock response record
 ```
 
@@ -219,7 +220,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -242,16 +243,14 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `email` |  |
+| `id` |  |
 | `message` |  |
 | `name` |  |
-| `new_password` |  |
+| `newPassword` |  |
 | `password` |  |
-| `referral_code` |  |
-| `referrer` |  |
+| `referralCode` |  |
 | `success` |  |
 | `token` |  |
-| `user` |  |
-| `valid` |  |
 
 Operations: Create.
 
@@ -277,26 +276,23 @@ Create an instance: `authentication = client.Authentication()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `str` |  |
+| `id` | `str` |  |
 | `message` | `str` |  |
 | `name` | `str` |  |
-| `new_password` | `str` |  |
+| `newPassword` | `str` |  |
 | `password` | `str` |  |
-| `referral_code` | `str` |  |
-| `referrer` | `dict` |  |
+| `referralCode` | `str` |  |
 | `success` | `bool` |  |
 | `token` | `str` |  |
-| `user` | `dict` |  |
-| `valid` | `bool` |  |
 
 #### Example: Create
 
 ```python
 authentication = client.Authentication().create({
-    "email": "example_email",  # str
-    "name": "example_name",  # str
-    "new_password": "example_new_password",  # str
+    "newPassword": "example_newPassword",  # str
     "password": "example_password",  # str
-    "referral_code": "example_referral_code",  # str
+    "referralCode": "example_referralCode",  # str
+    "token": "example_token",  # str
 })
 ```
 
@@ -377,7 +373,7 @@ stores the returned data and match criteria internally.
 
 ```python
 authentication = client.Authentication()
-authentication.create({ "email": "example", "name": "example", "new_password": "example", "password": "example", "referral_code": "example" })
+authentication.create({ "newPassword": "example", "password": "example", "referralCode": "example", "token": "example" })
 
 # authentication.data_get() now returns the authentication data from the last create
 # authentication.match_get() returns the last match criteria

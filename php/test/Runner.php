@@ -43,8 +43,8 @@ class InnoCyberAuthenticationTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('INNOCYBERAUTHENTICATION_TEST_LIVE');
-        $override = self::getenv('INNOCYBERAUTHENTICATION_TEST_OVERRIDE');
+        $live = self::getenv('INNO_CYBER_AUTHENTICATION_TEST_LIVE');
+        $override = self::getenv('INNO_CYBER_AUTHENTICATION_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class InnoCyberAuthenticationTestRunner
             }
         }
 
-        $explain = self::getenv('INNOCYBERAUTHENTICATION_TEST_EXPLAIN');
+        $explain = self::getenv('INNO_CYBER_AUTHENTICATION_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['INNOCYBERAUTHENTICATION_TEST_EXPLAIN'] = $explain;
+            $m['INNO_CYBER_AUTHENTICATION_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

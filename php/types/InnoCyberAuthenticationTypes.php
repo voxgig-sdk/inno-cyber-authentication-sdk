@@ -15,32 +15,28 @@ declare(strict_types=1);
 /** Authentication entity data model. */
 class Authentication
 {
-    public string $email;
+    public ?string $email = null;
+    public ?string $id = null;
     public ?string $message = null;
-    public string $name;
-    public string $new_password;
+    public ?string $name = null;
+    public string $newPassword;
     public string $password;
-    public string $referral_code;
-    public ?array $referrer = null;
+    public string $referralCode;
     public ?bool $success = null;
-    public ?string $token = null;
-    public ?array $user = null;
-    public ?bool $valid = null;
+    public string $token;
 }
 
 /** Request payload for Authentication#create. */
 class AuthenticationCreateData
 {
-    public string $email;
+    public ?string $email = null;
+    public ?string $id = null;
     public ?string $message = null;
-    public string $name;
-    public string $new_password;
+    public ?string $name = null;
+    public string $newPassword;
     public string $password;
-    public string $referral_code;
-    public ?array $referrer = null;
+    public string $referralCode;
     public ?bool $success = null;
-    public ?string $token = null;
-    public ?array $user = null;
-    public ?bool $valid = null;
+    public string $token;
 }
 

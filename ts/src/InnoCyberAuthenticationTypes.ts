@@ -6,30 +6,26 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Authentication {
-  email: string
+  email?: string
+  id?: string
   message?: string
-  name: string
-  new_password: string
+  name?: string
+  newPassword: string
   password: string
-  referral_code: string
-  referrer?: Record<string, any>
+  referralCode: string
   success?: boolean
-  token?: string
-  user?: Record<string, any>
-  valid?: boolean
+  token: string
 }
 
 export interface AuthenticationCreateData {
-  email: string
+  email?: string
+  id?: string
   message?: string
-  name: string
-  new_password: string
+  name?: string
+  newPassword: string
   password: string
-  referral_code: string
-  referrer?: Record<string, any>
+  referralCode: string
   success?: boolean
-  token?: string
-  user?: Record<string, any>
-  valid?: boolean
+  token: string
 }
 

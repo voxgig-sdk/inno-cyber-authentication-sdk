@@ -94,33 +94,29 @@ authentication = client.Authentication
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `String` | Yes |  |
+| `email` | `String` | No |  |
+| `id` | `String` | No |  |
 | `message` | `String` | No |  |
-| `name` | `String` | Yes |  |
-| `new_password` | `String` | Yes |  |
+| `name` | `String` | No |  |
+| `newPassword` | `String` | Yes |  |
 | `password` | `String` | Yes |  |
-| `referral_code` | `String` | Yes |  |
-| `referrer` | `Hash` | No |  |
+| `referralCode` | `String` | Yes |  |
 | `success` | `Boolean` | No |  |
-| `token` | `String` | No |  |
-| `user` | `Hash` | No |  |
-| `valid` | `Boolean` | No |  |
+| `token` | `String` | Yes |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `email` | - |
+| `email` | Yes |
+| `id` | - |
 | `message` | - |
-| `name` | - |
-| `new_password` | - |
+| `name` | Yes |
+| `newPassword` | - |
 | `password` | - |
-| `referral_code` | Yes |
-| `referrer` | - |
+| `referralCode` | Yes |
 | `success` | - |
-| `token` | Yes |
-| `user` | - |
-| `valid` | - |
+| `token` | - |
 
 ### Operations
 
@@ -130,11 +126,10 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Authentication.create({
-  "email" => "example_email", # String
-  "name" => "example_name", # String
-  "new_password" => "example_new_password", # String
+  "newPassword" => "example_newPassword", # String
   "password" => "example_password", # String
-  "referral_code" => "example_referral_code", # String
+  "referralCode" => "example_referralCode", # String
+  "token" => "example_token", # String
 })
 ```
 

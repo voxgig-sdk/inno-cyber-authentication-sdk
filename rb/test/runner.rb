@@ -23,8 +23,8 @@ module InnoCyberAuthenticationTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("INNOCYBERAUTHENTICATION_TEST_LIVE")
-    override = getenv("INNOCYBERAUTHENTICATION_TEST_OVERRIDE")
+    live = getenv("INNO_CYBER_AUTHENTICATION_TEST_LIVE")
+    override = getenv("INNO_CYBER_AUTHENTICATION_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module InnoCyberAuthenticationTestRunner
       end
     end
 
-    explain = getenv("INNOCYBERAUTHENTICATION_TEST_EXPLAIN")
-    m["INNOCYBERAUTHENTICATION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("INNO_CYBER_AUTHENTICATION_TEST_EXPLAIN")
+    m["INNO_CYBER_AUTHENTICATION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -38,13 +38,12 @@ const client = new InnoCyberAuthenticationSDK({
 ### 4. Create, update, and remove
 
 ```ts
-// Create — returns the created Authentication
+// Create — returns the created Authentication ENTITY (.data() for the record)
 const created = await client.Authentication().create({
-  email: 'example_email',
-  name: 'example_name',
-  new_password: 'example_new_password',
+  newPassword: 'example_newPassword',
   password: 'example_password',
-  referral_code: 'example_referral_code',
+  referralCode: 'example_referralCode',
+  token: 'example_token',
 })
 
 ```
@@ -56,7 +55,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const authentication = await client.Authentication().create({ email: "example", name: "example", new_password: "example", password: "example", referral_code: "example" })
+  const authentication = await client.Authentication().create({ newPassword: "example", password: "example", referralCode: "example", token: "example" })
   console.log(authentication)
 } catch (err) {
   console.error('create failed:', err)
@@ -123,8 +122,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = InnoCyberAuthenticationSDK.test()
 
-const authentication = await client.Authentication().create({ email: 'example_email', name: 'example_name', new_password: 'example_new_password', password: 'example_password', referral_code: 'example_referral_code' })
-// authentication is a bare entity populated with mock response data
+const authentication = await client.Authentication().create({ newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode', token: 'example_token' })
+// authentication is the entity, populated with mock response data
+// — call authentication.data() for the record itself
 console.log(authentication)
 ```
 
@@ -143,11 +143,11 @@ Entity instances remember their last match and data:
 const entity = client.Authentication()
 
 // First call runs the operation and stores its result
-await entity.create({ email: 'example_email', name: 'example_name', new_password: 'example_new_password', password: 'example_password', referral_code: 'example_referral_code' })
+await entity.create({ newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode', token: 'example_token' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -292,16 +292,14 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `email` |  |
+| `id` |  |
 | `message` |  |
 | `name` |  |
-| `new_password` |  |
+| `newPassword` |  |
 | `password` |  |
-| `referral_code` |  |
-| `referrer` |  |
+| `referralCode` |  |
 | `success` |  |
 | `token` |  |
-| `user` |  |
-| `valid` |  |
 
 Operations: create.
 
@@ -327,26 +325,23 @@ Create an instance: `const authentication = client.Authentication()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `string` |  |
+| `id` | `string` |  |
 | `message` | `string` |  |
 | `name` | `string` |  |
-| `new_password` | `string` |  |
+| `newPassword` | `string` |  |
 | `password` | `string` |  |
-| `referral_code` | `string` |  |
-| `referrer` | `Record<string, any>` |  |
+| `referralCode` | `string` |  |
 | `success` | `boolean` |  |
 | `token` | `string` |  |
-| `user` | `Record<string, any>` |  |
-| `valid` | `boolean` |  |
 
 #### Example: Create
 
 ```ts
 const authentication = await client.Authentication().create({
-  email: 'example_email',
-  name: 'example_name',
-  new_password: 'example_new_password',
+  newPassword: 'example_newPassword',
   password: 'example_password',
-  referral_code: 'example_referral_code',
+  referralCode: 'example_referralCode',
+  token: 'example_token',
 })
 ```
 
@@ -421,7 +416,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const authentication = client.Authentication()
-await authentication.create({ email: "example", name: "example", new_password: "example", password: "example", referral_code: "example" })
+await authentication.create({ newPassword: "example", password: "example", referralCode: "example", token: "example" })
 
 // authentication.data() now returns the authentication data from the last `create`
 // authentication.match() returns the last match criteria

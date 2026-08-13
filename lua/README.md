@@ -39,7 +39,7 @@ local client = sdk.new({
 
 ```lua
 -- Create
-local created, err = client:Authentication():create({ email = "example_email", name = "example_name", new_password = "example_new_password", password = "example_password", referral_code = "example_referral_code" })
+local created, err = client:Authentication():create({ newPassword = "example_newPassword", password = "example_password", referralCode = "example_referralCode", token = "example_token" })
 if err then error(err) end
 
 ```
@@ -51,7 +51,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local authentication, err = client:Authentication():create({ email = "example", name = "example", new_password = "example", password = "example", referral_code = "example" })
+local authentication, err = client:Authentication():create({ newPassword = "example", password = "example", referralCode = "example", token = "example" })
 if err then error(err) end
 ```
 
@@ -109,7 +109,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Authentication():create({ email = "example", name = "example", new_password = "example", password = "example", referral_code = "example" })
+local result, err = client:Authentication():create({ newPassword = "example", password = "example", referralCode = "example", token = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -217,9 +217,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local authentication, err = client:Authentication():load()
+    local authentication, err = client:Authentication():list()
     if err then error(err) end
-    -- authentication is the loaded record
+    -- authentication is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -231,16 +231,14 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `email` |  |
+| `id` |  |
 | `message` |  |
 | `name` |  |
-| `new_password` |  |
+| `newPassword` |  |
 | `password` |  |
-| `referral_code` |  |
-| `referrer` |  |
+| `referralCode` |  |
 | `success` |  |
 | `token` |  |
-| `user` |  |
-| `valid` |  |
 
 Operations: Create.
 
@@ -266,26 +264,23 @@ Create an instance: `local authentication = client:Authentication(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `string` |  |
+| `id` | `string` |  |
 | `message` | `string` |  |
 | `name` | `string` |  |
-| `new_password` | `string` |  |
+| `newPassword` | `string` |  |
 | `password` | `string` |  |
-| `referral_code` | `string` |  |
-| `referrer` | `table` |  |
+| `referralCode` | `string` |  |
 | `success` | `boolean` |  |
 | `token` | `string` |  |
-| `user` | `table` |  |
-| `valid` | `boolean` |  |
 
 #### Example: Create
 
 ```lua
 local authentication, err = client:Authentication():create({
-  email = "example_email", -- string
-  name = "example_name", -- string
-  new_password = "example_new_password", -- string
+  newPassword = "example_newPassword", -- string
   password = "example_password", -- string
-  referral_code = "example_referral_code", -- string
+  referralCode = "example_referralCode", -- string
+  token = "example_token", -- string
 })
 ```
 
@@ -367,7 +362,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local authentication = client:Authentication()
-authentication:create({ email = "example", name = "example", new_password = "example", password = "example", referral_code = "example" })
+authentication:create({ newPassword = "example", password = "example", referralCode = "example", token = "example" })
 
 -- authentication:data_get() now returns the authentication data from the last create
 -- authentication:match_get() returns the last match criteria

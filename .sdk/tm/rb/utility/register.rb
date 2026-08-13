@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ InnoCyberAuthenticationUtility.registrar = ->(u) {
   u.prepare_params = InnoCyberAuthenticationUtilities::PrepareParams
   u.prepare_path = InnoCyberAuthenticationUtilities::PreparePath
   u.prepare_query = InnoCyberAuthenticationUtilities::PrepareQuery
+  u.graphql_body = InnoCyberAuthenticationUtilities::GraphqlBody
+  u.graphql_errors = InnoCyberAuthenticationUtilities::GraphqlErrors
   u.result_basic = InnoCyberAuthenticationUtilities::ResultBasic
   u.result_body = InnoCyberAuthenticationUtilities::ResultBody
   u.result_headers = InnoCyberAuthenticationUtilities::ResultHeaders

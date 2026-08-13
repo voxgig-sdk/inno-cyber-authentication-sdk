@@ -7,30 +7,26 @@
 -- edit by hand.
 
 ---@class Authentication
----@field email string
+---@field email? string
+---@field id? string
 ---@field message? string
----@field name string
----@field new_password string
+---@field name? string
+---@field newPassword string
 ---@field password string
----@field referral_code string
----@field referrer? table
+---@field referralCode string
 ---@field success? boolean
----@field token? string
----@field user? table
----@field valid? boolean
+---@field token string
 
 ---@class AuthenticationCreateData
----@field email string
+---@field email? string
+---@field id? string
 ---@field message? string
----@field name string
----@field new_password string
+---@field name? string
+---@field newPassword string
 ---@field password string
----@field referral_code string
----@field referrer? table
+---@field referralCode string
 ---@field success? boolean
----@field token? string
----@field user? table
----@field valid? boolean
+---@field token string
 
 local M = {}
 

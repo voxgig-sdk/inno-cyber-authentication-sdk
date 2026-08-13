@@ -93,33 +93,29 @@ $authentication = $client->Authentication();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `string` | Yes |  |
+| `email` | `string` | No |  |
+| `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `name` | `string` | Yes |  |
-| `new_password` | `string` | Yes |  |
+| `name` | `string` | No |  |
+| `newPassword` | `string` | Yes |  |
 | `password` | `string` | Yes |  |
-| `referral_code` | `string` | Yes |  |
-| `referrer` | `array` | No |  |
+| `referralCode` | `string` | Yes |  |
 | `success` | `bool` | No |  |
-| `token` | `string` | No |  |
-| `user` | `array` | No |  |
-| `valid` | `bool` | No |  |
+| `token` | `string` | Yes |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `email` | - |
+| `email` | Yes |
+| `id` | - |
 | `message` | - |
-| `name` | - |
-| `new_password` | - |
+| `name` | Yes |
+| `newPassword` | - |
 | `password` | - |
-| `referral_code` | Yes |
-| `referrer` | - |
+| `referralCode` | Yes |
 | `success` | - |
-| `token` | Yes |
-| `user` | - |
-| `valid` | - |
+| `token` | - |
 
 ### Operations
 
@@ -129,11 +125,10 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Authentication()->create([
-  "email" => null, // string
-  "name" => null, // string
-  "new_password" => null, // string
+  "newPassword" => null, // string
   "password" => null, // string
-  "referral_code" => null, // string
+  "referralCode" => null, // string
+  "token" => null, // string
 ]);
 ```
 

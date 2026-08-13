@@ -117,33 +117,29 @@ const authentication = client.Authentication()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `string` | Yes |  |
+| `email` | `string` | No |  |
+| `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `name` | `string` | Yes |  |
-| `new_password` | `string` | Yes |  |
+| `name` | `string` | No |  |
+| `newPassword` | `string` | Yes |  |
 | `password` | `string` | Yes |  |
-| `referral_code` | `string` | Yes |  |
-| `referrer` | `Record<string, any>` | No |  |
+| `referralCode` | `string` | Yes |  |
 | `success` | `boolean` | No |  |
-| `token` | `string` | No |  |
-| `user` | `Record<string, any>` | No |  |
-| `valid` | `boolean` | No |  |
+| `token` | `string` | Yes |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `email` | - |
+| `email` | Yes |
+| `id` | - |
 | `message` | - |
-| `name` | - |
-| `new_password` | - |
+| `name` | Yes |
+| `newPassword` | - |
 | `password` | - |
-| `referral_code` | Yes |
-| `referrer` | - |
+| `referralCode` | Yes |
 | `success` | - |
-| `token` | Yes |
-| `user` | - |
-| `valid` | - |
+| `token` | - |
 
 ### Operations
 
@@ -153,11 +149,10 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Authentication().create({
-  email: 'example_email',
-  name: 'example_name',
-  new_password: 'example_new_password',
+  newPassword: 'example_newPassword',
   password: 'example_password',
-  referral_code: 'example_referral_code',
+  referralCode: 'example_referralCode',
+  token: 'example_token',
 })
 ```
 
