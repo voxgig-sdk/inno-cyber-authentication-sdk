@@ -28,7 +28,7 @@ class InnoCyberAuthenticationSDK
     utility = InnoCyberAuthenticationUtility.new
     @_utility = utility
 
-    config = InnoCyberAuthenticationConfig.make_config
+    config = InnoCyberAuthenticationConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

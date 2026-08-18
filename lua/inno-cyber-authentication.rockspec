@@ -23,6 +23,7 @@ build = {
   modules = {
     ["inno-cyber-authentication_sdk"] = "inno-cyber-authentication_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

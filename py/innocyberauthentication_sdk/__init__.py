@@ -23,8 +23,8 @@ class InnoCyberAuthenticationSDK:
         utility = InnoCyberAuthenticationUtility()
         self._utility = utility
 
-        from innocyberauthentication_sdk.config import make_config
-        config = make_config()
+        from innocyberauthentication_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

@@ -40,7 +40,7 @@ class InnoCyberAuthenticationSDK
         $utility = new InnoCyberAuthenticationUtility();
         $this->_utility = $utility;
 
-        $config = InnoCyberAuthenticationConfig::make_config();
+        $config = InnoCyberAuthenticationConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
