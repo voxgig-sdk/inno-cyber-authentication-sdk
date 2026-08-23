@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "InnoCyberAuthentication",
+      slug = "inno-cyber-authentication",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -38,6 +41,7 @@ local function make_config()
                 ["type"] = "`$STRING`",
               },
             },
+            ["short"] = "User email address",
             ["type"] = "`$STRING`",
           },
           {
@@ -56,16 +60,19 @@ local function make_config()
                 ["type"] = "`$STRING`",
               },
             },
+            ["short"] = "User full name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "newPassword",
             ["req"] = true,
+            ["short"] = "New password",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "password",
             ["req"] = true,
+            ["short"] = "User password",
             ["type"] = "`$STRING`",
           },
           {
@@ -76,6 +83,7 @@ local function make_config()
               },
             },
             ["req"] = true,
+            ["short"] = "Referral code to validate",
             ["type"] = "`$STRING`",
           },
           {
@@ -85,6 +93,7 @@ local function make_config()
           {
             ["name"] = "token",
             ["req"] = true,
+            ["short"] = "Password reset token received via email",
             ["type"] = "`$STRING`",
           },
         },

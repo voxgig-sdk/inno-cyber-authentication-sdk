@@ -88,15 +88,15 @@ authentication = client.Authentication()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `str` | No |  |
+| `email` | `str` | No | User email address |
 | `id` | `str` | No |  |
 | `message` | `str` | No |  |
-| `name` | `str` | No |  |
-| `newPassword` | `str` | Yes |  |
-| `password` | `str` | Yes |  |
-| `referralCode` | `str` | Yes |  |
+| `name` | `str` | No | User full name |
+| `newPassword` | `str` | Yes | New password |
+| `password` | `str` | Yes | User password |
+| `referralCode` | `str` | Yes | Referral code to validate |
 | `success` | `bool` | No |  |
-| `token` | `str` | Yes |  |
+| `token` | `str` | Yes | Password reset token received via email |
 
 ### Field Usage by Operation
 

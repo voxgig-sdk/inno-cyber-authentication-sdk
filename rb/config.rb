@@ -19,6 +19,9 @@ module InnoCyberAuthenticationConfig
     {
       "main" => {
         "name" => "InnoCyberAuthentication",
+        "slug" => "inno-cyber-authentication",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -50,6 +53,7 @@ module InnoCyberAuthenticationConfig
                   "type" => "`$STRING`",
                 },
               },
+              "short" => "User email address",
               "type" => "`$STRING`",
             },
             {
@@ -68,16 +72,19 @@ module InnoCyberAuthenticationConfig
                   "type" => "`$STRING`",
                 },
               },
+              "short" => "User full name",
               "type" => "`$STRING`",
             },
             {
               "name" => "newPassword",
               "req" => true,
+              "short" => "New password",
               "type" => "`$STRING`",
             },
             {
               "name" => "password",
               "req" => true,
+              "short" => "User password",
               "type" => "`$STRING`",
             },
             {
@@ -88,6 +95,7 @@ module InnoCyberAuthenticationConfig
                 },
               },
               "req" => true,
+              "short" => "Referral code to validate",
               "type" => "`$STRING`",
             },
             {
@@ -97,6 +105,7 @@ module InnoCyberAuthenticationConfig
             {
               "name" => "token",
               "req" => true,
+              "short" => "Password reset token received via email",
               "type" => "`$STRING`",
             },
           ],

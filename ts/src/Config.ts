@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'InnoCyberAuthentication',
+        slug: "inno-cyber-authentication",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -66,6 +77,7 @@ class Config {
               "type": "`$STRING`"
             }
           },
+          "short": "User email address",
           "type": "`$STRING`"
         },
         {
@@ -84,16 +96,19 @@ class Config {
               "type": "`$STRING`"
             }
           },
+          "short": "User full name",
           "type": "`$STRING`"
         },
         {
           "name": "newPassword",
           "req": true,
+          "short": "New password",
           "type": "`$STRING`"
         },
         {
           "name": "password",
           "req": true,
+          "short": "User password",
           "type": "`$STRING`"
         },
         {
@@ -104,6 +119,7 @@ class Config {
             }
           },
           "req": true,
+          "short": "Referral code to validate",
           "type": "`$STRING`"
         },
         {
@@ -113,6 +129,7 @@ class Config {
         {
           "name": "token",
           "req": true,
+          "short": "Password reset token received via email",
           "type": "`$STRING`"
         }
       ],

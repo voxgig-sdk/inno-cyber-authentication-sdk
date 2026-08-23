@@ -235,15 +235,15 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
+| `email` | User email address |
 | `id` |  |
 | `message` |  |
-| `name` |  |
-| `newPassword` |  |
-| `password` |  |
-| `referralCode` |  |
+| `name` | User full name |
+| `newPassword` | New password |
+| `password` | User password |
+| `referralCode` | Referral code to validate |
 | `success` |  |
-| `token` |  |
+| `token` | Password reset token received via email |
 
 Operations: Create.
 
@@ -268,15 +268,15 @@ Create an instance: `authentication = client.Authentication`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `String` |  |
+| `email` | `String` | User email address |
 | `id` | `String` |  |
 | `message` | `String` |  |
-| `name` | `String` |  |
-| `newPassword` | `String` |  |
-| `password` | `String` |  |
-| `referralCode` | `String` |  |
+| `name` | `String` | User full name |
+| `newPassword` | `String` | New password |
+| `password` | `String` | User password |
+| `referralCode` | `String` | Referral code to validate |
 | `success` | `Boolean` |  |
-| `token` | `String` |  |
+| `token` | `String` | Password reset token received via email |
 
 #### Example: Create
 

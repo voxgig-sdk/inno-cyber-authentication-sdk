@@ -42,6 +42,7 @@
                 }
               },
               "req": false,
+              "short": "User email address",
               "type": "`$STRING`"
             },
             {
@@ -66,18 +67,21 @@
                 }
               },
               "req": false,
+              "short": "User full name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "newPassword",
               "req": true,
+              "short": "New password",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "password",
               "req": true,
+              "short": "User password",
               "type": "`$STRING`"
             },
             {
@@ -90,6 +94,7 @@
                 }
               },
               "req": true,
+              "short": "Referral code to validate",
               "type": "`$STRING`"
             },
             {
@@ -102,6 +107,7 @@
               "active": true,
               "name": "token",
               "req": true,
+              "short": "Password reset token received via email",
               "type": "`$STRING`"
             }
           ],

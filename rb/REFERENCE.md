@@ -94,15 +94,15 @@ authentication = client.Authentication
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `String` | No |  |
+| `email` | `String` | No | User email address |
 | `id` | `String` | No |  |
 | `message` | `String` | No |  |
-| `name` | `String` | No |  |
-| `newPassword` | `String` | Yes |  |
-| `password` | `String` | Yes |  |
-| `referralCode` | `String` | Yes |  |
+| `name` | `String` | No | User full name |
+| `newPassword` | `String` | Yes | New password |
+| `password` | `String` | Yes | User password |
+| `referralCode` | `String` | Yes | Referral code to validate |
 | `success` | `Boolean` | No |  |
-| `token` | `String` | Yes |  |
+| `token` | `String` | Yes | Password reset token received via email |
 
 ### Field Usage by Operation
 

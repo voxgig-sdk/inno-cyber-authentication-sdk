@@ -14,6 +14,7 @@ main: kit: entity: authentication: {
         }
       }
       req: false
+      short: "User email address"
       type: "`$STRING`"
     }
     {
@@ -35,16 +36,19 @@ main: kit: entity: authentication: {
         }
       }
       req: false
+      short: "User full name"
       type: "`$STRING`"
     }
     {
       name: "newPassword"
       req: true
+      short: "New password"
       type: "`$STRING`"
     }
     {
       name: "password"
       req: true
+      short: "User password"
       type: "`$STRING`"
     }
     {
@@ -56,6 +60,7 @@ main: kit: entity: authentication: {
         }
       }
       req: true
+      short: "Referral code to validate"
       type: "`$STRING`"
     }
     {
@@ -66,6 +71,7 @@ main: kit: entity: authentication: {
     {
       name: "token"
       req: true
+      short: "Password reset token received via email"
       type: "`$STRING`"
     }
   ]

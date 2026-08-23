@@ -33,6 +33,9 @@ class InnoCyberAuthenticationConfig
         return [
             "main" => [
                 "name" => "InnoCyberAuthentication",
+                "slug" => "inno-cyber-authentication",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -64,6 +67,7 @@ class InnoCyberAuthenticationConfig
                   'type' => '`$STRING`',
                 ],
               ],
+              'short' => 'User email address',
               'type' => '`$STRING`',
             ],
             [
@@ -82,16 +86,19 @@ class InnoCyberAuthenticationConfig
                   'type' => '`$STRING`',
                 ],
               ],
+              'short' => 'User full name',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'newPassword',
               'req' => true,
+              'short' => 'New password',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'password',
               'req' => true,
+              'short' => 'User password',
               'type' => '`$STRING`',
             ],
             [
@@ -102,6 +109,7 @@ class InnoCyberAuthenticationConfig
                 ],
               ],
               'req' => true,
+              'short' => 'Referral code to validate',
               'type' => '`$STRING`',
             ],
             [
@@ -111,6 +119,7 @@ class InnoCyberAuthenticationConfig
             [
               'name' => 'token',
               'req' => true,
+              'short' => 'Password reset token received via email',
               'type' => '`$STRING`',
             ],
           ],

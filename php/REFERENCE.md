@@ -93,15 +93,15 @@ $authentication = $client->Authentication();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `string` | No |  |
+| `email` | `string` | No | User email address |
 | `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `name` | `string` | No |  |
-| `newPassword` | `string` | Yes |  |
-| `password` | `string` | Yes |  |
-| `referralCode` | `string` | Yes |  |
+| `name` | `string` | No | User full name |
+| `newPassword` | `string` | Yes | New password |
+| `password` | `string` | Yes | User password |
+| `referralCode` | `string` | Yes | Referral code to validate |
 | `success` | `bool` | No |  |
-| `token` | `string` | Yes |  |
+| `token` | `string` | Yes | Password reset token received via email |
 
 ### Field Usage by Operation
 

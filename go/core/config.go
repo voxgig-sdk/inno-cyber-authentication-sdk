@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "InnoCyberAuthentication",
+			"slug": "inno-cyber-authentication",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -42,6 +45,7 @@ func MakeConfig() map[string]any {
 								"type": "`$STRING`",
 							},
 						},
+						"short": "User email address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -60,16 +64,19 @@ func MakeConfig() map[string]any {
 								"type": "`$STRING`",
 							},
 						},
+						"short": "User full name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "newPassword",
 						"req": true,
+						"short": "New password",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "password",
 						"req": true,
+						"short": "User password",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -80,6 +87,7 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"req": true,
+						"short": "Referral code to validate",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -89,6 +97,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "token",
 						"req": true,
+						"short": "Password reset token received via email",
 						"type": "`$STRING`",
 					},
 				},

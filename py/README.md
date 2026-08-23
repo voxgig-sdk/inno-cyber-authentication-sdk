@@ -242,15 +242,15 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
+| `email` | User email address |
 | `id` |  |
 | `message` |  |
-| `name` |  |
-| `newPassword` |  |
-| `password` |  |
-| `referralCode` |  |
+| `name` | User full name |
+| `newPassword` | New password |
+| `password` | User password |
+| `referralCode` | Referral code to validate |
 | `success` |  |
-| `token` |  |
+| `token` | Password reset token received via email |
 
 Operations: Create.
 
@@ -275,15 +275,15 @@ Create an instance: `authentication = client.Authentication()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `str` |  |
+| `email` | `str` | User email address |
 | `id` | `str` |  |
 | `message` | `str` |  |
-| `name` | `str` |  |
-| `newPassword` | `str` |  |
-| `password` | `str` |  |
-| `referralCode` | `str` |  |
+| `name` | `str` | User full name |
+| `newPassword` | `str` | New password |
+| `password` | `str` | User password |
+| `referralCode` | `str` | Referral code to validate |
 | `success` | `bool` |  |
-| `token` | `str` |  |
+| `token` | `str` | Password reset token received via email |
 
 #### Example: Create
 

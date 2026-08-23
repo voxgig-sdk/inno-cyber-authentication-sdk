@@ -6,7 +6,7 @@ The Golang SDK for the InnoCyberAuthentication API — an entity-oriented client
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Authentication(nil)` — each with the same small set of operations (`Create`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -263,15 +263,15 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"email"` |  |
+| `"email"` | User email address |
 | `"id"` |  |
 | `"message"` |  |
-| `"name"` |  |
-| `"newPassword"` |  |
-| `"password"` |  |
-| `"referralCode"` |  |
+| `"name"` | User full name |
+| `"newPassword"` | New password |
+| `"password"` | User password |
+| `"referralCode"` | Referral code to validate |
 | `"success"` |  |
-| `"token"` |  |
+| `"token"` | Password reset token received via email |
 
 Operations: Create.
 
@@ -296,15 +296,15 @@ Create an instance: `authentication := client.Authentication(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `string` |  |
+| `email` | `string` | User email address |
 | `id` | `string` |  |
 | `message` | `string` |  |
-| `name` | `string` |  |
-| `newPassword` | `string` |  |
-| `password` | `string` |  |
-| `referralCode` | `string` |  |
+| `name` | `string` | User full name |
+| `newPassword` | `string` | New password |
+| `password` | `string` | User password |
+| `referralCode` | `string` | Referral code to validate |
 | `success` | `bool` |  |
-| `token` | `string` |  |
+| `token` | `string` | Password reset token received via email |
 
 #### Example: Create
 

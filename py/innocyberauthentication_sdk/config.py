@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "InnoCyberAuthentication",
+            "slug": "inno-cyber-authentication",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -59,6 +62,7 @@ def make_config():
                 "type": "`$STRING`",
               },
             },
+            "short": "User email address",
             "type": "`$STRING`",
           },
           {
@@ -77,16 +81,19 @@ def make_config():
                 "type": "`$STRING`",
               },
             },
+            "short": "User full name",
             "type": "`$STRING`",
           },
           {
             "name": "newPassword",
             "req": True,
+            "short": "New password",
             "type": "`$STRING`",
           },
           {
             "name": "password",
             "req": True,
+            "short": "User password",
             "type": "`$STRING`",
           },
           {
@@ -97,6 +104,7 @@ def make_config():
               },
             },
             "req": True,
+            "short": "Referral code to validate",
             "type": "`$STRING`",
           },
           {
@@ -106,6 +114,7 @@ def make_config():
           {
             "name": "token",
             "req": True,
+            "short": "Password reset token received via email",
             "type": "`$STRING`",
           },
         ],

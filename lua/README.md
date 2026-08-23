@@ -230,15 +230,15 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
+| `email` | User email address |
 | `id` |  |
 | `message` |  |
-| `name` |  |
-| `newPassword` |  |
-| `password` |  |
-| `referralCode` |  |
+| `name` | User full name |
+| `newPassword` | New password |
+| `password` | User password |
+| `referralCode` | Referral code to validate |
 | `success` |  |
-| `token` |  |
+| `token` | Password reset token received via email |
 
 Operations: Create.
 
@@ -263,15 +263,15 @@ Create an instance: `local authentication = client:Authentication(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `string` |  |
+| `email` | `string` | User email address |
 | `id` | `string` |  |
 | `message` | `string` |  |
-| `name` | `string` |  |
-| `newPassword` | `string` |  |
-| `password` | `string` |  |
-| `referralCode` | `string` |  |
+| `name` | `string` | User full name |
+| `newPassword` | `string` | New password |
+| `password` | `string` | User password |
+| `referralCode` | `string` | Referral code to validate |
 | `success` | `boolean` |  |
-| `token` | `string` |  |
+| `token` | `string` | Password reset token received via email |
 
 #### Example: Create
 
