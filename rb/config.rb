@@ -28,6 +28,7 @@ module InnoCyberAuthenticationConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
