@@ -39,6 +39,7 @@ func MakeConfig() map[string]any {
 			"authentication": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "email",
 						"name": "email",
 						"op": map[string]any{
 							"create": map[string]any{
@@ -69,12 +70,14 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "password",
 						"name": "newPassword",
 						"req": true,
 						"short": "New password",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "password",
 						"name": "password",
 						"req": true,
 						"short": "User password",
@@ -102,6 +105,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "authentication",
 				"op": map[string]any{
 					"create": map[string]any{
@@ -113,15 +120,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/login",
-								"parts": []any{
-									"api",
-									"auth",
-									"login",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "auth",
+									},
+									map[string]any{
+										"lit": "login",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.user`",
+								},
+								"parts": []any{
+									"api",
+									"auth",
+									"login",
 								},
 							},
 							map[string]any{
@@ -129,16 +147,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/password/recover",
-								"parts": []any{
-									"api",
-									"auth",
-									"password",
-									"recover",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "auth",
+									},
+									map[string]any{
+										"lit": "password",
+									},
+									map[string]any{
+										"lit": "recover",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"auth",
+									"password",
+									"recover",
 								},
 							},
 							map[string]any{
@@ -146,16 +178,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/password/reset",
-								"parts": []any{
-									"api",
-									"auth",
-									"password",
-									"reset",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "auth",
+									},
+									map[string]any{
+										"lit": "password",
+									},
+									map[string]any{
+										"lit": "reset",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"auth",
+									"password",
+									"reset",
 								},
 							},
 							map[string]any{
@@ -163,16 +209,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/referral/validate",
-								"parts": []any{
-									"api",
-									"auth",
-									"referral",
-									"validate",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "auth",
+									},
+									map[string]any{
+										"lit": "referral",
+									},
+									map[string]any{
+										"lit": "validate",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.referrer`",
+								},
+								"parts": []any{
+									"api",
+									"auth",
+									"referral",
+									"validate",
 								},
 							},
 							map[string]any{
@@ -180,15 +240,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/signup",
-								"parts": []any{
-									"api",
-									"auth",
-									"signup",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "auth",
+									},
+									map[string]any{
+										"lit": "signup",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.user`",
+								},
+								"parts": []any{
+									"api",
+									"auth",
+									"signup",
 								},
 							},
 						},
@@ -200,6 +271,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

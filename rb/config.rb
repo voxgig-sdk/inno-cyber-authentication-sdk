@@ -47,6 +47,7 @@ module InnoCyberAuthenticationConfig
         "authentication" => {
           "fields" => [
             {
+              "format" => "email",
               "name" => "email",
               "op" => {
                 "create" => {
@@ -77,12 +78,14 @@ module InnoCyberAuthenticationConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "password",
               "name" => "newPassword",
               "req" => true,
               "short" => "New password",
               "type" => "`$STRING`",
             },
             {
+              "format" => "password",
               "name" => "password",
               "req" => true,
               "short" => "User password",
@@ -110,6 +113,10 @@ module InnoCyberAuthenticationConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "authentication",
           "op" => {
             "create" => {
@@ -121,83 +128,147 @@ module InnoCyberAuthenticationConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/auth/login",
-                  "parts" => [
-                    "api",
-                    "auth",
-                    "login",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "auth",
+                    },
+                    {
+                      "lit" => "login",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.user`",
                   },
+                  "parts" => [
+                    "api",
+                    "auth",
+                    "login",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/auth/password/recover",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "auth",
+                    },
+                    {
+                      "lit" => "password",
+                    },
+                    {
+                      "lit" => "recover",
+                    },
+                  ],
+                  "select" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
                   "parts" => [
                     "api",
                     "auth",
                     "password",
                     "recover",
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/auth/password/reset",
-                  "parts" => [
-                    "api",
-                    "auth",
-                    "password",
-                    "reset",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "auth",
+                    },
+                    {
+                      "lit" => "password",
+                    },
+                    {
+                      "lit" => "reset",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "auth",
+                    "password",
+                    "reset",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/auth/referral/validate",
-                  "parts" => [
-                    "api",
-                    "auth",
-                    "referral",
-                    "validate",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "auth",
+                    },
+                    {
+                      "lit" => "referral",
+                    },
+                    {
+                      "lit" => "validate",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.referrer`",
                   },
+                  "parts" => [
+                    "api",
+                    "auth",
+                    "referral",
+                    "validate",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/auth/signup",
-                  "parts" => [
-                    "api",
-                    "auth",
-                    "signup",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "auth",
+                    },
+                    {
+                      "lit" => "signup",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.user`",
                   },
+                  "parts" => [
+                    "api",
+                    "auth",
+                    "signup",
+                  ],
                 },
               ],
             },

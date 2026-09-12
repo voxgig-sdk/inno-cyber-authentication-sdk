@@ -6,6 +6,7 @@ main: kit: entity: authentication: {
 
   fields: [
     {
+      format: "email"
       name: "email"
       op: {
         create: {
@@ -40,12 +41,14 @@ main: kit: entity: authentication: {
       type: "`$STRING`"
     }
     {
+      format: "password"
       name: "newPassword"
       req: true
       short: "New password"
       type: "`$STRING`"
     }
     {
+      format: "password"
       name: "password"
       req: true
       short: "User password"
@@ -89,10 +92,16 @@ main: kit: entity: authentication: {
         {
           method: "POST"
           orig: "/api/auth/login"
-          parts: [
-            "api"
-            "auth"
-            "login"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "login"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -102,11 +111,19 @@ main: kit: entity: authentication: {
         {
           method: "POST"
           orig: "/api/auth/password/recover"
-          parts: [
-            "api"
-            "auth"
-            "password"
-            "recover"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "password"
+            }
+            {
+              lit: "recover"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -116,11 +133,19 @@ main: kit: entity: authentication: {
         {
           method: "POST"
           orig: "/api/auth/password/reset"
-          parts: [
-            "api"
-            "auth"
-            "password"
-            "reset"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "password"
+            }
+            {
+              lit: "reset"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -130,11 +155,19 @@ main: kit: entity: authentication: {
         {
           method: "POST"
           orig: "/api/auth/referral/validate"
-          parts: [
-            "api"
-            "auth"
-            "referral"
-            "validate"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "referral"
+            }
+            {
+              lit: "validate"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -144,10 +177,16 @@ main: kit: entity: authentication: {
         {
           method: "POST"
           orig: "/api/auth/signup"
-          parts: [
-            "api"
-            "auth"
-            "signup"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "signup"
+            }
           ]
           transform: {
             req: "`reqdata`"
