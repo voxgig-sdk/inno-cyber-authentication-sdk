@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { InnoCyberAuthenticationSDK } from '@voxgig-sdk/inno-cyber-authentication'
+import { InnoCyberAuthenticationSDK } from '@voxgig-sdk/inno-cyber-authentication-sdk'
 
 const client = new InnoCyberAuthenticationSDK({
   apikey: process.env.INNO_CYBER_AUTHENTICATION_APIKEY,
@@ -428,7 +428,7 @@ inno-cyber-authentication/
 Import the SDK from the package root:
 
 ```ts
-import { InnoCyberAuthenticationSDK } from '@voxgig-sdk/inno-cyber-authentication'
+import { InnoCyberAuthenticationSDK } from '@voxgig-sdk/inno-cyber-authentication-sdk'
 ```
 
 ### Entity state

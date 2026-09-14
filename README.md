@@ -110,7 +110,7 @@ local result, err = client:Authentication():create({ newPassword = "example", pa
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
+| TypeScript | `@voxgig-sdk/inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
 | Python | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
 | PHP | `voxgig-sdk/inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/inno-cyber-authentication-sdk/go` | `go get github.com/voxgig-sdk/inno-cyber-authentication-sdk/go@latest` |
@@ -124,7 +124,7 @@ local result, err = client:Authentication():create({ newPassword = "example", pa
 ### TypeScript
 
 ```ts
-import { InnoCyberAuthenticationSDK } from '@voxgig-sdk/inno-cyber-authentication'
+import { InnoCyberAuthenticationSDK } from '@voxgig-sdk/inno-cyber-authentication-sdk'
 
 const client = new InnoCyberAuthenticationSDK({
   apikey: process.env.INNO_CYBER_AUTHENTICATION_APIKEY,
