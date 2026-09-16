@@ -1,12 +1,18 @@
 # InnoCyberAuthentication SDK feature factory
 
 from innocyberauthentication_sdk.feature.base_feature import InnoCyberAuthenticationBaseFeature
+from innocyberauthentication_sdk.feature.ratelimit_feature import InnoCyberAuthenticationRatelimitFeature
+from innocyberauthentication_sdk.feature.retry_feature import InnoCyberAuthenticationRetryFeature
 from innocyberauthentication_sdk.feature.test_feature import InnoCyberAuthenticationTestFeature
+from innocyberauthentication_sdk.feature.timeout_feature import InnoCyberAuthenticationTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: InnoCyberAuthenticationBaseFeature(),
+    "ratelimit": lambda: InnoCyberAuthenticationRatelimitFeature(),
+    "retry": lambda: InnoCyberAuthenticationRetryFeature(),
     "test": lambda: InnoCyberAuthenticationTestFeature(),
+    "timeout": lambda: InnoCyberAuthenticationTimeoutFeature(),
 }
 
 

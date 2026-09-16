@@ -4,7 +4,10 @@ declare(strict_types=1);
 // InnoCyberAuthentication SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class InnoCyberAuthenticationFeatures
@@ -14,8 +17,14 @@ class InnoCyberAuthenticationFeatures
         switch ($name) {
             case "base":
                 return new InnoCyberAuthenticationBaseFeature();
+            case "ratelimit":
+                return new InnoCyberAuthenticationRatelimitFeature();
+            case "retry":
+                return new InnoCyberAuthenticationRetryFeature();
             case "test":
                 return new InnoCyberAuthenticationTestFeature();
+            case "timeout":
+                return new InnoCyberAuthenticationTimeoutFeature();
             default:
                 return new InnoCyberAuthenticationBaseFeature();
         }
@@ -31,7 +40,10 @@ class InnoCyberAuthenticationFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
