@@ -110,12 +110,12 @@ local result, err = client:Authentication():create({ newPassword = "example", pa
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
-| Python | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
-| PHP | `voxgig-sdk/inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
+| TypeScript | `@voxgig-sdk/inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
+| Python | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
+| PHP | `voxgig-sdk/inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/inno-cyber-authentication-sdk/go` | `go get github.com/voxgig-sdk/inno-cyber-authentication-sdk/go@latest` |
-| Ruby | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
-| Lua | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases) |
+| Ruby | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
+| Lua | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/inno-cyber-authentication-sdk/go-cli` | `go install github.com/voxgig-sdk/inno-cyber-authentication-sdk/go-cli/cmd/inno-cyber-authentication@latest` |
 | Go MCP server | `github.com/voxgig-sdk/inno-cyber-authentication-sdk/go-mcp` | `go get github.com/voxgig-sdk/inno-cyber-authentication-sdk/go-mcp@latest` |
 
