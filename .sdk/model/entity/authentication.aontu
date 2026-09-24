@@ -1,0 +1,236 @@
+# Entity: authentication
+
+main: kit: entity: authentication: {
+
+  alias: field: {}
+
+  fields: {
+    email: {
+      fo: "email"
+      h: "Email"
+      n: "email"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "User email address"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "User full name"
+      t: "`$STRING`"
+    }
+    newPassword: {
+      fo: "password"
+      h: "New Password"
+      n: "newPassword"
+      r: true
+      sh: "New password"
+      t: "`$STRING`"
+    }
+    password: {
+      fo: "password"
+      h: "Password"
+      n: "password"
+      r: true
+      sh: "User password"
+      t: "`$STRING`"
+    }
+    referralCode: {
+      h: "Referral Code"
+      n: "referralCode"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "Referral code to validate"
+      t: "`$STRING`"
+    }
+    success: {
+      h: "Success"
+      n: "success"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    token: {
+      h: "Token"
+      n: "token"
+      r: true
+      sh: "Password reset token received via email"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "authentication"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/auth/login"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/auth/login"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "login"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/auth/password/recover"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/auth/password/recover"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "password"
+            }
+            {
+              lit: "recover"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/auth/password/reset"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/auth/password/reset"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "password"
+            }
+            {
+              lit: "reset"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/auth/referral/validate"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/auth/referral/validate"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "referral"
+            }
+            {
+              lit: "validate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.referrer`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/auth/signup"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/auth/signup"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "auth"
+            }
+            {
+              lit: "signup"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

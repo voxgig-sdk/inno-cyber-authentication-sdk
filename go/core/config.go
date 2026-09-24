@@ -93,8 +93,9 @@ func MakeConfig() map[string]any {
 			"authentication": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "email",
 						"name": "email",
+						"title": "Email",
+						"type": "`$STRING`",
 						"op": map[string]any{
 							"create": map[string]any{
 								"req": true,
@@ -102,18 +103,22 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"short": "User email address",
-						"type": "`$STRING`",
+						"format": "email",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "message",
+						"title": "Message",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"op": map[string]any{
 							"create": map[string]any{
 								"req": true,
@@ -121,42 +126,46 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"short": "User full name",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "password",
 						"name": "newPassword",
+						"title": "New Password",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "New password",
-						"type": "`$STRING`",
+						"format": "password",
 					},
 					map[string]any{
-						"format": "password",
 						"name": "password",
+						"title": "Password",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "User password",
-						"type": "`$STRING`",
+						"format": "password",
 					},
 					map[string]any{
 						"name": "referralCode",
+						"title": "Referral Code",
+						"type": "`$STRING`",
+						"req": true,
 						"op": map[string]any{
 							"create": map[string]any{
 								"type": "`$STRING`",
 							},
 						},
-						"req": true,
 						"short": "Referral code to validate",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "success",
+						"title": "Success",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "token",
+						"title": "Token",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Password reset token received via email",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -170,7 +179,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/login",
@@ -185,19 +193,20 @@ func MakeConfig() map[string]any {
 										"lit": "login",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.user`",
-								},
 								"parts": []any{
 									"api",
 									"auth",
 									"login",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.user`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/password/recover",
@@ -215,20 +224,21 @@ func MakeConfig() map[string]any {
 										"lit": "recover",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"auth",
 									"password",
 									"recover",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/password/reset",
@@ -246,20 +256,21 @@ func MakeConfig() map[string]any {
 										"lit": "reset",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"auth",
 									"password",
 									"reset",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/referral/validate",
@@ -277,20 +288,21 @@ func MakeConfig() map[string]any {
 										"lit": "validate",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.referrer`",
-								},
 								"parts": []any{
 									"api",
 									"auth",
 									"referral",
 									"validate",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.referrer`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/auth/signup",
@@ -305,16 +317,18 @@ func MakeConfig() map[string]any {
 										"lit": "signup",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.user`",
-								},
 								"parts": []any{
 									"api",
 									"auth",
 									"signup",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.user`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

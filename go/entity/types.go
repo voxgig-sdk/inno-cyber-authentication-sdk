@@ -1,7 +1,7 @@
 // Typed models for the InnoCyberAuthentication SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,15 +14,6 @@ import (
 
 // Authentication is the typed data model for the authentication entity.
 type Authentication struct {
-	Email *string `json:"email,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Message *string `json:"message,omitempty"`
-	Name *string `json:"name,omitempty"`
-	NewPassword string `json:"newPassword"`
-	Password string `json:"password"`
-	ReferralCode string `json:"referralCode"`
-	Success *bool `json:"success,omitempty"`
-	Token string `json:"token"`
 }
 
 // AuthenticationCreateData is the typed request payload for Authentication.CreateTyped.

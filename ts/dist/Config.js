@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -116,8 +109,9 @@ class Config {
         "authentication": {
             "fields": [
                 {
-                    "format": "email",
                     "name": "email",
+                    "title": "Email",
+                    "type": "`$STRING`",
                     "op": {
                         "create": {
                             "req": true,
@@ -125,61 +119,69 @@ class Config {
                         }
                     },
                     "short": "User email address",
-                    "type": "`$STRING`"
+                    "format": "email"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "message",
+                    "title": "Message",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "name",
+                    "title": "Name",
+                    "type": "`$STRING`",
                     "op": {
                         "create": {
                             "req": true,
                             "type": "`$STRING`"
                         }
                     },
-                    "short": "User full name",
-                    "type": "`$STRING`"
+                    "short": "User full name"
                 },
                 {
-                    "format": "password",
                     "name": "newPassword",
+                    "title": "New Password",
+                    "type": "`$STRING`",
                     "req": true,
                     "short": "New password",
-                    "type": "`$STRING`"
+                    "format": "password"
                 },
                 {
-                    "format": "password",
                     "name": "password",
+                    "title": "Password",
+                    "type": "`$STRING`",
                     "req": true,
                     "short": "User password",
-                    "type": "`$STRING`"
+                    "format": "password"
                 },
                 {
                     "name": "referralCode",
+                    "title": "Referral Code",
+                    "type": "`$STRING`",
+                    "req": true,
                     "op": {
                         "create": {
                             "type": "`$STRING`"
                         }
                     },
-                    "req": true,
-                    "short": "Referral code to validate",
-                    "type": "`$STRING`"
+                    "short": "Referral code to validate"
                 },
                 {
                     "name": "success",
+                    "title": "Success",
                     "type": "`$BOOLEAN`"
                 },
                 {
                     "name": "token",
+                    "title": "Token",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Password reset token received via email",
-                    "type": "`$STRING`"
+                    "short": "Password reset token received via email"
                 }
             ],
             "id": {
@@ -193,7 +195,6 @@ class Config {
                     "name": "create",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/api/auth/login",
@@ -208,19 +209,20 @@ class Config {
                                     "lit": "login"
                                 }
                             ],
-                            "select": {},
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body.user`"
-                            },
                             "parts": [
                                 "api",
                                 "auth",
                                 "login"
-                            ]
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body.user`"
+                            },
+                            "args": {},
+                            "select": {}
                         },
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/api/auth/password/recover",
@@ -238,20 +240,21 @@ class Config {
                                     "lit": "recover"
                                 }
                             ],
-                            "select": {},
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "api",
                                 "auth",
                                 "password",
                                 "recover"
-                            ]
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {},
+                            "select": {}
                         },
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/api/auth/password/reset",
@@ -269,20 +272,21 @@ class Config {
                                     "lit": "reset"
                                 }
                             ],
-                            "select": {},
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "api",
                                 "auth",
                                 "password",
                                 "reset"
-                            ]
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {},
+                            "select": {}
                         },
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/api/auth/referral/validate",
@@ -300,20 +304,21 @@ class Config {
                                     "lit": "validate"
                                 }
                             ],
-                            "select": {},
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body.referrer`"
-                            },
                             "parts": [
                                 "api",
                                 "auth",
                                 "referral",
                                 "validate"
-                            ]
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body.referrer`"
+                            },
+                            "args": {},
+                            "select": {}
                         },
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/api/auth/signup",
@@ -328,16 +333,18 @@ class Config {
                                     "lit": "signup"
                                 }
                             ],
-                            "select": {},
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body.user`"
-                            },
                             "parts": [
                                 "api",
                                 "auth",
                                 "signup"
-                            ]
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body.user`"
+                            },
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }

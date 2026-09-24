@@ -78,8 +78,9 @@ declare class Config {
     entity: {
         authentication: {
             fields: ({
-                format: string;
                 name: string;
+                title: string;
+                type: string;
                 op: {
                     create: {
                         req: boolean;
@@ -87,17 +88,20 @@ declare class Config {
                     };
                 };
                 short: string;
-                type: string;
+                format: string;
                 req?: undefined;
             } | {
                 name: string;
+                title: string;
                 type: string;
-                format?: undefined;
                 op?: undefined;
                 short?: undefined;
+                format?: undefined;
                 req?: undefined;
             } | {
                 name: string;
+                title: string;
+                type: string;
                 op: {
                     create: {
                         req: boolean;
@@ -105,35 +109,37 @@ declare class Config {
                     };
                 };
                 short: string;
-                type: string;
                 format?: undefined;
                 req?: undefined;
             } | {
-                format: string;
                 name: string;
+                title: string;
+                type: string;
                 req: boolean;
                 short: string;
-                type: string;
+                format: string;
                 op?: undefined;
             } | {
                 name: string;
+                title: string;
+                type: string;
+                req: boolean;
                 op: {
                     create: {
                         type: string;
                         req?: undefined;
                     };
                 };
-                req: boolean;
                 short: string;
-                type: string;
                 format?: undefined;
             } | {
                 name: string;
+                title: string;
+                type: string;
                 req: boolean;
                 short: string;
-                type: string;
-                format?: undefined;
                 op?: undefined;
+                format?: undefined;
             })[];
             id: {
                 field: string;
@@ -145,19 +151,20 @@ declare class Config {
                     input: string;
                     name: string;
                     points: {
-                        args: {};
                         kind: string;
                         method: string;
                         orig: string;
                         segments: {
                             lit: string;
                         }[];
-                        select: {};
+                        parts: string[];
+                        rename: {};
                         transform: {
                             req: string;
                             res: string;
                         };
-                        parts: string[];
+                        args: {};
+                        select: {};
                     }[];
                 };
             };

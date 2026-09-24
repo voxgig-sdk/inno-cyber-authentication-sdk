@@ -118,8 +118,9 @@ def make_config():
       "authentication": {
         "fields": [
           {
-            "format": "email",
             "name": "email",
+            "title": "Email",
+            "type": "`$STRING`",
             "op": {
               "create": {
                 "req": True,
@@ -127,18 +128,22 @@ def make_config():
               },
             },
             "short": "User email address",
-            "type": "`$STRING`",
+            "format": "email",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
             "name": "message",
+            "title": "Message",
             "type": "`$STRING`",
           },
           {
             "name": "name",
+            "title": "Name",
+            "type": "`$STRING`",
             "op": {
               "create": {
                 "req": True,
@@ -146,42 +151,46 @@ def make_config():
               },
             },
             "short": "User full name",
-            "type": "`$STRING`",
           },
           {
-            "format": "password",
             "name": "newPassword",
+            "title": "New Password",
+            "type": "`$STRING`",
             "req": True,
             "short": "New password",
-            "type": "`$STRING`",
+            "format": "password",
           },
           {
-            "format": "password",
             "name": "password",
+            "title": "Password",
+            "type": "`$STRING`",
             "req": True,
             "short": "User password",
-            "type": "`$STRING`",
+            "format": "password",
           },
           {
             "name": "referralCode",
+            "title": "Referral Code",
+            "type": "`$STRING`",
+            "req": True,
             "op": {
               "create": {
                 "type": "`$STRING`",
               },
             },
-            "req": True,
             "short": "Referral code to validate",
-            "type": "`$STRING`",
           },
           {
             "name": "success",
+            "title": "Success",
             "type": "`$BOOLEAN`",
           },
           {
             "name": "token",
+            "title": "Token",
+            "type": "`$STRING`",
             "req": True,
             "short": "Password reset token received via email",
-            "type": "`$STRING`",
           },
         ],
         "id": {
@@ -195,7 +204,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/auth/login",
@@ -210,19 +218,20 @@ def make_config():
                     "lit": "login",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.user`",
-                },
                 "parts": [
                   "api",
                   "auth",
                   "login",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.user`",
+                },
+                "args": {},
+                "select": {},
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/auth/password/recover",
@@ -240,20 +249,21 @@ def make_config():
                     "lit": "recover",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "auth",
                   "password",
                   "recover",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {},
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/auth/password/reset",
@@ -271,20 +281,21 @@ def make_config():
                     "lit": "reset",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "auth",
                   "password",
                   "reset",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {},
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/auth/referral/validate",
@@ -302,20 +313,21 @@ def make_config():
                     "lit": "validate",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.referrer`",
-                },
                 "parts": [
                   "api",
                   "auth",
                   "referral",
                   "validate",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.referrer`",
+                },
+                "args": {},
+                "select": {},
               },
               {
-                "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/auth/signup",
@@ -330,16 +342,18 @@ def make_config():
                     "lit": "signup",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.user`",
-                },
                 "parts": [
                   "api",
                   "auth",
                   "signup",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.user`",
+                },
+                "args": {},
+                "select": {},
               },
             ],
           },
