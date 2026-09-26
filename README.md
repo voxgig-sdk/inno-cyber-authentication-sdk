@@ -111,11 +111,11 @@ local result, err = client:Authentication():create({ newPassword = "example", pa
 | Language | Package | Install |
 | --- | --- | --- |
 | TypeScript | `@voxgig-sdk/inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
-| Python | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
-| PHP | `voxgig-sdk/inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
+| Python | `voxgig-sdk-inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
+| PHP | `voxgig-sdk/inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/inno-cyber-authentication-sdk/go` | `go get github.com/voxgig-sdk/inno-cyber-authentication-sdk/go@latest` |
-| Ruby | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
-| Lua | `voxgig-sdk-inno-cyber-authentication` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
+| Ruby | `voxgig-sdk-inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
+| Lua | `voxgig-sdk-inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/inno-cyber-authentication-sdk/go-cli` | `go install github.com/voxgig-sdk/inno-cyber-authentication-sdk/go-cli/cmd/inno-cyber-authentication@latest` |
 | Go MCP server | `github.com/voxgig-sdk/inno-cyber-authentication-sdk/go-mcp` | `go get github.com/voxgig-sdk/inno-cyber-authentication-sdk/go-mcp@latest` |
 
@@ -333,10 +333,10 @@ forking the SDK.
 
 | Feature | Purpose |
 | --- | --- |
-| **RatelimitFeature** | Client-side rate limiting via a token bucket |
-| **RetryFeature** | Automatic retry of transient failures with exponential backoff |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-| **TimeoutFeature** | Per-request timeout with transport abort |
+| **RatelimitFeature** | Rate limiting |
+| **RetryFeature** | Retry |
+| **TestFeature** | Test transport |
+| **TimeoutFeature** | Timeout |
 
 Pass custom features via the `extend` option at construction time.
 

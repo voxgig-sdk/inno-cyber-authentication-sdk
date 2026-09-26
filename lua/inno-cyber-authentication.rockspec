@@ -1,4 +1,4 @@
-package = "voxgig-sdk-inno-cyber-authentication"
+package = "voxgig-sdk-inno-cyber-authentication-sdk"
 version = "0.0.1-1"
 source = {
   -- git+https (GitHub dropped git:// in 2022); pin the install to the release
