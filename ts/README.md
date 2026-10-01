@@ -15,9 +15,13 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`):
+release tag (`ts/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases)), or from a
+clone, which carries the compiled `dist/`:
 
-- Releases: [https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/inno-cyber-authentication-sdk
+npm install ./inno-cyber-authentication-sdk/ts
+```
 
 
 ## Tutorial: your first API call
@@ -40,10 +44,11 @@ const client = new InnoCyberAuthenticationSDK({
 ```ts
 // Create — returns the created Authentication ENTITY (.data() for the record)
 const created = await client.Authentication().create({
+  email: 'example_email',
+  name: 'example_name',
   newPassword: 'example_newPassword',
   password: 'example_password',
   referralCode: 'example_referralCode',
-  token: 'example_token',
 })
 
 ```
@@ -55,7 +60,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const authentication = await client.Authentication().create({ newPassword: "example", password: "example", referralCode: "example", token: "example" })
+  const authentication = await client.Authentication().create({ email: "example", name: "example", newPassword: "example", password: "example", referralCode: "example" })
   console.log(authentication)
 } catch (err) {
   console.error('create failed:', err)
@@ -122,7 +127,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = InnoCyberAuthenticationSDK.test()
 
-const authentication = await client.Authentication().create({ newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode', token: 'example_token' })
+const authentication = await client.Authentication().create({ email: 'example_email', name: 'example_name', newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode' })
 // authentication is the entity, populated with mock response data
 // — call authentication.data() for the record itself
 console.log(authentication)
@@ -143,11 +148,11 @@ Entity instances remember their last match and data:
 const entity = client.Authentication()
 
 // First call runs the operation and stores its result
-await entity.create({ newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode', token: 'example_token' })
+await entity.create({ email: 'example_email', name: 'example_name', newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id)
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -297,14 +302,16 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `email` | User email address |
-| `id` |  |
 | `message` |  |
 | `name` | User full name |
 | `newPassword` | New password |
 | `password` | User password |
 | `referralCode` | Referral code to validate |
+| `referrer` |  |
 | `success` |  |
-| `token` | Password reset token received via email |
+| `token` | JWT access token |
+| `user` |  |
+| `valid` |  |
 
 Operations: create.
 
@@ -330,23 +337,26 @@ Create an instance: `const authentication = client.Authentication()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `string` | User email address |
-| `id` | `string` |  |
 | `message` | `string` |  |
 | `name` | `string` | User full name |
 | `newPassword` | `string` | New password |
 | `password` | `string` | User password |
 | `referralCode` | `string` | Referral code to validate |
+| `referrer` | `Record<string, any>` |  |
 | `success` | `boolean` |  |
-| `token` | `string` | Password reset token received via email |
+| `token` | `string` | JWT access token |
+| `user` | `Record<string, any>` |  |
+| `valid` | `boolean` |  |
 
 #### Example: Create
 
 ```ts
 const authentication = await client.Authentication().create({
+  email: 'example_email',
+  name: 'example_name',
   newPassword: 'example_newPassword',
   password: 'example_password',
   referralCode: 'example_referralCode',
-  token: 'example_token',
 })
 ```
 
@@ -505,7 +515,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const authentication = client.Authentication()
-await authentication.create({ newPassword: "example", password: "example", referralCode: "example", token: "example" })
+await authentication.create({ email: "example", name: "example", newPassword: "example", password: "example", referralCode: "example" })
 
 // authentication.data() now returns the authentication data from the last `create`
 // authentication.match() returns the last match criteria

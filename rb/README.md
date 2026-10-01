@@ -12,9 +12,18 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`):
+GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases)), or
+from a clone:
 
-- Releases: [https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/inno-cyber-authentication-sdk
+```
+
+Then add it to your `Gemfile` by path, and run `bundle install`:
+
+```ruby
+gem "voxgig-sdk-inno-cyber-authentication-sdk", path: "./inno-cyber-authentication-sdk/rb"
+```
 
 
 ## Tutorial: your first API call
@@ -36,7 +45,7 @@ client = InnoCyberAuthenticationSDK.new({
 
 ```ruby
 # create returns the ENTITY — call data_get for the created Authentication record.
-created = client.Authentication.create({ "newPassword" => "example_newPassword", "password" => "example_password", "referralCode" => "example_referralCode", "token" => "example_token" })
+created = client.Authentication.create({ "email" => "example_email", "name" => "example_name", "newPassword" => "example_newPassword", "password" => "example_password", "referralCode" => "example_referralCode" })
 
 ```
 
@@ -47,7 +56,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  authentication = client.Authentication.create({ "newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example" })
+  authentication = client.Authentication.create({ "email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "referralCode" => "example" })
 rescue => err
   warn "create failed: #{err}"
 end
@@ -117,7 +126,7 @@ client = InnoCyberAuthenticationSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-authentication = client.Authentication.create({ "newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example" })
+authentication = client.Authentication.create({ "email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "referralCode" => "example" })
 puts authentication
 ```
 
@@ -236,14 +245,16 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `email` | User email address |
-| `id` |  |
 | `message` |  |
 | `name` | User full name |
 | `newPassword` | New password |
 | `password` | User password |
 | `referralCode` | Referral code to validate |
+| `referrer` |  |
 | `success` |  |
-| `token` | Password reset token received via email |
+| `token` | JWT access token |
+| `user` |  |
+| `valid` |  |
 
 Operations: Create.
 
@@ -269,23 +280,26 @@ Create an instance: `authentication = client.Authentication`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `String` | User email address |
-| `id` | `String` |  |
 | `message` | `String` |  |
 | `name` | `String` | User full name |
 | `newPassword` | `String` | New password |
 | `password` | `String` | User password |
 | `referralCode` | `String` | Referral code to validate |
+| `referrer` | `Hash` |  |
 | `success` | `Boolean` |  |
-| `token` | `String` | Password reset token received via email |
+| `token` | `String` | JWT access token |
+| `user` | `Hash` |  |
+| `valid` | `Boolean` |  |
 
 #### Example: Create
 
 ```ruby
 authentication = client.Authentication.create({
+  "email" => "example_email", # String
+  "name" => "example_name", # String
   "newPassword" => "example_newPassword", # String
   "password" => "example_password", # String
   "referralCode" => "example_referralCode", # String
-  "token" => "example_token", # String
 })
 ```
 
@@ -452,7 +466,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 authentication = client.Authentication
-authentication.create({ "newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example" })
+authentication.create({ "email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "referralCode" => "example" })
 
 # authentication.data_get now returns the authentication data from the last create
 # authentication.match_get returns the last match criteria

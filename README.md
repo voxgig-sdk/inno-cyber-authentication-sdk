@@ -14,7 +14,7 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
+> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
@@ -28,10 +28,11 @@ support (`create`):
 ```ts
 const client = new InnoCyberAuthenticationSDK()
 const authentication = await client.Authentication().create({
+  email: 'example',
+  name: 'example',
   newPassword: 'example',
   password: 'example',
   referralCode: 'example',
-  token: 'example',
 })
 ```
 
@@ -52,11 +53,11 @@ network, and no credentials:
 const client = InnoCyberAuthenticationSDK.test({
   entity: {
     authentication: {
-      test01: { id: 'test01', newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode' },
+      test01: { id: 'test01', email: 'example_email', name: 'example_name', newPassword: 'example_newPassword' },
     },
   },
 })
-const authentication = await client.Authentication().create({ newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode', token: 'example_token' })
+const authentication = await client.Authentication().create({ email: 'example_email', name: 'example_name', newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode' })
 // authentication is the Authentication entity, populated with mock data
 // — call authentication.data() for the record itself
 console.log(authentication)
@@ -66,7 +67,7 @@ console.log(authentication)
 
 ```python
 client = InnoCyberAuthenticationSDK.test()
-authentication = client.Authentication().create({"newPassword": "example", "password": "example", "referralCode": "example", "token": "example"})
+authentication = client.Authentication().create({"email": "example", "name": "example", "newPassword": "example", "password": "example", "referralCode": "example"})
 print(authentication)
 ```
 
@@ -77,7 +78,7 @@ print(authentication)
 $client = InnoCyberAuthenticationSDK::test([
     "entity" => ["authentication" => ["test01" => []]],
 ]);
-$authentication = $client->Authentication()->create(["newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example"]);
+$authentication = $client->Authentication()->create(["email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "referralCode" => "example"]);
 ```
 
 ### Golang
@@ -85,7 +86,7 @@ $authentication = $client->Authentication()->create(["newPassword" => "example",
 ```go
 client := sdk.Test()
 result, err := client.Authentication(nil).Create(
-    map[string]any{"newPassword": "example", "password": "example", "referralCode": "example", "token": "example"}, nil,
+    map[string]any{"email": "example", "name": "example", "newPassword": "example", "password": "example", "referralCode": "example"}, nil,
 )
 ```
 
@@ -96,26 +97,26 @@ result, err := client.Authentication(nil).Create(
 client = InnoCyberAuthenticationSDK.test({
   "entity" => { "authentication" => { "test01" => {} } },
 })
-authentication = client.Authentication.create({ "newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example" })
+authentication = client.Authentication.create({ "email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "referralCode" => "example" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Authentication():create({ newPassword = "example", password = "example", referralCode = "example", token = "example" })
+local result, err = client:Authentication():create({ email = "example", name = "example", newPassword = "example", password = "example", referralCode = "example" })
 ```
 
 ## Packages
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
-| Python | `voxgig-sdk-inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
-| PHP | `voxgig-sdk/inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
+| TypeScript | `@voxgig-sdk/inno-cyber-authentication-sdk` | publish pending — [install from source](ts/README.md#install) |
+| Python | `voxgig-sdk-inno-cyber-authentication-sdk` | publish pending — [install from source](py/README.md#install) |
+| PHP | `voxgig-sdk/inno-cyber-authentication-sdk` | publish pending — [install from source](php/README.md#install) |
 | Golang | `github.com/voxgig-sdk/inno-cyber-authentication-sdk/go` | `go get github.com/voxgig-sdk/inno-cyber-authentication-sdk/go@latest` |
-| Ruby | `voxgig-sdk-inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
-| Lua | `voxgig-sdk-inno-cyber-authentication-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags) |
+| Ruby | `voxgig-sdk-inno-cyber-authentication-sdk` | publish pending — [install from source](rb/README.md#install) |
+| Lua | `voxgig-sdk-inno-cyber-authentication-sdk` | publish pending — [install from source](lua/README.md#install) |
 | Go CLI | `github.com/voxgig-sdk/inno-cyber-authentication-sdk/go-cli` | `go install github.com/voxgig-sdk/inno-cyber-authentication-sdk/go-cli/cmd/inno-cyber-authentication@latest` |
 | Go MCP server | `github.com/voxgig-sdk/inno-cyber-authentication-sdk/go-mcp` | `go get github.com/voxgig-sdk/inno-cyber-authentication-sdk/go-mcp@latest` |
 

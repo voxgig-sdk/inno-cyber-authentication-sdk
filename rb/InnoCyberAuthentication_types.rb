@@ -11,16 +11,13 @@
 # Authentication entity data model.
 #
 # @!attribute [rw] email
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] message
 #   @return [String, nil]
 #
 # @!attribute [rw] name
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] newPassword
 #   @return [String]
@@ -31,37 +28,45 @@
 # @!attribute [rw] referralCode
 #   @return [String]
 #
+# @!attribute [rw] referrer
+#   @return [Hash, nil]
+#
 # @!attribute [rw] success
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] token
-#   @return [String]
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
+#
+# @!attribute [rw] valid
+#   @return [Boolean, nil]
 Authentication = Struct.new(
   :email,
-  :id,
   :message,
   :name,
   :newPassword,
   :password,
   :referralCode,
+  :referrer,
   :success,
   :token,
+  :user,
+  :valid,
   keyword_init: true
 )
 
 # Request payload for Authentication#create.
 #
 # @!attribute [rw] email
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] message
 #   @return [String, nil]
 #
 # @!attribute [rw] name
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] newPassword
 #   @return [String]
@@ -72,21 +77,32 @@ Authentication = Struct.new(
 # @!attribute [rw] referralCode
 #   @return [String]
 #
+# @!attribute [rw] referrer
+#   @return [Hash, nil]
+#
 # @!attribute [rw] success
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] token
-#   @return [String]
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
+#
+# @!attribute [rw] valid
+#   @return [Boolean, nil]
 AuthenticationCreateData = Struct.new(
   :email,
-  :id,
   :message,
   :name,
   :newPassword,
   :password,
   :referralCode,
+  :referrer,
   :success,
   :token,
+  :user,
+  :valid,
   keyword_init: true
 )
 

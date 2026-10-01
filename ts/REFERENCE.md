@@ -117,29 +117,33 @@ const authentication = client.Authentication()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `string` | No | User email address |
-| `id` | `string` | No |  |
+| `email` | `string` | Yes | User email address |
 | `message` | `string` | No |  |
-| `name` | `string` | No | User full name |
+| `name` | `string` | Yes | User full name |
 | `newPassword` | `string` | Yes | New password |
 | `password` | `string` | Yes | User password |
 | `referralCode` | `string` | Yes | Referral code to validate |
+| `referrer` | `Record<string, any>` | No |  |
 | `success` | `boolean` | No |  |
-| `token` | `string` | Yes | Password reset token received via email |
+| `token` | `string` | No | JWT access token |
+| `user` | `Record<string, any>` | No |  |
+| `valid` | `boolean` | No |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `email` | Yes |
-| `id` | - |
+| `email` | - |
 | `message` | - |
-| `name` | Yes |
+| `name` | - |
 | `newPassword` | - |
 | `password` | - |
 | `referralCode` | Yes |
+| `referrer` | - |
 | `success` | - |
-| `token` | - |
+| `token` | Yes |
+| `user` | - |
+| `valid` | - |
 
 ### Operations
 
@@ -149,10 +153,11 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Authentication().create({
+  email: 'example_email',
+  name: 'example_name',
   newPassword: 'example_newPassword',
   password: 'example_password',
   referralCode: 'example_referralCode',
-  token: 'example_token',
 })
 ```
 

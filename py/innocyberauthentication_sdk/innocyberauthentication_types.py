@@ -17,30 +17,34 @@ from typing import TypedDict, Any
 
 
 class AuthenticationRequired(TypedDict):
+    email: str
+    name: str
     newPassword: str
     password: str
     referralCode: str
-    token: str
 
 
 class Authentication(AuthenticationRequired, total=False):
-    email: str
-    id: str
     message: str
-    name: str
+    referrer: dict
     success: bool
+    token: str
+    user: dict
+    valid: bool
 
 
 class AuthenticationCreateDataRequired(TypedDict):
+    email: str
+    name: str
     newPassword: str
     password: str
     referralCode: str
-    token: str
 
 
 class AuthenticationCreateData(AuthenticationCreateDataRequired, total=False):
-    email: str
-    id: str
     message: str
-    name: str
+    referrer: dict
     success: bool
+    token: str
+    user: dict
+    valid: bool

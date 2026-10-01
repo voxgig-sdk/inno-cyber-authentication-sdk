@@ -92,19 +92,9 @@ local function make_config()
             ["name"] = "email",
             ["title"] = "Email",
             ["type"] = "`$STRING`",
-            ["op"] = {
-              ["create"] = {
-                ["req"] = true,
-                ["type"] = "`$STRING`",
-              },
-            },
+            ["req"] = true,
             ["short"] = "User email address",
             ["format"] = "email",
-          },
-          {
-            ["name"] = "id",
-            ["title"] = "Id",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "message",
@@ -115,12 +105,7 @@ local function make_config()
             ["name"] = "name",
             ["title"] = "Name",
             ["type"] = "`$STRING`",
-            ["op"] = {
-              ["create"] = {
-                ["req"] = true,
-                ["type"] = "`$STRING`",
-              },
-            },
+            ["req"] = true,
             ["short"] = "User full name",
           },
           {
@@ -152,6 +137,11 @@ local function make_config()
             ["short"] = "Referral code to validate",
           },
           {
+            ["name"] = "referrer",
+            ["title"] = "Referrer",
+            ["type"] = "`$OBJECT`",
+          },
+          {
             ["name"] = "success",
             ["title"] = "Success",
             ["type"] = "`$BOOLEAN`",
@@ -160,13 +150,24 @@ local function make_config()
             ["name"] = "token",
             ["title"] = "Token",
             ["type"] = "`$STRING`",
-            ["req"] = true,
-            ["short"] = "Password reset token received via email",
+            ["op"] = {
+              ["create"] = {
+                ["req"] = true,
+                ["type"] = "`$STRING`",
+              },
+            },
+            ["short"] = "JWT access token",
           },
-        },
-        ["id"] = {
-          ["field"] = "id",
-          ["name"] = "id",
+          {
+            ["name"] = "user",
+            ["title"] = "User",
+            ["type"] = "`$OBJECT`",
+          },
+          {
+            ["name"] = "valid",
+            ["title"] = "Valid",
+            ["type"] = "`$BOOLEAN`",
+          },
         },
         ["name"] = "authentication",
         ["op"] = {
@@ -197,7 +198,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.user`",
+                  ["res"] = "`body`",
                 },
                 ["args"] = {},
                 ["select"] = {},
@@ -293,7 +294,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.referrer`",
+                  ["res"] = "`body`",
                 },
                 ["args"] = {},
                 ["select"] = {},
@@ -321,7 +322,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.user`",
+                  ["res"] = "`body`",
                 },
                 ["args"] = {},
                 ["select"] = {},

@@ -112,19 +112,9 @@ class Config {
                     "name": "email",
                     "title": "Email",
                     "type": "`$STRING`",
-                    "op": {
-                        "create": {
-                            "req": true,
-                            "type": "`$STRING`"
-                        }
-                    },
+                    "req": true,
                     "short": "User email address",
                     "format": "email"
-                },
-                {
-                    "name": "id",
-                    "title": "Id",
-                    "type": "`$STRING`"
                 },
                 {
                     "name": "message",
@@ -135,12 +125,7 @@ class Config {
                     "name": "name",
                     "title": "Name",
                     "type": "`$STRING`",
-                    "op": {
-                        "create": {
-                            "req": true,
-                            "type": "`$STRING`"
-                        }
-                    },
+                    "req": true,
                     "short": "User full name"
                 },
                 {
@@ -172,6 +157,11 @@ class Config {
                     "short": "Referral code to validate"
                 },
                 {
+                    "name": "referrer",
+                    "title": "Referrer",
+                    "type": "`$OBJECT`"
+                },
+                {
                     "name": "success",
                     "title": "Success",
                     "type": "`$BOOLEAN`"
@@ -180,14 +170,25 @@ class Config {
                     "name": "token",
                     "title": "Token",
                     "type": "`$STRING`",
-                    "req": true,
-                    "short": "Password reset token received via email"
+                    "op": {
+                        "create": {
+                            "req": true,
+                            "type": "`$STRING`"
+                        }
+                    },
+                    "short": "JWT access token"
+                },
+                {
+                    "name": "user",
+                    "title": "User",
+                    "type": "`$OBJECT`"
+                },
+                {
+                    "name": "valid",
+                    "title": "Valid",
+                    "type": "`$BOOLEAN`"
                 }
             ],
-            "id": {
-                "field": "id",
-                "name": "id"
-            },
             "name": "authentication",
             "op": {
                 "create": {
@@ -217,7 +218,7 @@ class Config {
                             "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
-                                "res": "`body.user`"
+                                "res": "`body`"
                             },
                             "args": {},
                             "select": {}
@@ -313,7 +314,7 @@ class Config {
                             "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
-                                "res": "`body.referrer`"
+                                "res": "`body`"
                             },
                             "args": {},
                             "select": {}
@@ -341,7 +342,7 @@ class Config {
                             "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
-                                "res": "`body.user`"
+                                "res": "`body`"
                             },
                             "args": {},
                             "select": {}

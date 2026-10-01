@@ -39,7 +39,7 @@ local client = sdk.new({
 
 ```lua
 -- Create
-local created, err = client:Authentication():create({ newPassword = "example_newPassword", password = "example_password", referralCode = "example_referralCode", token = "example_token" })
+local created, err = client:Authentication():create({ email = "example_email", name = "example_name", newPassword = "example_newPassword", password = "example_password", referralCode = "example_referralCode" })
 if err then error(err) end
 
 ```
@@ -51,7 +51,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local authentication, err = client:Authentication():create({ newPassword = "example", password = "example", referralCode = "example", token = "example" })
+local authentication, err = client:Authentication():create({ email = "example", name = "example", newPassword = "example", password = "example", referralCode = "example" })
 if err then error(err) end
 ```
 
@@ -109,7 +109,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Authentication():create({ newPassword = "example", password = "example", referralCode = "example", token = "example" })
+local result, err = client:Authentication():create({ email = "example", name = "example", newPassword = "example", password = "example", referralCode = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -231,14 +231,16 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `email` | User email address |
-| `id` |  |
 | `message` |  |
 | `name` | User full name |
 | `newPassword` | New password |
 | `password` | User password |
 | `referralCode` | Referral code to validate |
+| `referrer` |  |
 | `success` |  |
-| `token` | Password reset token received via email |
+| `token` | JWT access token |
+| `user` |  |
+| `valid` |  |
 
 Operations: Create.
 
@@ -264,23 +266,26 @@ Create an instance: `local authentication = client:Authentication(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `string` | User email address |
-| `id` | `string` |  |
 | `message` | `string` |  |
 | `name` | `string` | User full name |
 | `newPassword` | `string` | New password |
 | `password` | `string` | User password |
 | `referralCode` | `string` | Referral code to validate |
+| `referrer` | `table` |  |
 | `success` | `boolean` |  |
-| `token` | `string` | Password reset token received via email |
+| `token` | `string` | JWT access token |
+| `user` | `table` |  |
+| `valid` | `boolean` |  |
 
 #### Example: Create
 
 ```lua
 local authentication, err = client:Authentication():create({
+  email = "example_email", -- string
+  name = "example_name", -- string
   newPassword = "example_newPassword", -- string
   password = "example_password", -- string
   referralCode = "example_referralCode", -- string
-  token = "example_token", -- string
 })
 ```
 
@@ -447,7 +452,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local authentication = client:Authentication()
-authentication:create({ newPassword = "example", password = "example", referralCode = "example", token = "example" })
+authentication:create({ email = "example", name = "example", newPassword = "example", password = "example", referralCode = "example" })
 
 -- authentication:data_get() now returns the authentication data from the last create
 -- authentication:match_get() returns the last match criteria

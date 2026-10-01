@@ -96,19 +96,9 @@ func MakeConfig() map[string]any {
 						"name": "email",
 						"title": "Email",
 						"type": "`$STRING`",
-						"op": map[string]any{
-							"create": map[string]any{
-								"req": true,
-								"type": "`$STRING`",
-							},
-						},
+						"req": true,
 						"short": "User email address",
 						"format": "email",
-					},
-					map[string]any{
-						"name": "id",
-						"title": "Id",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "message",
@@ -119,12 +109,7 @@ func MakeConfig() map[string]any {
 						"name": "name",
 						"title": "Name",
 						"type": "`$STRING`",
-						"op": map[string]any{
-							"create": map[string]any{
-								"req": true,
-								"type": "`$STRING`",
-							},
-						},
+						"req": true,
 						"short": "User full name",
 					},
 					map[string]any{
@@ -156,6 +141,11 @@ func MakeConfig() map[string]any {
 						"short": "Referral code to validate",
 					},
 					map[string]any{
+						"name": "referrer",
+						"title": "Referrer",
+						"type": "`$OBJECT`",
+					},
+					map[string]any{
 						"name": "success",
 						"title": "Success",
 						"type": "`$BOOLEAN`",
@@ -164,13 +154,24 @@ func MakeConfig() map[string]any {
 						"name": "token",
 						"title": "Token",
 						"type": "`$STRING`",
-						"req": true,
-						"short": "Password reset token received via email",
+						"op": map[string]any{
+							"create": map[string]any{
+								"req": true,
+								"type": "`$STRING`",
+							},
+						},
+						"short": "JWT access token",
 					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
+					map[string]any{
+						"name": "user",
+						"title": "User",
+						"type": "`$OBJECT`",
+					},
+					map[string]any{
+						"name": "valid",
+						"title": "Valid",
+						"type": "`$BOOLEAN`",
+					},
 				},
 				"name": "authentication",
 				"op": map[string]any{
@@ -201,7 +202,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.user`",
+									"res": "`body`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
@@ -297,7 +298,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.referrer`",
+									"res": "`body`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
@@ -325,7 +326,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.user`",
+									"res": "`body`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},

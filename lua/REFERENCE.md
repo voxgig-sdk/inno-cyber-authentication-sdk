@@ -91,29 +91,33 @@ local authentication = client:Authentication(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `string` | No | User email address |
-| `id` | `string` | No |  |
+| `email` | `string` | Yes | User email address |
 | `message` | `string` | No |  |
-| `name` | `string` | No | User full name |
+| `name` | `string` | Yes | User full name |
 | `newPassword` | `string` | Yes | New password |
 | `password` | `string` | Yes | User password |
 | `referralCode` | `string` | Yes | Referral code to validate |
+| `referrer` | `table` | No |  |
 | `success` | `boolean` | No |  |
-| `token` | `string` | Yes | Password reset token received via email |
+| `token` | `string` | No | JWT access token |
+| `user` | `table` | No |  |
+| `valid` | `boolean` | No |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `email` | Yes |
-| `id` | - |
+| `email` | - |
 | `message` | - |
-| `name` | Yes |
+| `name` | - |
 | `newPassword` | - |
 | `password` | - |
 | `referralCode` | Yes |
+| `referrer` | - |
 | `success` | - |
-| `token` | - |
+| `token` | Yes |
+| `user` | - |
+| `valid` | - |
 
 ### Operations
 
@@ -123,10 +127,11 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:Authentication():create({
+  email = --[[ string ]],
+  name = --[[ string ]],
   newPassword = --[[ string ]],
   password = --[[ string ]],
   referralCode = --[[ string ]],
-  token = --[[ string ]],
 })
 ```
 

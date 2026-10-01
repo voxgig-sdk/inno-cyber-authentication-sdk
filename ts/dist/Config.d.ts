@@ -81,43 +81,25 @@ declare class Config {
                 name: string;
                 title: string;
                 type: string;
-                op: {
-                    create: {
-                        req: boolean;
-                        type: string;
-                    };
-                };
+                req: boolean;
                 short: string;
                 format: string;
-                req?: undefined;
+                op?: undefined;
             } | {
                 name: string;
                 title: string;
                 type: string;
-                op?: undefined;
+                req?: undefined;
                 short?: undefined;
                 format?: undefined;
-                req?: undefined;
-            } | {
-                name: string;
-                title: string;
-                type: string;
-                op: {
-                    create: {
-                        req: boolean;
-                        type: string;
-                    };
-                };
-                short: string;
-                format?: undefined;
-                req?: undefined;
+                op?: undefined;
             } | {
                 name: string;
                 title: string;
                 type: string;
                 req: boolean;
                 short: string;
-                format: string;
+                format?: undefined;
                 op?: undefined;
             } | {
                 name: string;
@@ -136,15 +118,16 @@ declare class Config {
                 name: string;
                 title: string;
                 type: string;
-                req: boolean;
+                op: {
+                    create: {
+                        req: boolean;
+                        type: string;
+                    };
+                };
                 short: string;
-                op?: undefined;
+                req?: undefined;
                 format?: undefined;
             })[];
-            id: {
-                field: string;
-                name: string;
-            };
             name: string;
             op: {
                 create: {

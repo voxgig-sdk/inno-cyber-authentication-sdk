@@ -88,29 +88,33 @@ authentication = client.Authentication()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `str` | No | User email address |
-| `id` | `str` | No |  |
+| `email` | `str` | Yes | User email address |
 | `message` | `str` | No |  |
-| `name` | `str` | No | User full name |
+| `name` | `str` | Yes | User full name |
 | `newPassword` | `str` | Yes | New password |
 | `password` | `str` | Yes | User password |
 | `referralCode` | `str` | Yes | Referral code to validate |
+| `referrer` | `dict` | No |  |
 | `success` | `bool` | No |  |
-| `token` | `str` | Yes | Password reset token received via email |
+| `token` | `str` | No | JWT access token |
+| `user` | `dict` | No |  |
+| `valid` | `bool` | No |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `email` | Yes |
-| `id` | - |
+| `email` | - |
 | `message` | - |
-| `name` | Yes |
+| `name` | - |
 | `newPassword` | - |
 | `password` | - |
 | `referralCode` | Yes |
+| `referrer` | - |
 | `success` | - |
-| `token` | - |
+| `token` | Yes |
+| `user` | - |
+| `valid` | - |
 
 ### Operations
 
@@ -120,10 +124,11 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Authentication().create({
+    "email": "example_email",  # str
+    "name": "example_name",  # str
     "newPassword": "example_newPassword",  # str
     "password": "example_password",  # str
     "referralCode": "example_referralCode",  # str
-    "token": "example_token",  # str
 })
 ```
 

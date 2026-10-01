@@ -121,19 +121,9 @@ def make_config():
             "name": "email",
             "title": "Email",
             "type": "`$STRING`",
-            "op": {
-              "create": {
-                "req": True,
-                "type": "`$STRING`",
-              },
-            },
+            "req": True,
             "short": "User email address",
             "format": "email",
-          },
-          {
-            "name": "id",
-            "title": "Id",
-            "type": "`$STRING`",
           },
           {
             "name": "message",
@@ -144,12 +134,7 @@ def make_config():
             "name": "name",
             "title": "Name",
             "type": "`$STRING`",
-            "op": {
-              "create": {
-                "req": True,
-                "type": "`$STRING`",
-              },
-            },
+            "req": True,
             "short": "User full name",
           },
           {
@@ -181,6 +166,11 @@ def make_config():
             "short": "Referral code to validate",
           },
           {
+            "name": "referrer",
+            "title": "Referrer",
+            "type": "`$OBJECT`",
+          },
+          {
             "name": "success",
             "title": "Success",
             "type": "`$BOOLEAN`",
@@ -189,14 +179,25 @@ def make_config():
             "name": "token",
             "title": "Token",
             "type": "`$STRING`",
-            "req": True,
-            "short": "Password reset token received via email",
+            "op": {
+              "create": {
+                "req": True,
+                "type": "`$STRING`",
+              },
+            },
+            "short": "JWT access token",
+          },
+          {
+            "name": "user",
+            "title": "User",
+            "type": "`$OBJECT`",
+          },
+          {
+            "name": "valid",
+            "title": "Valid",
+            "type": "`$BOOLEAN`",
           },
         ],
-        "id": {
-          "field": "id",
-          "name": "id",
-        },
         "name": "authentication",
         "op": {
           "create": {
@@ -226,7 +227,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body.user`",
+                  "res": "`body`",
                 },
                 "args": {},
                 "select": {},
@@ -322,7 +323,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body.referrer`",
+                  "res": "`body`",
                 },
                 "args": {},
                 "select": {},
@@ -350,7 +351,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body.user`",
+                  "res": "`body`",
                 },
                 "args": {},
                 "select": {},

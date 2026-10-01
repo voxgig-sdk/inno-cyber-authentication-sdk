@@ -93,29 +93,33 @@ $authentication = $client->Authentication();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `string` | No | User email address |
-| `id` | `string` | No |  |
+| `email` | `string` | Yes | User email address |
 | `message` | `string` | No |  |
-| `name` | `string` | No | User full name |
+| `name` | `string` | Yes | User full name |
 | `newPassword` | `string` | Yes | New password |
 | `password` | `string` | Yes | User password |
 | `referralCode` | `string` | Yes | Referral code to validate |
+| `referrer` | `array` | No |  |
 | `success` | `bool` | No |  |
-| `token` | `string` | Yes | Password reset token received via email |
+| `token` | `string` | No | JWT access token |
+| `user` | `array` | No |  |
+| `valid` | `bool` | No |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `email` | Yes |
-| `id` | - |
+| `email` | - |
 | `message` | - |
-| `name` | Yes |
+| `name` | - |
 | `newPassword` | - |
 | `password` | - |
 | `referralCode` | Yes |
+| `referrer` | - |
 | `success` | - |
-| `token` | - |
+| `token` | Yes |
+| `user` | - |
+| `valid` | - |
 
 ### Operations
 
@@ -125,10 +129,11 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Authentication()->create([
+  "email" => null, // string
+  "name" => null, // string
   "newPassword" => null, // string
   "password" => null, // string
   "referralCode" => null, // string
-  "token" => null, // string
 ]);
 ```
 

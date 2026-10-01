@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 InnoCyberAuthenticationUtility::setRegistrar(function (InnoCyberAuthenticationUtility $u): void {
     $u->clean = [InnoCyberAuthenticationClean::class, 'call'];
+    $u->clean_add = [InnoCyberAuthenticationClean::class, 'add'];
+    $u->clean_explain = [InnoCyberAuthenticationDone::class, 'clean_explain'];
     $u->done = [InnoCyberAuthenticationDone::class, 'call'];
     $u->make_error = [InnoCyberAuthenticationMakeError::class, 'call'];
     $u->feature_add = [InnoCyberAuthenticationFeatureAdd::class, 'call'];

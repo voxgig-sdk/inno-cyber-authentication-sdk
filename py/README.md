@@ -43,7 +43,7 @@ client = InnoCyberAuthenticationSDK({
 
 ```python
 # Create — returns the ENTITY (call data_get() for the record)
-created = client.Authentication().create({"newPassword": "example_newPassword", "password": "example_password", "referralCode": "example_referralCode", "token": "example_token"})
+created = client.Authentication().create({"email": "example_email", "name": "example_name", "newPassword": "example_newPassword", "password": "example_password", "referralCode": "example_referralCode"})
 
 ```
 
@@ -54,7 +54,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    authentication = client.Authentication().create({ "newPassword": "example", "password": "example", "referralCode": "example", "token": "example" })
+    authentication = client.Authentication().create({ "email": "example", "name": "example", "newPassword": "example", "password": "example", "referralCode": "example" })
     print(authentication)
 except Exception as err:
     print(f"create failed: {err}")
@@ -123,7 +123,7 @@ client = InnoCyberAuthenticationSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-authentication = client.Authentication().create({"newPassword": "example", "password": "example", "referralCode": "example", "token": "example"})
+authentication = client.Authentication().create({"email": "example", "name": "example", "newPassword": "example", "password": "example", "referralCode": "example"})
 # authentication contains the mock response record
 ```
 
@@ -243,14 +243,16 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `email` | User email address |
-| `id` |  |
 | `message` |  |
 | `name` | User full name |
 | `newPassword` | New password |
 | `password` | User password |
 | `referralCode` | Referral code to validate |
+| `referrer` |  |
 | `success` |  |
-| `token` | Password reset token received via email |
+| `token` | JWT access token |
+| `user` |  |
+| `valid` |  |
 
 Operations: Create.
 
@@ -276,23 +278,26 @@ Create an instance: `authentication = client.Authentication()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `str` | User email address |
-| `id` | `str` |  |
 | `message` | `str` |  |
 | `name` | `str` | User full name |
 | `newPassword` | `str` | New password |
 | `password` | `str` | User password |
 | `referralCode` | `str` | Referral code to validate |
+| `referrer` | `dict` |  |
 | `success` | `bool` |  |
-| `token` | `str` | Password reset token received via email |
+| `token` | `str` | JWT access token |
+| `user` | `dict` |  |
+| `valid` | `bool` |  |
 
 #### Example: Create
 
 ```python
 authentication = client.Authentication().create({
+    "email": "example_email",  # str
+    "name": "example_name",  # str
     "newPassword": "example_newPassword",  # str
     "password": "example_password",  # str
     "referralCode": "example_referralCode",  # str
-    "token": "example_token",  # str
 })
 ```
 
@@ -458,7 +463,7 @@ stores the returned data and match criteria internally.
 
 ```python
 authentication = client.Authentication()
-authentication.create({ "newPassword": "example", "password": "example", "referralCode": "example", "token": "example" })
+authentication.create({ "email": "example", "name": "example", "newPassword": "example", "password": "example", "referralCode": "example" })
 
 # authentication.data_get() now returns the authentication data from the last create
 # authentication.match_get() returns the last match criteria

@@ -12,9 +12,14 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`):
+GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases)), or
+from a clone as a Composer path repository:
 
-- Releases: [https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/inno-cyber-authentication-sdk
+composer config repositories.inno-cyber-authentication-sdk path ./inno-cyber-authentication-sdk/php
+composer require voxgig-sdk/inno-cyber-authentication-sdk:@dev
+```
 
 
 ## Tutorial: your first API call
@@ -37,7 +42,7 @@ $client = new InnoCyberAuthenticationSDK([
 
 ```php
 // create() returns the ENTITY — call data_get() for the created Authentication record.
-$created = $client->Authentication()->create(["newPassword" => "example_newPassword", "password" => "example_password", "referralCode" => "example_referralCode", "token" => "example_token"]);
+$created = $client->Authentication()->create(["email" => "example_email", "name" => "example_name", "newPassword" => "example_newPassword", "password" => "example_password", "referralCode" => "example_referralCode"]);
 
 ```
 
@@ -49,7 +54,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $authentication = $client->Authentication()->create(["newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example"]);
+    $authentication = $client->Authentication()->create(["email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "referralCode" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -123,7 +128,7 @@ $client = InnoCyberAuthenticationSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$authentication = $client->Authentication()->create(["newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example"]);
+$authentication = $client->Authentication()->create(["email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "referralCode" => "example"]);
 print_r($authentication->data_get());
 ```
 
@@ -246,14 +251,16 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `email` | User email address |
-| `id` |  |
 | `message` |  |
 | `name` | User full name |
 | `newPassword` | New password |
 | `password` | User password |
 | `referralCode` | Referral code to validate |
+| `referrer` |  |
 | `success` |  |
-| `token` | Password reset token received via email |
+| `token` | JWT access token |
+| `user` |  |
+| `valid` |  |
 
 Operations: Create.
 
@@ -279,23 +286,26 @@ Create an instance: `$authentication = $client->Authentication();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `string` | User email address |
-| `id` | `string` |  |
 | `message` | `string` |  |
 | `name` | `string` | User full name |
 | `newPassword` | `string` | New password |
 | `password` | `string` | User password |
 | `referralCode` | `string` | Referral code to validate |
+| `referrer` | `array` |  |
 | `success` | `bool` |  |
-| `token` | `string` | Password reset token received via email |
+| `token` | `string` | JWT access token |
+| `user` | `array` |  |
+| `valid` | `bool` |  |
 
 #### Example: Create
 
 ```php
 $authentication = $client->Authentication()->create([
+    "email" => null, // string
+    "name" => null, // string
     "newPassword" => null, // string
     "password" => null, // string
     "referralCode" => null, // string
-    "token" => null, // string
 ]);
 ```
 
@@ -462,7 +472,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $authentication = $client->Authentication();
-$authentication->create(["newPassword" => "example", "password" => "example", "referralCode" => "example", "token" => "example"]);
+$authentication->create(["email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "referralCode" => "example"]);
 
 // $authentication->data_get() now returns the authentication data from the last create
 // $authentication->match_get() returns the last match criteria

@@ -2,8 +2,8 @@
 
 from innocyberauthentication_sdk.core.utility_type import InnoCyberAuthenticationUtility
 
-from innocyberauthentication_sdk.utility.clean import clean_util
-from innocyberauthentication_sdk.utility.done import done_util
+from innocyberauthentication_sdk.utility.clean import clean_util, clean_add_util
+from innocyberauthentication_sdk.utility.done import done_util, clean_explain_util
 from innocyberauthentication_sdk.utility.make_error import make_error_util
 from innocyberauthentication_sdk.utility.feature_add import feature_add_util
 from innocyberauthentication_sdk.utility.feature_hook import feature_hook_util
@@ -36,6 +36,8 @@ from innocyberauthentication_sdk.utility.transform_response import transform_res
 
 def register_all(u):
     u.clean = clean_util
+    u.clean_add = clean_add_util
+    u.clean_explain = clean_explain_util
     u.done = done_util
     u.make_error = make_error_util
     u.feature_add = feature_add_util

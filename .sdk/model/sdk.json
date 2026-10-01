@@ -102,21 +102,8 @@
               "fo": "email",
               "h": "Email",
               "n": "email",
-              "op": {
-                "create": {
-                  "req": true,
-                  "type": "`$STRING`"
-                }
-              },
-              "r": false,
+              "r": true,
               "sh": "User email address",
-              "t": "`$STRING`"
-            },
-            "id": {
-              "a": true,
-              "h": "Id",
-              "n": "id",
-              "r": false,
               "t": "`$STRING`"
             },
             "message": {
@@ -130,13 +117,7 @@
               "a": true,
               "h": "Name",
               "n": "name",
-              "op": {
-                "create": {
-                  "req": true,
-                  "type": "`$STRING`"
-                }
-              },
-              "r": false,
+              "r": true,
               "sh": "User full name",
               "t": "`$STRING`"
             },
@@ -172,6 +153,13 @@
               "sh": "Referral code to validate",
               "t": "`$STRING`"
             },
+            "referrer": {
+              "a": true,
+              "h": "Referrer",
+              "n": "referrer",
+              "r": false,
+              "t": "`$OBJECT`"
+            },
             "success": {
               "a": true,
               "h": "Success",
@@ -183,14 +171,30 @@
               "a": true,
               "h": "Token",
               "n": "token",
-              "r": true,
-              "sh": "Password reset token received via email",
+              "op": {
+                "create": {
+                  "req": true,
+                  "type": "`$STRING`"
+                }
+              },
+              "r": false,
+              "sh": "JWT access token",
               "t": "`$STRING`"
+            },
+            "user": {
+              "a": true,
+              "h": "User",
+              "n": "user",
+              "r": false,
+              "t": "`$OBJECT`"
+            },
+            "valid": {
+              "a": true,
+              "h": "Valid",
+              "n": "valid",
+              "r": false,
+              "t": "`$BOOLEAN`"
             }
-          },
-          "id": {
-            "field": "id",
-            "name": "id"
           },
           "name": "authentication",
           "op": {
@@ -224,7 +228,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.user`"
+                    "res": "`body`"
                   }
                 },
                 {
@@ -320,7 +324,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.referrer`"
+                    "res": "`body`"
                   }
                 },
                 {
@@ -349,7 +353,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.user`"
+                    "res": "`body`"
                   }
                 }
               ]
@@ -832,7 +836,12 @@
         },
         "base": "http://localhost:8000",
         "clean": {
-          "keys": "key,token,id"
+          "active": true,
+          "hint": "0",
+          "keys": "key,secret,token,password,passwd,authorization,cookie,credential,signature",
+          "mask": "[redacted]",
+          "min": "4",
+          "values": ""
         },
         "entity": {
           "`$CHILD`": {

@@ -94,29 +94,33 @@ authentication = client.Authentication
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `String` | No | User email address |
-| `id` | `String` | No |  |
+| `email` | `String` | Yes | User email address |
 | `message` | `String` | No |  |
-| `name` | `String` | No | User full name |
+| `name` | `String` | Yes | User full name |
 | `newPassword` | `String` | Yes | New password |
 | `password` | `String` | Yes | User password |
 | `referralCode` | `String` | Yes | Referral code to validate |
+| `referrer` | `Hash` | No |  |
 | `success` | `Boolean` | No |  |
-| `token` | `String` | Yes | Password reset token received via email |
+| `token` | `String` | No | JWT access token |
+| `user` | `Hash` | No |  |
+| `valid` | `Boolean` | No |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `email` | Yes |
-| `id` | - |
+| `email` | - |
 | `message` | - |
-| `name` | Yes |
+| `name` | - |
 | `newPassword` | - |
 | `password` | - |
 | `referralCode` | Yes |
+| `referrer` | - |
 | `success` | - |
-| `token` | - |
+| `token` | Yes |
+| `user` | - |
+| `valid` | - |
 
 ### Operations
 
@@ -126,10 +130,11 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Authentication.create({
+  "email" => "example_email", # String
+  "name" => "example_name", # String
   "newPassword" => "example_newPassword", # String
   "password" => "example_password", # String
   "referralCode" => "example_referralCode", # String
-  "token" => "example_token", # String
 })
 ```
 

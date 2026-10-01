@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 InnoCyberAuthenticationUtility.registrar = ->(u) {
   u.clean = InnoCyberAuthenticationUtilities::Clean
+  u.clean_add = InnoCyberAuthenticationUtilities::CleanAdd
+  u.clean_explain = InnoCyberAuthenticationUtilities::CleanExplain
   u.done = InnoCyberAuthenticationUtilities::Done
   u.make_error = InnoCyberAuthenticationUtilities::MakeError
   u.feature_add = InnoCyberAuthenticationUtilities::FeatureAdd

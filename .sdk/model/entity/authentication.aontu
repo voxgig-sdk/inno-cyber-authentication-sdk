@@ -9,20 +9,8 @@ main: kit: entity: authentication: {
       fo: "email"
       h: "Email"
       n: "email"
-      op: {
-        create: {
-          req: true
-          type: "`$STRING`"
-        }
-      }
-      r: false
+      r: true
       sh: "User email address"
-      t: "`$STRING`"
-    }
-    id: {
-      h: "Id"
-      n: "id"
-      r: false
       t: "`$STRING`"
     }
     message: {
@@ -34,13 +22,7 @@ main: kit: entity: authentication: {
     name: {
       h: "Name"
       n: "name"
-      op: {
-        create: {
-          req: true
-          type: "`$STRING`"
-        }
-      }
-      r: false
+      r: true
       sh: "User full name"
       t: "`$STRING`"
     }
@@ -73,6 +55,12 @@ main: kit: entity: authentication: {
       sh: "Referral code to validate"
       t: "`$STRING`"
     }
+    referrer: {
+      h: "Referrer"
+      n: "referrer"
+      r: false
+      t: "`$OBJECT`"
+    }
     success: {
       h: "Success"
       n: "success"
@@ -82,15 +70,28 @@ main: kit: entity: authentication: {
     token: {
       h: "Token"
       n: "token"
-      r: true
-      sh: "Password reset token received via email"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "JWT access token"
       t: "`$STRING`"
     }
-  }
-
-  id: {
-    field: "id"
-    name: "id"
+    user: {
+      h: "User"
+      n: "user"
+      r: false
+      t: "`$OBJECT`"
+    }
+    valid: {
+      h: "Valid"
+      n: "valid"
+      r: false
+      t: "`$BOOLEAN`"
+    }
   }
 
   name: "authentication"
@@ -119,7 +120,7 @@ main: kit: entity: authentication: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.user`"
+            res: "`body`"
           }
         }
         {
@@ -200,7 +201,7 @@ main: kit: entity: authentication: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.referrer`"
+            res: "`body`"
           }
         }
         {
@@ -224,7 +225,7 @@ main: kit: entity: authentication: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.user`"
+            res: "`body`"
           }
         }
       ]

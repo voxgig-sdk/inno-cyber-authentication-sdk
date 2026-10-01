@@ -1,22 +1,26 @@
 export interface Authentication {
-    email?: string;
-    id?: string;
+    email: string;
     message?: string;
-    name?: string;
+    name: string;
     newPassword: string;
     password: string;
     referralCode: string;
+    referrer?: Record<string, any>;
     success?: boolean;
-    token: string;
+    token?: string;
+    user?: Record<string, any>;
+    valid?: boolean;
 }
 export interface AuthenticationCreateData {
-    email?: string;
-    id?: string;
+    email: string;
     message?: string;
-    name?: string;
+    name: string;
     newPassword: string;
     password: string;
     referralCode: string;
+    referrer?: Record<string, any>;
     success?: boolean;
-    token: string;
+    token?: string;
+    user?: Record<string, any>;
+    valid?: boolean;
 }
