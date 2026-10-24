@@ -118,9 +118,9 @@ authentication = client.Authentication()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> AuthenticationEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.Authentication().create({
@@ -128,7 +128,7 @@ result = client.Authentication().create({
     "name": "example_name",  # str
     "newPassword": "example_newPassword",  # str
     "password": "example_password",  # str
-    "referralCode": "example_referralCode",  # str
+    "token": "example_token",  # str
 })
 ```
 
@@ -318,6 +318,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

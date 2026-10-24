@@ -100,6 +100,10 @@ main: kit: entity: authentication: {
       name: "create"
       points: [
         {
+          bf: [
+            "email"
+            "password"
+          ]
           co: {
             id: "POST /api/auth/login"
             source: "openapi3"
@@ -107,6 +111,10 @@ main: kit: entity: authentication: {
           }
           m: "POST"
           o: "/api/auth/login"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -124,6 +132,9 @@ main: kit: entity: authentication: {
           }
         }
         {
+          bf: [
+            "email"
+          ]
           co: {
             id: "POST /api/auth/password/recover"
             source: "openapi3"
@@ -131,6 +142,10 @@ main: kit: entity: authentication: {
           }
           m: "POST"
           o: "/api/auth/password/recover"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -151,6 +166,10 @@ main: kit: entity: authentication: {
           }
         }
         {
+          bf: [
+            "newPassword"
+            "token"
+          ]
           co: {
             id: "POST /api/auth/password/reset"
             source: "openapi3"
@@ -158,6 +177,10 @@ main: kit: entity: authentication: {
           }
           m: "POST"
           o: "/api/auth/password/reset"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -178,6 +201,9 @@ main: kit: entity: authentication: {
           }
         }
         {
+          bf: [
+            "referralCode"
+          ]
           co: {
             id: "POST /api/auth/referral/validate"
             source: "openapi3"
@@ -185,6 +211,10 @@ main: kit: entity: authentication: {
           }
           m: "POST"
           o: "/api/auth/referral/validate"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -205,6 +235,12 @@ main: kit: entity: authentication: {
           }
         }
         {
+          bf: [
+            "email"
+            "name"
+            "password"
+            "referralCode"
+          ]
           co: {
             id: "POST /api/auth/signup"
             source: "openapi3"
@@ -212,6 +248,10 @@ main: kit: entity: authentication: {
           }
           m: "POST"
           o: "/api/auth/signup"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

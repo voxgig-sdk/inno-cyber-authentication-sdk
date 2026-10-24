@@ -1,6 +1,6 @@
 # INNO_CYBER Authentication
 
-This API allows users to securely log in, sign up, and manage their authentication credentials for the INNO_CYBER platform. It supports operations like password recovery and referral code registration to enhance user experience.
+This API allows users to securely log in, sign up, and manage their authentication credentials for the `INNO_CYBER` platform. It supports operations like password recovery and referral code registration to enhance user experience.
 
 ## Start here
 

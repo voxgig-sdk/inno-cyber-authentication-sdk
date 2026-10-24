@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -247,7 +248,11 @@ class Config {
                 "res": "`body`"
               },
               "args": {},
-              "select": {}
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
+              }
             },
             {
               "kind": "http",
@@ -279,7 +284,11 @@ class Config {
                 "res": "`body`"
               },
               "args": {},
-              "select": {}
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
+              }
             },
             {
               "kind": "http",
@@ -311,7 +320,11 @@ class Config {
                 "res": "`body`"
               },
               "args": {},
-              "select": {}
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
+              }
             },
             {
               "kind": "http",
@@ -343,7 +356,11 @@ class Config {
                 "res": "`body`"
               },
               "args": {},
-              "select": {}
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
+              }
             },
             {
               "kind": "http",
@@ -371,7 +388,11 @@ class Config {
                 "res": "`body`"
               },
               "args": {},
-              "select": {}
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
+              }
             }
           ]
         }

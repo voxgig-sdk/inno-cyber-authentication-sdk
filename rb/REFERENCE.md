@@ -126,7 +126,7 @@ authentication = client.Authentication
 
 #### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data. Raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```ruby
 result = client.Authentication.create({
@@ -134,7 +134,7 @@ result = client.Authentication.create({
   "name" => "example_name", # String
   "newPassword" => "example_newPassword", # String
   "password" => "example_password", # String
-  "referralCode" => "example_referralCode", # String
+  "token" => "example_token", # String
 })
 ```
 
@@ -325,6 +325,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

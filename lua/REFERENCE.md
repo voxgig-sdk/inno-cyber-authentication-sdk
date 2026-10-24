@@ -123,7 +123,7 @@ local authentication = client:Authentication(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Authentication():create({
@@ -131,7 +131,7 @@ local result, err = client:Authentication():create({
   name = --[[ string ]],
   newPassword = --[[ string ]],
   password = --[[ string ]],
-  referralCode = --[[ string ]],
+  token = --[[ string ]],
 })
 ```
 
@@ -322,6 +322,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

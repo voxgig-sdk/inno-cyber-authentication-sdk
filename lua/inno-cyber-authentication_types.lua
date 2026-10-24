@@ -21,16 +21,11 @@
 
 ---@class AuthenticationCreateData
 ---@field email string
----@field message? string
 ---@field name string
 ---@field newPassword string
 ---@field password string
----@field referralCode string
----@field referrer? table
----@field success? boolean
----@field token? string
----@field user? table
----@field valid? boolean
+---@field referralCode? string
+---@field token string
 
 local M = {}
 

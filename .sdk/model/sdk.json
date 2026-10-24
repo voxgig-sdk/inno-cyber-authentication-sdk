@@ -204,6 +204,10 @@
               "points": [
                 {
                   "a": true,
+                  "bf": [
+                    "email",
+                    "password"
+                  ],
                   "co": {
                     "id": "POST /api/auth/login",
                     "source": "openapi3",
@@ -215,6 +219,10 @@
                   "o": "/api/auth/login",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -233,6 +241,9 @@
                 },
                 {
                   "a": true,
+                  "bf": [
+                    "email"
+                  ],
                   "co": {
                     "id": "POST /api/auth/password/recover",
                     "source": "openapi3",
@@ -244,6 +255,10 @@
                   "o": "/api/auth/password/recover",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -265,6 +280,10 @@
                 },
                 {
                   "a": true,
+                  "bf": [
+                    "newPassword",
+                    "token"
+                  ],
                   "co": {
                     "id": "POST /api/auth/password/reset",
                     "source": "openapi3",
@@ -276,6 +295,10 @@
                   "o": "/api/auth/password/reset",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -297,6 +320,9 @@
                 },
                 {
                   "a": true,
+                  "bf": [
+                    "referralCode"
+                  ],
                   "co": {
                     "id": "POST /api/auth/referral/validate",
                     "source": "openapi3",
@@ -308,6 +334,10 @@
                   "o": "/api/auth/referral/validate",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -329,6 +359,12 @@
                 },
                 {
                   "a": true,
+                  "bf": [
+                    "email",
+                    "name",
+                    "password",
+                    "referralCode"
+                  ],
                   "co": {
                     "id": "POST /api/auth/signup",
                     "source": "openapi3",
@@ -340,6 +376,10 @@
                   "o": "/api/auth/signup",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -686,6 +726,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -825,7 +866,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -878,6 +919,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -1108,7 +1154,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -1485,6 +1534,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

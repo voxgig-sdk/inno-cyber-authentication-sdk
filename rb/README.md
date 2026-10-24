@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -45,7 +45,7 @@ client = InnoCyberAuthenticationSDK.new({
 
 ```ruby
 # create returns the ENTITY — call data_get for the created Authentication record.
-created = client.Authentication.create({ "email" => "example_email", "name" => "example_name", "newPassword" => "example_newPassword", "password" => "example_password", "referralCode" => "example_referralCode" })
+created = client.Authentication.create({ "email" => "example_email", "name" => "example_name", "newPassword" => "example_newPassword", "password" => "example_password", "token" => "example_token" })
 
 ```
 
@@ -56,7 +56,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  authentication = client.Authentication.create({ "email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "referralCode" => "example" })
+  authentication = client.Authentication.create({ "email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "token" => "example" })
 rescue => err
   warn "create failed: #{err}"
 end
@@ -125,9 +125,9 @@ Create a mock client for unit testing — no server required:
 client = InnoCyberAuthenticationSDK.test
 
 # Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-authentication = client.Authentication.create({ "email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "referralCode" => "example" })
-puts authentication
+# data_get reads its mock record.
+authentication = client.Authentication.create({ "email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "token" => "example" })
+puts authentication.data_get
 ```
 
 ### Use a custom fetch function
@@ -213,7 +213,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity, and return it. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -223,9 +223,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `InnoCyberAuthenticationError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`InnoCyberAuthenticationError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -299,7 +300,7 @@ authentication = client.Authentication.create({
   "name" => "example_name", # String
   "newPassword" => "example_newPassword", # String
   "password" => "example_password", # String
-  "referralCode" => "example_referralCode", # String
+  "token" => "example_token", # String
 })
 ```
 
@@ -466,7 +467,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 authentication = client.Authentication
-authentication.create({ "email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "referralCode" => "example" })
+authentication.create({ "email" => "example", "name" => "example", "newPassword" => "example", "password" => "example", "token" => "example" })
 
 # authentication.data_get now returns the authentication data from the last create
 # authentication.match_get returns the last match criteria

@@ -38,13 +38,8 @@ class AuthenticationCreateDataRequired(TypedDict):
     name: str
     newPassword: str
     password: str
-    referralCode: str
+    token: str
 
 
 class AuthenticationCreateData(AuthenticationCreateDataRequired, total=False):
-    message: str
-    referrer: dict
-    success: bool
-    token: str
-    user: dict
-    valid: bool
+    referralCode: str

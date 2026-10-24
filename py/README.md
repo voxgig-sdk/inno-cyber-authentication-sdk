@@ -15,7 +15,7 @@ keeps the cognitive load low.
 
 ## Install
 This package is not yet published to PyPI. Install it from the GitHub
-release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases)) or
+release tag (`py/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags)) or
 from a source checkout:
 
 ```bash
@@ -43,7 +43,7 @@ client = InnoCyberAuthenticationSDK({
 
 ```python
 # Create — returns the ENTITY (call data_get() for the record)
-created = client.Authentication().create({"email": "example_email", "name": "example_name", "newPassword": "example_newPassword", "password": "example_password", "referralCode": "example_referralCode"})
+created = client.Authentication().create({"email": "example_email", "name": "example_name", "newPassword": "example_newPassword", "password": "example_password", "token": "example_token"})
 
 ```
 
@@ -54,8 +54,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    authentication = client.Authentication().create({ "email": "example", "name": "example", "newPassword": "example", "password": "example", "referralCode": "example" })
-    print(authentication)
+    authentication = client.Authentication().create({ "email": "example", "name": "example", "newPassword": "example", "password": "example", "token": "example" })
+    print(authentication.data_get())
 except Exception as err:
     print(f"create failed: {err}")
 ```
@@ -121,10 +121,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = InnoCyberAuthenticationSDK.test()
 
-# Entity ops return the ENTITY and raises on error;
-# call data_get() for the record.
-authentication = client.Authentication().create({"email": "example", "name": "example", "newPassword": "example", "password": "example", "referralCode": "example"})
-# authentication contains the mock response record
+# Entity ops return the entity, and list one per record; they raise on error.
+authentication = client.Authentication().create({"email": "example", "name": "example", "newPassword": "example", "password": "example", "token": "example"})
+# data_get() on an entity reads its mock response record
 ```
 
 ### Use a custom fetch function
@@ -210,7 +209,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity, and return it. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -220,9 +219,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
-ops, a `list` for `list`) and raise on error. Wrap calls in
-`try`/`except` to handle failures.
+Entity operations return the entity, and `list` a `list` of entities, one
+per record; an entity's `data_get()` reads its record (a `dict`). They raise
+on error, so wrap calls in `try`/`except` to handle failures.
 
 The `direct()` escape hatch never raises — it returns a result `dict`
 you branch on via `result["ok"]`:
@@ -297,7 +296,7 @@ authentication = client.Authentication().create({
     "name": "example_name",  # str
     "newPassword": "example_newPassword",  # str
     "password": "example_password",  # str
-    "referralCode": "example_referralCode",  # str
+    "token": "example_token",  # str
 })
 ```
 
@@ -463,7 +462,7 @@ stores the returned data and match criteria internally.
 
 ```python
 authentication = client.Authentication()
-authentication.create({ "email": "example", "name": "example", "newPassword": "example", "password": "example", "referralCode": "example" })
+authentication.create({ "email": "example", "name": "example", "newPassword": "example", "password": "example", "token": "example" })
 
 # authentication.data_get() now returns the authentication data from the last create
 # authentication.match_get() returns the last match criteria

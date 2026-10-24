@@ -62,9 +62,6 @@ Authentication = Struct.new(
 # @!attribute [rw] email
 #   @return [String]
 #
-# @!attribute [rw] message
-#   @return [String, nil]
-#
 # @!attribute [rw] name
 #   @return [String]
 #
@@ -75,34 +72,17 @@ Authentication = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] referralCode
-#   @return [String]
-#
-# @!attribute [rw] referrer
-#   @return [Hash, nil]
-#
-# @!attribute [rw] success
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] token
 #   @return [String, nil]
 #
-# @!attribute [rw] user
-#   @return [Hash, nil]
-#
-# @!attribute [rw] valid
-#   @return [Boolean, nil]
+# @!attribute [rw] token
+#   @return [String]
 AuthenticationCreateData = Struct.new(
   :email,
-  :message,
   :name,
   :newPassword,
   :password,
   :referralCode,
-  :referrer,
-  :success,
   :token,
-  :user,
-  :valid,
   keyword_init: true
 )
 

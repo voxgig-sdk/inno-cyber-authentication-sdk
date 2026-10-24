@@ -32,15 +32,10 @@ class Authentication
 class AuthenticationCreateData
 {
     public string $email;
-    public ?string $message = null;
     public string $name;
     public string $newPassword;
     public string $password;
-    public string $referralCode;
-    public ?array $referrer = null;
-    public ?bool $success = null;
-    public ?string $token = null;
-    public ?array $user = null;
-    public ?bool $valid = null;
+    public ?string $referralCode = null;
+    public string $token;
 }
 

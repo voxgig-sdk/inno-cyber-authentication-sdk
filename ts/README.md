@@ -15,7 +15,7 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/releases)), or from a
+release tag (`ts/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/inno-cyber-authentication-sdk/tags)), or from a
 clone, which carries the compiled `dist/`:
 
 ```bash
@@ -48,7 +48,7 @@ const created = await client.Authentication().create({
   name: 'example_name',
   newPassword: 'example_newPassword',
   password: 'example_password',
-  referralCode: 'example_referralCode',
+  token: 'example_token',
 })
 
 ```
@@ -60,15 +60,16 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const authentication = await client.Authentication().create({ email: "example", name: "example", newPassword: "example", password: "example", referralCode: "example" })
-  console.log(authentication)
+  const authentication = await client.Authentication().create({ email: "example", name: "example", newPassword: "example", password: "example", token: "example" })
+  console.log(authentication.data())
 } catch (err) {
   console.error('create failed:', err)
 }
 ```
 
 The low-level `direct()` method does **not** throw — it returns the
-value or an `Error`, so check the result before using it:
+result envelope. Branch on `ok`; on failure `status` holds the HTTP status
+(for error responses) and `err` holds the error:
 
 ```ts
 const result = await client.direct({
@@ -77,8 +78,8 @@ const result = await client.direct({
   params: { id: 'example_id' },
 })
 
-if (result instanceof Error) {
-  throw result
+if (!result.ok) {
+  console.error('request failed:', result.status, result.err)
 }
 ```
 
@@ -96,9 +97,6 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
-if (result instanceof Error) {
-  throw result
-}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -127,10 +125,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = InnoCyberAuthenticationSDK.test()
 
-const authentication = await client.Authentication().create({ email: 'example_email', name: 'example_name', newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode' })
-// authentication is the entity, populated with mock response data
-// — call authentication.data() for the record itself
-console.log(authentication)
+const authentication = await client.Authentication().create({ email: 'example_email', name: 'example_name', newPassword: 'example_newPassword', password: 'example_password', token: 'example_token' })
+// authentication is the Authentication entity; .data() reads its mock record
+console.log(authentication.data())
 ```
 
 You can also use the instance method:
@@ -148,7 +145,7 @@ Entity instances remember their last match and data:
 const entity = client.Authentication()
 
 // First call runs the operation and stores its result
-await entity.create({ email: 'example_email', name: 'example_name', newPassword: 'example_newPassword', password: 'example_password', referralCode: 'example_referralCode' })
+await entity.create({ email: 'example_email', name: 'example_name', newPassword: 'example_newPassword', password: 'example_password', token: 'example_token' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -249,7 +246,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity, and return it. |
 | `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
 | `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
@@ -258,8 +255,8 @@ All entities share the same interface.
 
 #### Return values
 
-Entity operations resolve to the entity data directly — there is no
-result envelope:
+Entity operations resolve to the entity itself — there is no result
+envelope, and an entity's `data()` reads its record:
 
 - `create` resolves to a single entity object.
 
@@ -356,7 +353,7 @@ const authentication = await client.Authentication().create({
   name: 'example_name',
   newPassword: 'example_newPassword',
   password: 'example_password',
-  referralCode: 'example_referralCode',
+  token: 'example_token',
 })
 ```
 
@@ -515,7 +512,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const authentication = client.Authentication()
-await authentication.create({ email: "example", name: "example", newPassword: "example", password: "example", referralCode: "example" })
+await authentication.create({ email: "example", name: "example", newPassword: "example", password: "example", token: "example" })
 
 // authentication.data() now returns the authentication data from the last `create`
 // authentication.match() returns the last match criteria

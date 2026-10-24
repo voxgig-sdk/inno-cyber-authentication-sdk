@@ -3,5 +3,22 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Detailed error description",
+      "JWT authentication token",
+      "New password",
+      "Password recovery email sent",
+      "Password successfully reset",
+      "Production server",
+      "Referral code is valid",
+      "Successful authentication",
+      "This API allows users to securely log in, sign up, and manage their authentication credentials for the `INNO_CYBER` platform. It supports operations like password recovery and referral code registration to enhance user experience.",
+      "User email address",
+      "User full name",
+      "User password",
+      "User successfully created"
+    ]
+  }
 }
